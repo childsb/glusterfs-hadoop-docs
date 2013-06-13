@@ -4,7 +4,7 @@ GlusterFS Hadoop Plugin
 INTRODUCTION
 ------------
 
-This document describes how to use GlusterFS (http://www.gluster.org/) as a backing store with Hadoop.
+This document describes how to use GlusterFS (http://www.gluster.org/) as a Hadoop-compatible filesystem. For more info on the [HCFS project](http://wiki.apache.org/hadoop/HCFS), go to its [home page](http://wiki.apache.org/hadoop/HCFS).
 
 This plugin replaces the hadoop file system (typically, the Hadoop Distributed File System) with the 
 GlusterFileSystem, which writes to a local directory which FUSE mounts a proxy to a gluster system.
