@@ -8,6 +8,14 @@ The Plugin supports both Apache Hadoop 1.x and 2.x releases and has thus far bee
 
 [Plugin releases are available on our Archiva repo](http://23.23.239.119/archiva/browse/org.apache.hadoop.fs.glusterfs/glusterfs-hadoop)
 
+## Configuration ##
+
+Our [[Configuration]] page provides a guide on how to configure GlusterFS and Hadoop to make use of the plugin.
+
+## How To Contribute ##
+
+Our [[HowToContribute]] page contains information on how to participate in the development of the plugin.
+
 ## Requirements ##
 
 * Supported OS is GNU/Linux
