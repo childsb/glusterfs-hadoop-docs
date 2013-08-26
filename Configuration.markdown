@@ -35,7 +35,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
- <property>
+` <property>
   <name>fs.defaultFS</name>
   <value>glusterfs://server:9000</value>
  </property>
@@ -63,7 +63,7 @@ For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop),
  <property>
   <name>fs.glusterfs.server</name>
   <value>node-1</value>
- </property>
+ </property>`
 
 ## Usage ##
 
