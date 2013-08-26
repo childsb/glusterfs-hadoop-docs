@@ -1,16 +1,14 @@
-GlusterFS Hadoop Plugin
-=======================
+# Hadoop Enablement on GlusterFS#
 
-INTRODUCTION
-------------
+
+## Introduction ##
 
 This document describes how to use GlusterFS (http://www.gluster.org/) as a Hadoop-compatible filesystem. For more info on the [HCFS project](http://wiki.apache.org/hadoop/HCFS), go to its [home page](http://wiki.apache.org/hadoop/HCFS).
 
 This plugin replaces the hadoop file system (typically, the Hadoop Distributed File System) with the 
 GlusterFileSystem, which writes to a local directory which FUSE mounts a proxy to a gluster system.
 
-REQUIREMENTS
-------------
+## Requirements ##
 
 * Supported OS is GNU/Linux
 * GlusterFS installed on all machines in the cluster
@@ -27,8 +25,7 @@ Make sure they are installed on all hosts in the cluster and their locations are
 environment variable.
 
 
-INSTALLATION
-------------
+## Installation ##
 
 ** NOTE: Example below is for Hadoop version 0.20.2 ($GLUSTER_HOME/hdfs/0.20.2) **
 
@@ -59,8 +56,7 @@ INSTALLATION
   See the plugin documentation for installing from RPM.
 
 
-CLUSTER INSTALLATION
---------------------
+## Cluster Installation ##
 
   In case it is tedious to do the above steps(s) on all hosts in the cluster; use the build-and-deploy.py script to
   build the plugin in one place and deploy it (along with the configuration file on all other hosts).
@@ -86,8 +82,7 @@ CLUSTER INSTALLATION
      -h : deploy hadoop-env.sh
 
 
-CONFIGURATION
--------------
+## Configuration ##
 
   All plugin configuration is done in a single XML file (core-site.xml) with <name><value> tags in each <property>
   block.
@@ -134,8 +129,7 @@ CONFIGURATION
          will improve and job would run faster.
 
 
-USAGE
------
+## Usage ##
 
   Once configured, start Hadoop Map/Reduce daemons
 
@@ -145,8 +139,7 @@ USAGE
   If the map/reduce job/task trackers are up, all I/O will be done to GlusterFS.
 
 
-FOR HACKERS
------------
+## For Hackers ##
 
 * Source Layout (./src/)
 
@@ -168,8 +161,7 @@ org.gluster.test.AppTest.java                  <--- Your test cases go here (if 
 
 
 
-JENKINS
--------
+## Jenkins ##
 
   At the moment, you need to run as root - this can be done by modifying this line in the jenkins init.d/ script.
   This is because of the mount command issued in the GlusterFileSystem. 
@@ -183,8 +175,7 @@ JENKINS
   daemon --user root --pidfile "$JENKINS_PID_FILE" $JAVA_CMD $PARAMS > /dev/null
 
 
-BUILDING 
---------
+## Building ##
 
 Building requires a working gluster mount for unit tests. 
 The unit tests read test resources from glusterconfig.properties - a file which should be present 
