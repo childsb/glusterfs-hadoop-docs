@@ -7,7 +7,7 @@ The following components are required to successfully deploy a working solution.
 * Oracle Java Runtime Environment (JRE) 1.6 +
 * FUSE Kernel Patches applied to all GlusterFS nodes
 
-## Deployment Architecture ##
+## Configuration Guide ##
 
 1) The deployment process involves initially installing and configuring GlusterFS on a cluster of servers, building your trusted storage pool and creating your gluster volume. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
 
@@ -26,14 +26,16 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 5) Install Hadoop
 
 **For Hadoop 1.x:**
+* Install a JobTracker on a single designated node within your storage pool
 * Install a TaskTracker on every node within your Trusted Storage Pool. 
-* On each Copy the plugin to $HADOOP_HOME/lib/
+* On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
 
 **For Hadoop 2.x:**
-* install a NodeManager on every node within your Trusted Storage Pool. 
-* Copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
+* Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
+* install a NodeManager on every node within your storage pool. 
+* On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
 
-For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
+**For both** Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
