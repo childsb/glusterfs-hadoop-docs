@@ -1,9 +1,11 @@
 ## Building ##
 
-Building requires a working gluster mount for unit tests.  The unit tests read test resources from glusterconfig.properties - a file which should be present.
+** Pre-Requisites **
+- Building requires a working gluster mount for unit tests.  
+- The unit tests read test resources from glusterconfig.properties - a file which should be present.
+-  [Maven] (http://maven.apache.org/) and JDK  1.6 are required to build the plugin **
 
-* Note: Building the plugin from source [Maven] (http://maven.apache.org/) and JDK  1.6 is required to build the plugin:
-
+** Build Process **
 1) edit your .bashrc, or else at your terminal run : 
 
 export GLUSTER_VOLUME=MyVolume <-- replace with your preferred volume name (default is HadoopVol)
