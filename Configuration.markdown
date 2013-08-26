@@ -32,10 +32,11 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 * On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
 
 **For Hadoop 2.x:**
-* - Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
-* - Install a NodeManager on every node within your storage pool. 
-* - On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
-* - Modify the mapred-site.xml to reflect the following:
+
+* Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
+* Install a NodeManager on every node within your storage pool. 
+* On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
+* Modify the mapred-site.xml to reflect the following:
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
@@ -75,7 +76,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 `</configuration>`
 
-**For both** Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
+**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
