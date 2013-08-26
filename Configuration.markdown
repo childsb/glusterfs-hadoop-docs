@@ -35,35 +35,35 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
-` <property>
-  <name>fs.defaultFS</name>
-  <value>glusterfs://server:9000</value>
- </property>
+` <property>`
+`  <name>fs.defaultFS</name>`
+`  <value>glusterfs://server:9000</value>`
+` </property>`
 
- <property>
-  <name>fs.default.name</name>
-  <value>glusterfs://node-1:9000</value>
- </property>
+` <property>`
+`  <name>fs.default.name</name>`
+`  <value>glusterfs://node-1:9000</value>`
+` </property>`
 
- <property>
-  <name>fs.AbstractFileSystem.glusterfs.impl</name>
-  <value>org.apache.hadoop.fs.local.GlusterFs</value>
- </property>
+` <property>`
+`  <name>fs.AbstractFileSystem.glusterfs.impl</name>`
+`  <value>org.apache.hadoop.fs.local.GlusterFs</value>`
+` </property>`
 
- <property>
-  <name>fs.glusterfs.impl</name>
-  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>
- </property>
+` <property>`
+`  <name>fs.glusterfs.impl</name>`
+`  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>`
+` </property>`
 
- <property>
-  <name>fs.glusterfs.mount</name>
-  <value>/mnt/glusterfs</value>
- </property>
+` <property>`
+`  <name>fs.glusterfs.mount</name>`
+`  <value>/mnt/glusterfs</value>`
+` </property>`
 
- <property>
-  <name>fs.glusterfs.server</name>
-  <value>node-1</value>
- </property>`
+` <property>`
+`  <name>fs.glusterfs.server</name>`
+`  <value>node-1</value>`
+` </property>`
 
 ## Usage ##
 
