@@ -1,12 +1,6 @@
-# Hadoop on GlusterFS#
-
-
 ## Introduction ##
 
-This document describes how to use GlusterFS (http://www.gluster.org/) as a Hadoop-compatible filesystem. For more info on the [HCFS project](http://wiki.apache.org/hadoop/HCFS), go to its [home page](http://wiki.apache.org/hadoop/HCFS).
-
-This plugin replaces the hadoop file system (typically, the Hadoop Distributed File System) with the 
-GlusterFileSystem, which writes to a local directory which FUSE mounts a proxy to a gluster system.
+While Apache Hadoop typically ships with the Hadoop Distributed FileSystem (HDFS), [Hadoop can be configured to use alternate FileSystems] http://wiki.apache.org/hadoop/HCFS by leveraging its inherent pluggable filesystem architecture. One achieves this by building a plugin that acts as a mediator between the Hadoop FileSystem Interface and the desired FileSystem, and configuring Hadoop to use the plugin. This project contains the plugin required to enable GlusterFS to be used as a Hadoop FileSystem. 
 
 ## Requirements ##
 
