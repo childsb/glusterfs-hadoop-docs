@@ -31,10 +31,10 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 * On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
 
 **For Hadoop 2.x:**
-* Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
-* install a NodeManager on every node within your storage pool. 
-* On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
-* Modify the mapred-site.xml to reflect the following:
+* - Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
+* - Install a NodeManager on every node within your storage pool. 
+* - On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
+* - Modify the mapred-site.xml to reflect the following:
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
@@ -67,7 +67,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 `    <value>glusterfs:///mapred/system</value>`
 `  </property>`
 
-`  <property>
+`  <property>`
 `    <name>mapreduce.jobtracker.staging.root.dir</name>`
 `    <value>glusterfs:///user</value>`
 `  </property>`
