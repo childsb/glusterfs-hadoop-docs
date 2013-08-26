@@ -76,7 +76,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 `</configuration>`
 
-**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
+**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following (note: node-1 needs to be replaced a server in your storage pool):
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
@@ -86,7 +86,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 `<configuration>`
 ` <property>`
 `  <name>fs.defaultFS</name>`
-`  <value>glusterfs://server:9000</value>`
+`  <value>glusterfs://node-1:9000</value>`
 ` </property>`
 
 ` <property>`
