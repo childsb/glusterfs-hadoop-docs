@@ -26,6 +26,7 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 5) Install Hadoop
 
 **For Hadoop 1.x:**
+
 * Install a JobTracker on a single designated node within your storage pool
 * Install a TaskTracker on every node within your Trusted Storage Pool. 
 * On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
