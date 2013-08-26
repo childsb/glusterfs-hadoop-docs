@@ -2,7 +2,7 @@
 
 - Building requires a working gluster mount for unit tests.  
 - The unit tests read test resources from glusterconfig.properties - a file which should be present.
--  [Maven] (http://maven.apache.org/) and JDK  1.6 are required to build the plugin **
+-  [Maven] (http://maven.apache.org/) and JDK  1.6 are required to build the plugin
 
 ## Build Process ##
 
