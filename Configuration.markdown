@@ -27,53 +27,43 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 **For Hadoop 1.x:**
 * Install a TaskTracker on every node within your Trusted Storage Pool. 
-* Copy the plugin to ...
-* Modify the core-site.xml to reflect:
+* On each Copy the plugin to $HADOOP_HOME/lib/
 
 **For Hadoop 2.x:**
 * install a NodeManager on every node within your Trusted Storage Pool. 
-* Copy the plugin to ...
-* Modify the core-site.xml to reflect:
+* Copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
 
+For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
+ <property>
+  <name>fs.defaultFS</name>
+  <value>glusterfs://server:9000</value>
+ </property>
 
+ <property>
+  <name>fs.default.name</name>
+  <value>glusterfs://node-1:9000</value>
+ </property>
 
-## Configuration ##
+ <property>
+  <name>fs.AbstractFileSystem.glusterfs.impl</name>
+  <value>org.apache.hadoop.fs.local.GlusterFs</value>
+ </property>
 
-  All plugin configuration is done in a single XML file (core-site.xml) with <name><value> tags in each <property>
-  block.
+ <property>
+  <name>fs.glusterfs.impl</name>
+  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>
+ </property>
 
-  Brief explanation of the tunables and the values they accept (change them where-ever needed) are mentioned below
+ <property>
+  <name>fs.glusterfs.mount</name>
+  <value>/mnt/glusterfs</value>
+ </property>
 
-  name:  fs.glusterfs.impl
-  value: org.apache.hadoop.fs.glusterfs.GlusterFileSystem
-
-         The default FileSystem API to use (there is little reason to modify this).
-
-  name:  fs.default.name
-  value: glusterfs://server:port
-
-         The default name that hadoop uses to represent file as a URI (typically a server:port tuple). Use any host
-         in the cluster as the server and any port number. This option has to be in server:port format for hadoop
-         to create file URI; but is not used by plugin.
-
-  name:  fs.glusterfs.volname
-  value: volume-dist-rep
-
-         The volume to mount.
-
-
-  name:  fs.glusterfs.mount
-  value: /mnt/glusterfs
-
-         This is the directory that the plugin will use to mount (FUSE mount) the volume.
-
-  name:  fs.glusterfs.server
-  value: 192.168.1.36, hackme.zugzug.org
-
-         To mount a volume the plugin needs to know the hostname or the IP of a GlusterFS server in the cluster.
-         Mention it here.
-
+ <property>
+  <name>fs.glusterfs.server</name>
+  <value>node-1</value>
+ </property>
 
 ## Usage ##
 
