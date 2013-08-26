@@ -16,7 +16,9 @@ Our [[Configuration]] page provides a guide on how to configure GlusterFS and Ha
 
 Our [[HowToContribute]] page contains information on how to participate in the development of the plugin.
 
+## How To Build ##
 
+Our [[HowToBuild]] page contains information on how to build the plugin if you would like to build your own plugin JARs.
 
 ## For Hackers ##
 
