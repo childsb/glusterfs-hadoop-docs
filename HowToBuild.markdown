@@ -1,28 +1,21 @@
-# Basic Build #
+## Building ##
 
-** NOTE: Example below is for Hadoop version 0.20.2 ($GLUSTER_HOME/hdfs/0.20.2) **
+Building requires a working gluster mount for unit tests.  The unit tests read test resources from glusterconfig.properties - a file which should be present.
 
-* Building the plugin from source [Maven (http://maven.apache.org/) and JDK is required to build the plugin]
+* Note: Building the plugin from source [Maven] (http://maven.apache.org/) and JDK  1.6 is required to build the plugin:
 
-  Change to glusterfs-hadoop directory in the GlusterFS source tree and build the plugin.
+1) edit your .bashrc, or else at your terminal run : 
 
-  # cd $GLUSTER_HOME/hdfs/0.20.2
-  # mvn package
+export GLUSTER_VOLUME=MyVolume <-- replace with your preferred volume name (default is HadoopVol)
+export GLUSTER_HOST=192.0.1.2 <-- replace with your host (default will be determined at runtime in the JVM)
 
-  On a successful build the plugin will be present in the `target` directory.
-  (NOTE: version number will be a part of the plugin)
+2) Change to glusterfs-hadoop directory in the GlusterFS source tree and build the plugin by running: 
+   mvn package
+
+  On a successful build the plugin (glusterfs-hadoop-<version>) will be present in the `target` directory.
 
   # ls target/
-  classes  glusterfs-0.20.2-0.1.jar  maven-archiver  surefire-reports  test-classes
-
-  Copy the plugin to lib/ directory in your $HADOOP_HOME dir.
-
-  # cp target/glusterfs-0.20.2-0.1.jar $HADOOP_HOME/lib
-
-  Copy the sample configuration file that ships with this source (conf/core-site.xml) to conf
-  directory in your $HADOOP_HOME dir.
-
-  # cp conf/core-site.xml $HADOOP_HOME/conf
+  classes  glusterfs-hadoop-2.1.2.jar maven-archiver  surefire-reports  test-classes
 
 # Distributed Build #
 
