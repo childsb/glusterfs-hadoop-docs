@@ -34,6 +34,45 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 * Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
 * install a NodeManager on every node within your storage pool. 
 * On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
+* Modify the mapred-site.xml to reflect the following:
+
+`<?xml version="1.0"?>`
+`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
+
+`<!-- Put site-specific property overrides in this file. -->`
+
+` <configuration>`
+`   <property>`
+`     <name>mapreduce.framework.name</name>`
+`     <value>yarn</value>`
+`   </property>`
+
+`  <property>`
+`    <name>yarn.app.mapreduce.am.staging-dir</name>`
+`    <value>glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging</value>`
+`  </property>`
+
+`  <property>`
+`    <name>mapred.healthChecker.script.path</name>`
+`    <value>glusterfs:///mapred/jobstatus</value>`
+`  </property>`
+
+`  <property>`
+`    <name>mapred.job.tracker.history.completed.location</name>`
+`    <value>glusterfs:///mapred/history/done</value>`
+`  </property>`
+
+`  <property>`
+`    <name>mapred.system.dir</name>`
+`    <value>glusterfs:///mapred/system</value>`
+`  </property>`
+
+`  <property>
+`    <name>mapreduce.jobtracker.staging.root.dir</name>`
+`    <value>glusterfs:///user</value>`
+`  </property>`
+
+`</configuration>`
 
 **For both** Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following:
 
