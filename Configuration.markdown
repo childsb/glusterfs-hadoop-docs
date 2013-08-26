@@ -40,7 +40,7 @@ For both Hadoop 1.x ($HADOOP_HOME/conf) or Hadoop 2.x ($HADOOP_HOME/etc/hadoop),
 
 `<!-- Put site-specific property overrides in this file. -->`
 
-`<configuration>
+`<configuration>`
 ` <property>`
 `  <name>fs.defaultFS</name>`
 `  <value>glusterfs://server:9000</value>`
