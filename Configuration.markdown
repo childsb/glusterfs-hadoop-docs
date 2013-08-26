@@ -9,16 +9,21 @@ The following components are required to successfully deploy a working solution.
 
 ## Deployment Architecture ##
 
-The deployment process involves initially installing and configuring GlusterFS on a cluster of servers, building your trusted storage pool and creating your gluster volume. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace:
+1) The deployment process involves initially installing and configuring GlusterFS on a cluster of servers, building your trusted storage pool and creating your gluster volume. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
+
 gluster volume set HadoopVol quick-read off
 gluster volume set HadoopVol cluster.eager-lock on
 gluster volume set HadoopVol performance.stat-prefetch off
 
-Mount appropriately
+2) Once the GlusterFS volume is appropriately configured one needs to install the FUSE Kernel patch on every node within the storage pool. This patch resolves a current issue with Linux whereby the inode cache becomes stale and causes namespace consistency issue in parallel environments. We are working on providing a link to the RPM download. Since this is a Kernel patch, it is required that you reboot after installing it.
 
-Installing the FUSE patch and Java
+3) Install Oracle Java 1.6
 
-Install Hadoop. Tarball Option 
+4) Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency and related to the FUSE patch. It is recommended that you take measures to ensure the mount is persisted upon reboot.
+
+glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs
+
+5) Install Hadoop
 
 **For Hadoop 1.x:**
 * Install a TaskTracker on every node within your Trusted Storage Pool. 
