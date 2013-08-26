@@ -1,10 +1,36 @@
-## Requirements ##
+## Pre-Requisites ##
 
-* A GlusterFS 3.3 (or later) volume
+The following components are required to successfully deploy a working solution. More detail will be provided on these components later in this guide.
+
+* A GlusterFS 3.3 +
 * Apache Hadoop 1.x or 2.x
-* Java Runtime Environment (JRE) 1.6 +
+* Oracle Java Runtime Environment (JRE) 1.6 +
+* FUSE Kernel Patches applied to all GlusterFS nodes
 
 ## Deployment Architecture ##
+
+The deployment process involves initially installing and configuring GlusterFS on a cluster of servers, building your trusted storage pool and creating your gluster volume. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace:
+gluster volume set HadoopVol quick-read off
+gluster volume set HadoopVol cluster.eager-lock on
+gluster volume set HadoopVol performance.stat-prefetch off
+
+Mount appropriately
+
+Installing the FUSE patch and Java
+
+Install Hadoop. Tarball Option 
+
+**For Hadoop 1.x:**
+* Install a TaskTracker on every node within your Trusted Storage Pool. 
+* Copy the plugin to ...
+* Modify the core-site.xml to reflect:
+
+**For Hadoop 2.x:**
+* install a NodeManager on every node within your Trusted Storage Pool. 
+* Copy the plugin to ...
+* Modify the core-site.xml to reflect:
+
+
 
 
 ## Configuration ##
@@ -42,16 +68,6 @@
 
          To mount a volume the plugin needs to know the hostname or the IP of a GlusterFS server in the cluster.
          Mention it here.
-
-  name:  quick.slave.io
-  value: [On/Off], [Yes/No], [1/0]
-
-         NOTE: This option is not tested as of now.
-
-         This is a performance tunable option. Hadoop schedules jobs to hosts that contain the file data part. The job
-         then does I/O on the file (via FUSE in case of GlusterFS). When this option is set, the plugin will try to
-         do I/O directly from the backed filesystem (ext3, ext4 etc..) the file resides on. Hence read performance
-         will improve and job would run faster.
 
 
 ## Usage ##
