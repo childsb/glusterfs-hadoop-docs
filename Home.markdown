@@ -19,39 +19,3 @@ Our [[HowToContribute]] page contains information on how to participate in the d
 ## How To Build ##
 
 Our [[HowToBuild]] page contains information on how to build the plugin if you would like to build your own plugin JARs.
-
-## For Hackers ##
-
-* Source Layout (./src/)
-
-org.apache.hadoop.fs.glusters/GlusterFSBrickClass.java
-org.apache.hadoop.fs.glusters/GlusterFSXattr.java            <--- Fetch/Parse Extended Attributes of a file
-org.apache.hadoop.fs.glusters/GlusterFUSEInputStream.java    <--- Input Stream (instantiated during open() calls; quick read from backed FS)
-org.apache.hadoop.fs.glusters/GlusterFSBrickRepl.java
-org.apache.hadoop.fs.glusters/GlusterFUSEOutputStream.java   <--- Output Stream (instantiated during creat() calls)
-org.apache.hadoop.fs.glusters/GlusterFileSystem.java         <--- Entry Point for the plugin (extends Hadoop FileSystem class)
-
-org.gluster.test.AppTest.java                  <--- Your test cases go here (if any :-))
-
-./tools/build-deploy-jar.py                                                  <--- Build and Deployment Script
-./conf/core-site.xml                                                         <--- Sample configuration file
-./pom.xml                                                                    <--- build XML file (used by maven)
-
-./COPYING                                                                    <--- License
-./README                                                                     <--- This file
-
-
-
-## Jenkins ##
-
-  At the moment, you need to run as root - this can be done by modifying this line in the jenkins init.d/ script.
-  This is because of the mount command issued in the GlusterFileSystem. 
-  
-  #Method 1) Modify JENKINS_USER in /etc/sysconfig/jenkins
-  JENKINS_USER=root
-
-  #Method 2) Directly modify /etc/init.d/jenkins 
-  #daemon --user "$JENKINS_USER" --pidfile "$JENKINS_PID_FILE" $JAVA_CMD $PARAMS > /dev/null
-  echo "WARNING: RUNNING AS ROOT" 
-  daemon --user root --pidfile "$JENKINS_PID_FILE" $JAVA_CMD $PARAMS > /dev/null
-
