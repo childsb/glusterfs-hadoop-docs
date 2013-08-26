@@ -1,6 +1,6 @@
 ## Introduction ##
 
-While Apache Hadoop typically ships with the Hadoop Distributed FileSystem (HDFS), [Hadoop can be configured to use alternate FileSystems] http://wiki.apache.org/hadoop/HCFS by leveraging its inherent pluggable filesystem architecture. One achieves this by building a plugin that acts as a mediator between the Hadoop FileSystem Interface and the desired FileSystem, and configuring Hadoop to use the plugin. This project contains the plugin required to enable GlusterFS to be used as a Hadoop FileSystem. 
+While Apache Hadoop typically ships with the Hadoop Distributed FileSystem (HDFS), [Hadoop can be configured to use alternate FileSystems] (http://wiki.apache.org/hadoop/HCFS) by leveraging its inherent pluggable filesystem architecture. One achieves this by building a plugin that acts as a mediator between the Hadoop FileSystem Interface and the desired FileSystem, and configuring Hadoop to use the plugin. This project contains the plugin required to enable GlusterFS to be used as a Hadoop FileSystem. 
 
 ## Requirements ##
 
