@@ -1,4 +1,4 @@
-# Hadoop Enablement on GlusterFS#
+# Hadoop on GlusterFS#
 
 
 ## Introduction ##
