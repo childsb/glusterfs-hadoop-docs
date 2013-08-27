@@ -9,6 +9,8 @@ The following components are required to successfully deploy a working solution.
 
 ## Configuration Guide ##
 
+This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer.
+
 ** Installing and Configure GlusterFS** 
 
 Install and configuring GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
