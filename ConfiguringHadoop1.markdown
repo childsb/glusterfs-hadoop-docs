@@ -51,13 +51,23 @@ Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (addition
 
 **Modify the Slaves files**
 
+Navigate to the $HADOOP_HOME/conf directory. Modify the masters file to list the server you have designated as the JobTracker. Modify the slaves files to list all the servers within the storage pool for your volume, with each one on a new line.
+
+** Synchronize the configuration across the cluster **
+
 SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
      scp -r $HADOOP_HOME/ root@svr2:/opt/
+    scp -r $HADOOP_HOME/ root@svr3:/opt/
+    scp -r $HADOOP_HOME/ root@svr4:/opt/
+    etc...
 
 **Starting Hadoop**
 
 On the JobTracker server, open a terminal window, navigate to the $HADOOP_HOME directory and start Hadoop by running:
+
      bin/start-mapred.sh 
+
+This script  inspects the masters and slaves files in the $HADOOP_HOME/conf directory and starts the JobTracker on the Master server and starts the TaskTracker process on all the slave servers.
 
 **Verifying Hadoop is running successfully on GlusterFS**
 
