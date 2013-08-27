@@ -92,6 +92,14 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 
 `</configuration>`
 
+** Synchronize the configuration across the cluster **
+
+SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
+    scp -r $HADOOP_HOME/ root@svr2:/opt/
+    scp -r $HADOOP_HOME/ root@svr3:/opt/
+    scp -r $HADOOP_HOME/ root@svr4:/opt/
+    etc...
+
 **Starting Hadoop**
 
 On the JobTracker server, open a terminal window, navigate to the $HADOOP_HOME directory and start Hadoop by running:
