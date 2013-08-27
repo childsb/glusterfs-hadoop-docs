@@ -102,8 +102,14 @@ SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
 
 **Starting Hadoop**
 
-On the JobTracker server, open a terminal window, navigate to the $HADOOP_HOME directory and start Hadoop by running:
-     bin/start-mapred.sh 
+On the Master server, open a terminal window, navigate to $HADOOP_HOME and run the following commands:
+    sbin/yarn-daemon.sh start resourcemanager
+    sbin/yarn-daemon.sh start nodemanager
+    sbin/mr-jobhistory-daemon.sh start historyserver
+
+On each Slave server, open a terminal window, navigate to $HADOOP_HOME and run the following commands:
+
+    sbin/yarn-daemon.sh start nodemanager
 
 **Verifying Hadoop is running successfully on GlusterFS**
 
