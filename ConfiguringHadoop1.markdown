@@ -7,7 +7,7 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 
 **Configure the Plugin**
 
-Copy the plugin to the $HADOOP_HOME/lib directory.
+Copy the plugin to the $HADOOP_HOME/lib directory. [The plugin can be obtained here](https://forge.gluster.org/hadoop/pages/Home#Releases)
 
 ** Modify the hadoop-env.sh file **
 
