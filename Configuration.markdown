@@ -1,4 +1,4 @@
-## Pre-Requisites ##
+## Solution Components ##
 
 The following components are required to successfully deploy a working solution. More detail will be provided on these components later in this guide.
 
