@@ -7,7 +7,7 @@ Navigate to [Hadoop Download Page](http://hadoop.apache.org/releases.html#Downlo
 
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
 
-(note: node-1 needs to be replaced a server in your storage pool):
+(note: node-1 needs to be replaced by a hostname from your storage pool):
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
