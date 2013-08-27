@@ -14,6 +14,7 @@ Copy the plugin to the $HADOOP_HOME/lib directory.
 Edit the $HADOOP_HOME/conf/mapred-site.xml file to include the following (additional properties can be added)
 
 Note: 
+
 * "master" in the mapred.job.tracker needs to be replaced by the hostname of the JobTracker server)
 * $HADOOP_HOME needs to be replaced with the path of your Hadoop Installation. 
 
