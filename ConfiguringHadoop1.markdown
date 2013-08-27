@@ -9,6 +9,12 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 
 Copy the plugin to the $HADOOP_HOME/lib directory.
 
+** Modify the hadoop-env.sh file **
+
+Edit the $HADOOP_HOME/conf/hadoop-env.sh file to reflect JAVA_HOME. Remove the # preceding the line and set the JAVA_HOME to the correct directory. This would usually be:
+
+ export JAVA_HOME=/usr/lib/jvm/java-1.6.0/
+
 ** Modify the mapred-site.xml file **
 
 Edit the $HADOOP_HOME/conf/mapred-site.xml file to include the following (additional properties can be added)
