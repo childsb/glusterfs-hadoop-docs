@@ -92,11 +92,6 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 
 `</configuration>`
 
-**Modify the Slaves files**
-
-SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
-     scp -r $HADOOP_HOME/ root@svr2:/opt/
-
 **Starting Hadoop**
 
 On the JobTracker server, open a terminal window, navigate to the $HADOOP_HOME directory and start Hadoop by running:
