@@ -1,14 +1,51 @@
 **Download and Extract Hadoop**
 
 
-Navigate to http://hadoop.apache.org/releases.html#Download and download the Apache Hadoop 1.? tar ball to the /opt directory on the JobTracker server.
-Extract the tar ball in the /opt directory
+Navigate to http://hadoop.apache.org/releases.html#Download and download the hadoop-1.2.1.tar.gz  tar-ball to the /opt directory on the JobTracker server. Extract the tar ball in the /opt directory
 
 **Configure the Plugin**
 
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
 
-<INSERT CORE_SITE>
+**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following (note: node-1 needs to be replaced a server in your storage pool):
+
+`<?xml version="1.0"?>`
+`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
+
+`<!-- Put site-specific property overrides in this file. -->`
+
+`<configuration>`
+` <property>`
+`  <name>fs.defaultFS</name>`
+`  <value>glusterfs://node-1:9000</value>`
+` </property>`
+
+` <property>`
+`  <name>fs.default.name</name>`
+`  <value>glusterfs://node-1:9000</value>`
+` </property>`
+
+` <property>`
+`  <name>fs.AbstractFileSystem.glusterfs.impl</name>`
+`  <value>org.apache.hadoop.fs.local.GlusterFs</value>`
+` </property>`
+
+` <property>`
+`  <name>fs.glusterfs.impl</name>`
+`  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>`
+` </property>`
+
+` <property>`
+`  <name>fs.glusterfs.mount</name>`
+`  <value>/mnt/glusterfs</value>`
+` </property>`
+
+` <property>`
+`  <name>fs.glusterfs.server</name>`
+`  <value>node-1</value>`
+` </property>`
+
+`</configuration>`
 
 **Modify the Slaves files**
 
