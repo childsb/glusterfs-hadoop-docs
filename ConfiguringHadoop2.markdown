@@ -6,7 +6,7 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 
 **Configure the Plugin**
 
-On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/. [The plugin can be obtained here](https://forge.gluster.org/hadoop/pages/Home#Releases)
+Copy the plugin jar to $HADOOP_HOME/share/hadoop/common/lib/. [The plugin jar can be obtained here](https://forge.gluster.org/hadoop/pages/Home#Releases)
 
 ** Modify the hadoop-env.sh file **
 
