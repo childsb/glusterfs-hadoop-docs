@@ -9,6 +9,38 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 
 Copy the plugin to the $HADOOP_HOME/lib directory.
 
+** Modify the mapred-site.xml file **
+
+Edit the $HADOOP_HOME/conf/mapred-site.xml file to include the following (additional properties can be added)
+
+Note: 
+* "master" in the mapred.job.tracker needs to be replaced by the hostname of the JobTracker server)
+* $HADOOP_HOME needs to be replaced with the path of your Hadoop Installation. 
+
+`<?xml version="1.0"?>`
+`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
+
+`<!-- Put site-specific property overrides in this file. -->`
+
+`<configuration>`
+
+` <property>`
+`  <name>mapred.job.tracker</name>`
+`  <value>master:54311</value>`
+` </property>`
+
+` <property>`
+`  <name>mapred.system.dir</name>`
+`  <value>/mapred/system/</value>`
+`</property>`
+
+` <property>`
+`  <name>mapred.local.dir</name>`
+`  <value>$HADOOP_HOME/mapred/</value>`
+` </property>`
+
+`</configuration>`
+
 ** Modify the core-site.xml file **
 
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
