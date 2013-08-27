@@ -6,25 +6,28 @@ The following components are required to successfully deploy a working solution.
 * Apache Hadoop 1.x or 2.x
 * The GlusterFS Hadoop FileSystem Plugin
 * Oracle Java Runtime Environment (JRE) 1.6 +
-* FUSE Kernel Patches applied to all GlusterFS nodes
 
 ## Configuration Guide ##
 
-1) The deployment process involves initially installing and configuring GlusterFS on a cluster of servers, building your trusted storage pool and creating your gluster volume. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
+** Installing and Configure GlusterFS** 
+
+Install and configuring GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
 
 gluster volume set HadoopVol quick-read off
 gluster volume set HadoopVol cluster.eager-lock on
 gluster volume set HadoopVol performance.stat-prefetch off
 
-2) Once the GlusterFS volume is appropriately configured one needs to install the FUSE Kernel patch on every node within the storage pool. This patch resolves a current issue with Linux whereby the inode cache becomes stale and causes namespace consistency issue in parallel environments. We are working on providing a link to the RPM download. Since this is a Kernel patch, it is required that you reboot after installing it.
+** Install Oracle Java 1.6 **
 
-3) Install Oracle Java 1.6
+This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work.
 
-4) Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency and related to the FUSE patch. It is recommended that you take measures to ensure the mount is persisted upon reboot.
+** Specialized Gluster Volume Mount **
+
+Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency it is recommended that you take measures to ensure the mount is persisted upon reboot.
 
 glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs
 
-5) Configure Passwordless SSH
+**Configure Passwordless SSH**
 
 Designate a server within your trusted storage pool to run the JobTracker for Hadoop 1.0 or the Resource Manager in the case of Hadoop 2.0 . For the SSH instructions, we will call this server the Master Server. We will set up passwordless SSH from the Master server to all the other nodes in the cluster.
 
@@ -50,13 +53,11 @@ Lastly, verify you can ssh from the Master Server to all the other servers witho
 
 6) Install Hadoop
 
-**For Hadoop 1.x:** configuration please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
+**For Hadoop 1.x:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
-* Install a JobTracker on a single designated node within your storage pool
-* Install a TaskTracker on every node within your Trusted Storage Pool. 
-* On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
 
-**For Hadoop 2.x:** configuration please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
+
+**For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
 
 * Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
 * Install a NodeManager on every node within your storage pool. 
