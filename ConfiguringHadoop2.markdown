@@ -113,7 +113,7 @@ On each Slave server, open a terminal window, navigate to $HADOOP_HOME and run t
 
 **Verifying Hadoop is running successfully on GlusterFS**
 
-In a browser, launch the YARN ResourceManager UI by navigating to http://<MasterHostName>:8088/cluster/nodes
+In a browser, launch the YARN ResourceManager UI by navigating to http://<$MasterHostName>:8088/cluster/nodes
 
 Verify that all the hosts listed within your storage pool have reported in. If a host is missing, shell into that host and take a look at the files within $HADOOP_HOME/logs to check for errors when the process attempted to start.
 
