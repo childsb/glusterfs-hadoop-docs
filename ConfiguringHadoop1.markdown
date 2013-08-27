@@ -82,8 +82,8 @@ Under the TaskTracker nodes, verify that all the hosts listed within the Hadoop 
 
 Navigate to $HADOOP_HOME and run the following:
 
-    bin/hadoop jar hadoop-examples-<$VERSION>.jar teragen 10000 in-dir
+ bin/hadoop jar hadoop-examples-<$VERSION>.jar teragen 10000 in-dir
 
 and then once TeraGen has complete, run
 
-    bin/hadoop jar hadoop-examples-<$VERSION>.jar terasort in-dir out-dir
+ bin/hadoop jar hadoop-examples-<$VERSION>.jar terasort in-dir out-dir
