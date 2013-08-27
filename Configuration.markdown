@@ -27,7 +27,7 @@ This is a requirement of Hadoop. Hadoop has not yet been widely tested with Open
 
 ** Specialized Gluster Volume Mount **
 
-Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency it is recommended that you take measures to ensure the mount is persisted upon reboot.
+Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
 
 glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs
 
