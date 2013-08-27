@@ -75,6 +75,15 @@ This script  inspects the masters and slaves files in the $HADOOP_HOME/conf dire
 
 **Verifying Hadoop is running successfully on GlusterFS**
 
-In a browser, launch the Hadoop JobTracker UI by navigating to http://<JobTrackerHostName>:50030 
-Under the TaskTracker nodes, verify that all the hosts listed within the Hadoop Slaves have reported in. If a host is missing, 
-Go to JobTracker, verify that all the TaskTrackers reported in.
+In a browser, launch the Hadoop JobTracker UI by navigating to http://<$MasterServer>:50030 
+Under the TaskTracker nodes, verify that all the hosts listed within the Hadoop Slaves have reported in. If a host is missing, shell into that host and take a look at the files within $HADOOP_HOME/logs to check for errors when the process attempted to start.
+
+** Running a sample Hadoop Job **
+
+Navigate to $HADOOP_HOME and run the following:
+
+bin/hadoop jar hadoop-examples-<$VERSION>.jar teragen 10000 in-dir
+
+and then once TeraGen has complete, run
+
+bin/hadoop jar hadoop-examples-<$VERSION>.jar terasort in-dir out-dir
