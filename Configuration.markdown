@@ -25,13 +25,13 @@ glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volf
 
 5) Install Hadoop
 
-**For Hadoop 1.x:**
+**For Hadoop 1.x:** configuration please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
 
 * Install a JobTracker on a single designated node within your storage pool
 * Install a TaskTracker on every node within your Trusted Storage Pool. 
 * On each node within your storage pool, copy the plugin to $HADOOP_HOME/lib/
 
-**For Hadoop 2.x:**
+**For Hadoop 2.x:** configuration please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
 
 * Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
 * Install a NodeManager on every node within your storage pool. 
