@@ -7,7 +7,7 @@ Navigate to http://hadoop.apache.org/releases.html#Download and download the had
 
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
 
-**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following (note: node-1 needs to be replaced a server in your storage pool):
+(note: node-1 needs to be replaced a server in your storage pool):
 
 `<?xml version="1.0"?>`
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
