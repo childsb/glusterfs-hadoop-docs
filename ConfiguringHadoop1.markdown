@@ -10,6 +10,7 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 Copy the plugin to the $HADOOP_HOME/lib directory.
 
 ** Modify the core-site.xml file **
+
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
 
 (note: node-1 needs to be replaced by a hostname from your storage pool):
@@ -52,7 +53,7 @@ Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (addition
 
 `</configuration>`
 
-**Modify the Slaves files**
+**Modify the Masters and Slaves files**
 
 Navigate to the $HADOOP_HOME/conf directory. Modify the masters file to list the server you have designated as the JobTracker. Modify the slaves files to list all the servers within the storage pool for your volume, with each one on a new line.
 
