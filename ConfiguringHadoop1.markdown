@@ -7,7 +7,7 @@ For the sake of this document $HADOOP_HOME is the directory the tarball extracts
 
 **Configure the Plugin**
 
-On each node with the cluster, copy the plugin to the $HADOOP_HOME/lib directory.
+Copy the plugin to the $HADOOP_HOME/lib directory.
 
 ** Modify the core-site.xml file **
 Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (additional properties can be added)
