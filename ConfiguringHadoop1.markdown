@@ -1,7 +1,9 @@
 **Download and Extract Hadoop**
 
 
-Navigate to [Hadoop Download Page](http://hadoop.apache.org/releases.html#Download) and download the hadoop-1.2.1.tar.gz  tar-ball (the current stable 1.x release at the time this document was created) to the /opt directory on the JobTracker server. Extract the tar ball in the /opt directory
+Navigate to [Hadoop Download Page](http://hadoop.apache.org/releases.html#Download) and download the hadoop-1.2.1.tar.gz  tar-ball (the current stable 1.x release at the time this document was created) to the /opt directory on the JobTracker server. Extract the tar ball in the /opt directory.
+
+For the sake of this document $HADOOP_HOME is the directory the tarball extracts to under /opt/
 
 **Configure the Plugin**
 
