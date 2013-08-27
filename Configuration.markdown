@@ -55,17 +55,8 @@ For example, if you had four servers in your cluster with the hostnames svr1, sv
     
 Lastly, verify you can ssh from the Master Server to all the other servers without being prompted for a password.
 
-6) Install Hadoop
+** Configuring Hadoop **
 
 **For Hadoop 1.x:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
 **For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
-
-## Usage ##
-
-  Once configured, start Hadoop Map/Reduce daemons
-
-  # cd $HADOOP_HOME
-  # ./bin/start-mapred.sh
-
-  If the map/reduce job/task trackers are up, all I/O will be done to GlusterFS.
