@@ -6,7 +6,7 @@ Extract the tar ball in the /opt directory
 
 **Configure the Plugin**
 
-* On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
+On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
 
 ** Modify the mapred-site.xml **
 
