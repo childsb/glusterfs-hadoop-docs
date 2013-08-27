@@ -56,7 +56,7 @@ Navigate to the $HADOOP_HOME/conf directory. Modify the masters file to list the
 ** Synchronize the configuration across the cluster **
 
 SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
-     scp -r $HADOOP_HOME/ root@svr2:/opt/
+    scp -r $HADOOP_HOME/ root@svr2:/opt/
     scp -r $HADOOP_HOME/ root@svr3:/opt/
     scp -r $HADOOP_HOME/ root@svr4:/opt/
     etc...
