@@ -31,6 +31,12 @@ Mount the Gluster volume to /mnt/glusterfs on every node within the trusted stor
 
 glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs
 
+** Create the Mapred System Directory on the Gluster Volume Mount **
+
+Open a terminal and run the following command:
+
+   mkdir -p /mnt/glusterfs/mapred/system
+
 **Configure Passwordless SSH**
 
 Designate a server within your trusted storage pool to run the JobTracker for Hadoop 1.0 or the Resource Manager in the case of Hadoop 2.0 . For the SSH instructions, we will call this server the Master Server. We will set up passwordless SSH from the Master server to all the other nodes in the cluster.
