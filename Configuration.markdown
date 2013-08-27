@@ -2,7 +2,7 @@
 
 The following components are required to successfully deploy a working solution. More detail will be provided on these components later in this guide.
 
-* A GlusterFS 3.3 +
+* GlusterFS 3.3 +
 * Apache Hadoop 1.x or 2.x
 * The GlusterFS Hadoop FileSystem Plugin
 * Oracle Java Runtime Environment (JRE) 1.6 +
@@ -17,9 +17,11 @@ gluster volume set HadoopVol quick-read off
 gluster volume set HadoopVol cluster.eager-lock on
 gluster volume set HadoopVol performance.stat-prefetch off
 
+Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
+
 ** Install Oracle Java 1.6 **
 
-This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work.
+This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work. The JRE needs to be installed on every server within the trusted storage pool that your Gluster Volume uses.
 
 ** Specialized Gluster Volume Mount **
 
@@ -55,92 +57,7 @@ Lastly, verify you can ssh from the Master Server to all the other servers witho
 
 **For Hadoop 1.x:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
-
-
 **For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
-
-* Install a ResourceManager and JobHistoryServer on a single designated node within your Trusted Storage Pool
-* Install a NodeManager on every node within your storage pool. 
-* On each node within your storage pool, copy the plugin to $HADOOP_HOME/share/hadoop/common/lib/
-* Modify the mapred-site.xml to reflect the following:
-
-`<?xml version="1.0"?>`
-`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
-
-`<!-- Put site-specific property overrides in this file. -->`
-
-` <configuration>`
-`   <property>`
-`     <name>mapreduce.framework.name</name>`
-`     <value>yarn</value>`
-`   </property>`
-
-`  <property>`
-`    <name>yarn.app.mapreduce.am.staging-dir</name>`
-`    <value>glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging</value>`
-`  </property>`
-
-`  <property>`
-`    <name>mapred.healthChecker.script.path</name>`
-`    <value>glusterfs:///mapred/jobstatus</value>`
-`  </property>`
-
-`  <property>`
-`    <name>mapred.job.tracker.history.completed.location</name>`
-`    <value>glusterfs:///mapred/history/done</value>`
-`  </property>`
-
-`  <property>`
-`    <name>mapred.system.dir</name>`
-`    <value>glusterfs:///mapred/system</value>`
-`  </property>`
-
-`  <property>`
-`    <name>mapreduce.jobtracker.staging.root.dir</name>`
-`    <value>glusterfs:///user</value>`
-`  </property>`
-
-`</configuration>`
-
-**For either Hadoop 1.x ** ($HADOOP_HOME/conf) ** or Hadoop 2.x** ($HADOOP_HOME/etc/hadoop), modify the core-site.xml to reflect the following (note: node-1 needs to be replaced a server in your storage pool):
-
-`<?xml version="1.0"?>`
-`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
-
-`<!-- Put site-specific property overrides in this file. -->`
-
-`<configuration>`
-` <property>`
-`  <name>fs.defaultFS</name>`
-`  <value>glusterfs://node-1:9000</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.default.name</name>`
-`  <value>glusterfs://node-1:9000</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.AbstractFileSystem.glusterfs.impl</name>`
-`  <value>org.apache.hadoop.fs.local.GlusterFs</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.glusterfs.impl</name>`
-`  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.glusterfs.mount</name>`
-`  <value>/mnt/glusterfs</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.glusterfs.server</name>`
-`  <value>node-1</value>`
-` </property>`
-
-`</configuration>`
 
 ## Usage ##
 
