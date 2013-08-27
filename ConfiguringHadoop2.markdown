@@ -113,6 +113,16 @@ On each Slave server, open a terminal window, navigate to $HADOOP_HOME and run t
 
 **Verifying Hadoop is running successfully on GlusterFS**
 
-In a browser, launch the Hadoop JobTracker UI by navigating to http://<JobTrackerHostName>:50030 
-Under the TaskTracker nodes, verify that all the hosts listed within the Hadoop Slaves have reported in. If a host is missing, 
-Go to JobTracker, verify that all the TaskTrackers reported in.
+In a browser, launch the YARN ResourceManager UI by navigating to http://<MasterHostName>:8088/cluster/nodes
+
+Verify that all the hosts listed within your storage pool have reported in. If a host is missing, shell into that host and take a look at the files within $HADOOP_HOME/logs to check for errors when the process attempted to start.
+
+** Running a sample Hadoop Job **
+
+Navigate to $HADOOP_HOME and run the following:
+
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-<$VERSION>-.jar teragen 10000 in-dir
+
+and then once TeraGen has complete, run
+
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-<$VERSION>-.jar terasort in-dir out-dir
