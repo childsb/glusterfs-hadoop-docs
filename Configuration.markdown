@@ -6,6 +6,7 @@ The following components are required to successfully deploy a working solution.
 * Apache Hadoop 1.x or 2.x
 * The GlusterFS Hadoop FileSystem Plugin
 * Oracle Java Runtime Environment (JRE) 1.6 +
+* NTP
 
 ## Configuration Guide ##
 
@@ -60,6 +61,17 @@ For example, if you had four servers in your cluster with the hostnames svr1, sv
      ssh-copy-id -i ~/.ssh/id_rsa.pub root@svr4
     
 Lastly, verify you can ssh from the Master Server to all the other servers without being prompted for a password.
+
+**Sync Clocks**
+It's important for every servers time and date to be the same.  To install NTP on each node run:
+
+     yum install ntp
+
+To update the clock on each machine one-time run:
+     
+    ntpd -qg
+
+Consult the ntpd documentation to configure periodic time resync.
 
 ** Configuring Hadoop **
 
