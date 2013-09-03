@@ -8,11 +8,14 @@ The following steps provide a guide on how to configure Hadoop to run under the 
 
 ** 1. Create the mapred user and add it to the hadoop group**
 
+Run the following commands as root:
+
 `groupadd hadoop`
 `useradd -g hadoop mapred`
 
-
 ** 2. Set the permissions for Hadoop **
+
+Run the following commands as root:
 
 `chmod 777 /opt/hadoop-1.2.1/*.jar`
 
@@ -26,13 +29,23 @@ The following steps provide a guide on how to configure Hadoop to run under the 
 
 ** 3. Set the permissions for getfattr**
 
+As root, create a sudoers file for gluster using the following command:
 `vi /etc/sudoers.d/gluster`
+
+Press "i" to switch to insert mode and paste in the following line:
 `mapred ALL= NOPASSWD: /usr/bin/getfattr`
+
+Hit escape and type ":wq" and hit enter to save and exit. 
+
+As root, run the following command:
 `chmod 440 /etc/sudoers.d/gluster`
 
 ** 4. Set the permissions for the gluster mount **
 
+As root, run the following command:
 `chmod -R 1777 /mnt/glusterfs`
+
+Switch to the mapred user and create the Hadoop System Directory by running the following commands:
 `su mapred`
 `mkdir -p /mnt/glusterfs/mapred/system`
 
