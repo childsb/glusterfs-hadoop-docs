@@ -1,5 +1,6 @@
-**Download and Extract Hadoop**
+This guide provides instructions for how to configure Hadoop to run under the root user. If you would like to configure Hadoop to run under the mapred user, [you will need to follow these additional instructions afterwards.](https://forge.gluster.org/hadoop/pages/ConfiguringPermissions)
 
+**Download and Extract Hadoop**
 
 Navigate to [Hadoop Download Page](http://hadoop.apache.org/releases.html#Download) and download the hadoop-1.2.1.tar.gz  tar-ball (the current stable 1.x release at the time this document was created) to the /opt directory on the JobTracker server. Extract the tar ball in the /opt directory.
 
