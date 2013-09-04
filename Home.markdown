@@ -4,7 +4,7 @@ While Apache Hadoop typically ships with the Hadoop Distributed FileSystem (HDFS
 
 ## Releases ##
 
-The Plugin supports both Apache Hadoop 1.x and 2.x releases and has thus far been successfully tested against both the Hortonworks and Intel Hadoop Distributions. The plugin is backwards compatible and thus we recommend you always obtain the latest version (the highest numerical value). [Plugin releases are available on our internal archiva hosted maven repo](http://23.23.239.119/archiva/browse/org.apache.hadoop.fs.glusterfs/glusterfs-hadoop) 
+The Plugin supports both Apache Hadoop 1.x and 2.x releases and has thus far been successfully tested against both the Hortonworks and Intel Hadoop Distributions. The plugin is backwards compatible and thus we recommend you always obtain the latest version (the highest numerical value). [Plugin releases are available on our archiva hosted maven repo](http://23.23.239.119/archiva/browse/org.apache.hadoop.fs.glusterfs/glusterfs-hadoop) 
 
 ## Configuration ##
 
