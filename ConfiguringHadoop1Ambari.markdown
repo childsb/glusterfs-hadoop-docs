@@ -7,7 +7,7 @@ Navigate to [GlusterFS tool repository](http://hadoop.apache.org/releases.html#D
 
 Then copy the ambari-agent-1.3.0-SNAPSHOT20130904172112.x86_64.rpm to all the other nodes in your cluster.
 
-**Begin the installation**
+**Pre-installation setup**
 Once you have copied the rpms do the following on each node complete the following steps:
 
 1. Navigate to the proper directory
