@@ -77,6 +77,5 @@ Consult the ntpd documentation to configure periodic time resync.
 
 **For Hadoop 1.x Manual Installation:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
-**For Hadoop 1.x Automated Installation:** please see - [Configuring Hadoop 1.0 - Automated deployment](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1Ambari) for GlusterFS
 
 **For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
