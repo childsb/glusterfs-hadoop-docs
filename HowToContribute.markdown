@@ -2,7 +2,7 @@
 
 The plugin currently wraps RawLocalFileSystem implementations for hadoop 1.0 and 2.0.  See the [[Architecture]] page for details.  Once you grok this, there are various ways that you can contribute !
 
-## Some simple (and complex) ways to contribute ## 
+## Some simple (and complex) ways to contribute ##
 
 Some simple ways to contribute: 
 
