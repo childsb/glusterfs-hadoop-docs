@@ -16,9 +16,9 @@ Once you have copied the rpms do the following on each node complete the followi
 * yum install ambari-agent-1.3.0-SNAPSHOT20130904172112.x86_64.rpm
 4. On the server node run the setup program:
 * ambari-server setup -s _(this will install the server with the current defaults)_
-5.On the agent nodes (including the server node) configure the Ambari Agent by editing the ambari-agent.ini file:
+5. On the agent nodes (including the server node) configure the Ambari Agent by editing the ambari-agent.ini file:
 
-* vi  /etc/ambari-agent/conf/ambari-agent.ini* 
+* vi  /etc/ambari-agent/conf/ambari-agent.ini
                                     
           [server]
           hostname={your.ambari.server.hostname} <------EDIT THIS LINE
