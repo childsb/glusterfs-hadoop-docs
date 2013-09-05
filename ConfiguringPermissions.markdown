@@ -44,7 +44,7 @@ As root, run the following command:
 
 As root, run the following command:
 `chmod -R 1777 /mnt/glusterfs`
-A quick note for those automating this: For (relatively obvious reasons, the above "chmod" command must be run AFTER you have run the "mount ..." command to mount glusterfs' FUSE mount on your local machine.  
+A quick note for those automating this: For (relatively) obvious reasons, the above "chmod" command must be run AFTER you have run the "mount ..." command to mount glusterfs' FUSE mount on your local machine.  
 
 Switch to the mapred user and create the Hadoop System Directory by running the following commands:
 `su mapred`
