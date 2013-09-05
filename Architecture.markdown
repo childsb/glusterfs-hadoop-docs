@@ -1,12 +1,14 @@
 Overview
 
-The major functionality of the hadoop plugin is provided via the GlusterVolume class, which is a wrapper to the underlying FUSE file system.  The GlusterVolume class can be wrapped as needed into classes which use existing frameworks in the hadoop FileSystem class hierarchy which implement different behaviours.  Unlike the Hadoop DistributedFileSystem, which is contains complex logic for managing metadata and write paths, the hadoop plugin relies on an underlying gluster installation which can be accessed through a local FUSE mount.  Thus, the architecture of the plugin mostly resembles that of the local file system implementations in hadoop which are commonly used by developers who are writing and testing local MapReduce code.  
+The major functionality of the hadoop plugin is provided via the GlusterVolume class, which is a wrapper to the underlying FUSE file system.  The GlusterVolume class can be wrapped as needed into classes which use existing frameworks in the hadoop FileSystem class hierarchy which implement different behaviours.  Unlike the Hadoop DistributedFileSystem, which is contains complex logic for managing metadata and write paths, the hadoop plugin relies on an underlying gluster installation which can be accessed through a local FUSE mount.  Thus, the architecture of the plugin is to use the local file system implementations (RawLocalFileSystem) in hadoop which are commonly used by developers who are writing and testing local MapReduce code.    
 
 Ultimately, the major "interesting" operations that are done when interacting with gluster are done through a FUSE abstraction, and thus, the code for the hadoop plugin is dominated mostly by hooks which allow one to write to a glusterfs:// URI from the various hadoop interfaces.   In later implementations, this might be modified (i.e. more significant gluster functionality will be customized on top of, or independently of, the underlying FUSE layer).
 
-TL;DR ?  The hadoop plugin for gluster is mainly an abstraction on top of the RawLocalFileSystem implementations which are provided for us by the hadoop community. 
+(tl;dr version)  
 
-Getting into the Details
+The hadoop plugin for gluster is mainly an abstraction on top of the RawLocalFileSystem implementations which are provided for us by the hadoop community. 
+
+The Details
 
 It is easiest to grok the architecture by scanning the class hierarchy in eclipse or another IDE.  To start, you can look at any of the FileSystem or DelegateToFileSystem implementations and note that (most) functionality is passed to a single class: the GlusterVolume, which is wrapped in different ways to satisfy the requirements of different top level file systems.  Actually, the GlusterVolume class itself is also a file system: It implements the RawLocalFileSystem class.  The classes that get used by hadoop, however, need a little extra wrapping, and thus we provide the GlusterVolume as a utility FileSystem which can be wrapped by other FileSystem implementations with fine grained behaviour.  
 
