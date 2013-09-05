@@ -26,7 +26,7 @@ Once you have copied the rpms do the following on each node complete the followi
 5. On the agent nodes (including the server node) configure the Ambari Agent by editing the ambari-agent.ini file:
    vi  /etc/ambari-agent/conf/ambari-agent.ini
           [server]
-          hostname={your.ambari.server.hostname} <------EDIT THIS LINE
+          hostname={your.ambari.server.hostname} <------EDIT HERE
           url_port=8440
           secured_url_port=8441
 
