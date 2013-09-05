@@ -21,4 +21,4 @@ In this case, both FileSystem implementations send a GlusterVolume as constructo
 
 * The hadoop 2.0 follows the same essential architecuture, ultimately delegating down to the GlusterVolume class.  Instead, however, the hadoop 2.0 classes implement a DelegateToFileSystem proxy.  Which calls an underlying GlusterVol (2.0 wrapper to the GlusterVolume class) for its implementation.  
 
-Informally, we have 5 "file system" implementations:  The GlusterFileSystem, the GlusterFileSystemCRC, the GlusterFs, and the GlusterFsCRC.  The former of these are for hadoop 1.0, and the latter of these are hadoop 2.0 (i.e. Abstract File System) classes.
+Informally, we thus have 5 "file system" implementations:  Four are implementations that can be used in real deployments  ~ GlusterFileSystem, the GlusterFileSystemCRC, the GlusterFs, and the GlusterFsCRC.  The former of these are for hadoop 1.0, and the latter of these are hadoop 2.0 (i.e. Abstract File System) classes.   And the fifth is the GlusterVolume, which is a utility class which these other file system implementations facade over for their underlying functionality.
