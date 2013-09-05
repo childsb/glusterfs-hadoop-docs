@@ -1,0 +1,1 @@
+These instructions will provide you step-by-step instructions for using Ambari to configure your Hadoop Cluster using GlusterFS.
