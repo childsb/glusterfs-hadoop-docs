@@ -4,31 +4,7 @@ The plugin currently wraps RawLocalFileSystem implementations for hadoop 1.0 and
 
 ## Some simple (and complex) ways to contribute ##
 
-1) Some simple ways to contribute: 
-
-- Sharing Examples on this Wiki
-
-- Documentation in the README
-
-- Increasing the usefullness of existing Java Docs
-
-2) Some more interesting experiments which we haven't yet gotten around to if you are a coming from the gluster world.
-
-- Experimenting with new approaches to opening and optimizing I/O into the Gluster's native file system.
-
-- Updating and creating tests for a more robust java API for accessing XATTRs.
-
-3) And finally, if you are a MapReduce hacker, here are some other ways you can get involved.
-
-- Experimentation with overlaying aspects to create an easily debuggable file system which can be turned on easily. 
-
-- Using some of Gluster's particularly unique features (near constant time file look ups, highly customizable write paths) to write new types of MapReduce jobs (i.e. jobs which use the DFS as distribute cache for libraries, for example - or jobs which utilize files for interprocess communication).
-
-- Integrating some of our pipeline with the recently released java API's for gluster i/o : https://forge.gluster.org/glusterfs-java-filesystem .  This is an extremely exciting new prospect which may eventually bring java into the gluster universe as a first calss citizen... And it is very relevant to the hadoop plugin for obvious reasons!
-
-- Scouring the RawLocalFileSystem and other base classes for optimizations of and/or other hadoop FileSystem workloads.  
-
-Again, before you get started, take a few minutes to look at the existing [[Architecture]] and familiarize yourself with hadoop's highly pluggable FileSystem API. 
+Wether youre a Linux guru, a DevOps smarty pants, a JVM ninja, a MapReduce hacker, or maybe just a wiki-formatting expert -- we'd love to get some help from you... And you will learn alot of cool stuff working on this project.  Here is a list of possible places to start: [[HackIdeas]].
 
 ## Development Process ##
 
