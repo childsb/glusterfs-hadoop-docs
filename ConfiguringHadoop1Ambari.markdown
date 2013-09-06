@@ -3,9 +3,12 @@ These instrctions assume you have already installed and configured GlusterFS per
 
 **Download the Ambari RPMS**
 
-Navigate to [GlusterFS tool repository](http://hadoop.apache.org/releases.html#Download) and download the ambari-server-1.3.0-SNAPSHOT20130904172038.noarch.rpm and  ambari-agent-1.3.0-SNAPSHOT20130904172112.x86_64.rpm (to the /tmp directory on your cluster management node). 
+Use the following links to dowload the Ambari RPMs:
+[Ambari-server](https://s3-us-west-1.amazonaws.com/rhbd/glusterfs-ambari/ambari-server-1.3.0-SNAPSHOT20130904172038.noarch.rpm)
+[Ambari-agent](https://s3-us-west-1.amazonaws.com/rhbd/glusterfs-ambari/ambari-agent-1.3.0-SNAPSHOT20130904172112.x86_64.rpm) 
+to the /tmp directory on your cluster management node.
 
-Then copy the ambari-agent-1.3.0-SNAPSHOT20130904172112.x86_64.rpm to all the other nodes in your cluster.
+Then copy the Ambari-agent RPM to all the other nodes in your cluster.
 
 **Pre-installation setup**
 Once you have copied the rpms do the following on each node complete the following steps:
