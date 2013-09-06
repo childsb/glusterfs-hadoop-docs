@@ -1,7 +1,10 @@
 ## Pre-Requisites ##
 
-- Building requires a working gluster mount for unit tests.  
--  [Maven] (http://maven.apache.org/) and JDK  1.6 are required to build the plugin
+- You *should* have a working gluster mount for unit tests, although they may feasibly pass without a gluster mount since the proxy writes into a local file system, at least for versions 1.x and 2.x of the plugin.
+
+- [Maven] (supported version 3.1, the build is known to fail on older maven versions which seem not to support @Ignore annotations).  (http://maven.apache.org/).
+
+- JDK  1.6+.  OpenJDK is fine for development.   Different deployments may use different vendor specific JVM's, however, so you should always test your MapReduce code according to whats on your cluster.
 
 ## Build Process ##
 
