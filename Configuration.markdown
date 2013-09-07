@@ -30,9 +30,9 @@ In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernel
 
 Install and configure GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
 
-gluster volume set HadoopVol quick-read off
-gluster volume set HadoopVol cluster.eager-lock on
-gluster volume set HadoopVol performance.stat-prefetch off
+`gluster volume set HadoopVol quick-read off`
+`gluster volume set HadoopVol cluster.eager-lock on`
+`gluster volume set HadoopVol performance.stat-prefetch off`
 
 Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
 
