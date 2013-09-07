@@ -16,10 +16,11 @@ This guide is focused on giving the community a way to quickly evaluate Hadoop o
 
 There is presently a bug in FUSE which causes namespace consistency issues in GlusterFS. We have submitted an upstream patch and are working to ensure that  future versions of the Linux Kernel will include it automatically.
 
-In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernels.  Note: This does not work with Fedora.
+In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernels.  This workaround does not work with Fedora. 
 
 * Please download the two RPMs required, [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-2.6.32-220.34.1.el6.test.x86_64.rpm) and [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm)
-* Navigate to the download directory and install the two RPMs as follows:
+* Distribute the downloaded RPMs to each server in the cluster or ensure they are acessible via an NFS mount
+* Navigate to the directory with the RPMS and install them as follows:
 
 `yum -y install kernel-2.6.32-220.34.1.el6.test.x86_64.rpm` 
 `yum -y install kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm`
