@@ -12,6 +12,19 @@ The following components are required to successfully deploy a working solution.
 
 This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with Fedora 19 (the Fedora version required for Gluster 3.3) on them.
 
+** Installing the FUSE Kernel Patch **
+
+There is presently a bug in FUSE which causes namespace consistency issues in GlusterFS. We have submitted an upstream patch and are working to ensure that  future versions of the Linux Kernel will include it automatically.
+
+In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernels.  Note: This does not work with Fedora.
+
+* Please download the two RPMs required, [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-2.6.32-220.34.1.el6.test.x86_64.rpm) and [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm)
+* Navigate to the download directory and install the two RPMs as follows:
+
+`yum -y install kernel-2.6.32-220.34.1.el6.test.x86_64.rpm` 
+`yum -y install kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm`
+
+
 ** Installing and Configure GlusterFS** 
 
 Install and configure GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
