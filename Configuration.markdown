@@ -76,11 +76,14 @@ For example, if you had four servers in your cluster with the hostnames svr1, sv
 Lastly, verify you can ssh from the Master Server to all the other servers without being prompted for a password.
 
 **Sync Clocks**
-It's important for every servers time and date to be the same.  To install NTP on each node run:
+
+It is important that the time and date be synchronized for each server within the cluster.   The Network Time Protocol (NTP) is a popular method to achieve this. 
+
+To install NTP on each node run:
 
      yum install ntp
 
-To update the clock on each machine one-time run:
+To update the clock on each machine run:
      
     ntpd -qg
 
