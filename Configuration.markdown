@@ -3,6 +3,7 @@
 The following components are required to successfully deploy a working solution. More detail will be provided on these components later in this guide.
 
 * GlusterFS 3.3 +
+* FUSE Kernel Patch
 * Apache Hadoop 1.x or 2.x
 * The GlusterFS Hadoop FileSystem Plugin
 * Oracle Java Runtime Environment (JRE) 1.6 +
