@@ -1,8 +1,6 @@
-yum install glusterfs glusterfs-server glusterfs-fuse
-service  glusterd start
-(this will fail, but its required to get glusterd into the /usr/sbin directory)
-
 On each server, do the following:
+`yum install glusterfs glusterfs-server glusterfs-fuse`
+`service  glusterd start` (this will fail, but its required to get glusterd into the /usr/sbin directory)
 `cd /usr/sbin`
 `./glusterd`
 
