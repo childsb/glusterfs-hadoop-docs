@@ -15,10 +15,9 @@ Then copy the Ambari-agent RPM to all the other nodes in your cluster.
 Once you have copied the rpms do the following on each node complete the following steps:
 
 0. Set permissions for the getfattr process
-
-`vi /etc/sudoers.d/gluster`
-`mapred ALL= NOPASSWD: /usr/bin/getfattr`
-`chmod 440 /etc/sudoers.d/gluster`
+    vi /etc/sudoers.d/gluster
+    mapred ALL= NOPASSWD: /usr/bin/getfattr
+    chmod 440 /etc/sudoers.d/gluster
 
 1. Navigate to the proper directory
     cd /tmp
