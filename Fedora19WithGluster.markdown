@@ -2,9 +2,9 @@ GlusterFS is a clustered distributed file system that requires two or more serve
 
 To achieve this on Fedora 19, please follow the instructions below. These instructions assume we are building a 4 node GlusterFS cluster using hostnames server1-4:
 
-1) [Download and Install Fedora 19](http://fedoraproject.org/en/get-fedora) on all the servers that you intend to use within the GlusterFS Cluster.
+1) On each server, [download and Install Fedora 19](http://fedoraproject.org/en/get-fedora) 
 
-2) Install and start GlusterFS on each server by doing the following:
+2) On each server install and start GlusterFS on each server by doing the following:
 `yum install glusterfs glusterfs-server glusterfs-fuse`
 `service  glusterd start` 
 
@@ -13,20 +13,20 @@ To achieve this on Fedora 19, please follow the instructions below. These instru
 `cd /usr/sbin`
 `./glusterd`
 
-3) Stop the Firewall so you can successfully peer probe
+Stop the Firewall so you can successfully peer probe
 `service iptables stop`
 `chkconfig iptables off`
 `systemctl stop firewalld.service`
 
-4) Create your brick. This can a single directory or a block device you mount onto this directory
+Create your brick. This can a single directory or a block device you mount onto this directory
 `mkdir /mnt/brick1`
 
-5) On server-1, peer probe the other servers within the cluster to create a gluster trusted storage pool (this defines the GlusterFS "cluster") by running the following commands:
+3) On server-1, peer probe the other servers within the cluster to create a gluster trusted storage pool (this defines the GlusterFS "cluster") by running the following commands:
 `gluster peer probe server-2`
 `gluster peer probe server-3`
 `gluster peer probe server-4`
 
-6) On server-1, run the following commands to build the GlusterFS Volume:
+4) On server-1, run the following commands to build the GlusterFS Volume:
 `gluster volume create HadoopVol  server-1:/mnt/brick1/hadoop server-2:/mnt/brick1/hadoop server-3:/mnt/brick1/hadoop server-4:/mnt/brick1/hadoop `
 `gluster volume start HadoopVol`
 `gluster volume status`
