@@ -1,14 +1,12 @@
 GlusterFS is a clustered distributed file system that requires two or more servers. GlusterFS needs to be installed on each server within the cluster. After which a GlusterFS volume needs to be created and configured. 
 
-To achieve this on Fedora 19, please follow the instructions below. These instructions assume we are building a 4 node GlusterFS cluster using hostnames server1-4:
-
-1) On each server, [download and Install Fedora 19](http://fedoraproject.org/en/get-fedora) 
+The instructions below assume we are building a 4 node GlusterFS cluster using hostnames server1-4:
 
 2) On each server install and start GlusterFS on each server by doing the following:
 `yum install glusterfs glusterfs-server glusterfs-fuse`
 `service  glusterd start` 
 
-(starting the service will fail due to a bug in Fedora, but its required to get glusterd into the /usr/sbin directory. Just ignore the failure)
+If you are using Fedora 19, starting the service will fail due to a bug in Fedora. Just ignore the failure and additionally run the commands below:
 
 `cd /usr/sbin`
 `./glusterd`
