@@ -11,26 +11,13 @@ The following components are required to successfully deploy a working solution.
 
 ## Configuration Guide ##
 
-This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with RHEL 6.x and then follow the instructions below.
-
-** Installing the FUSE Kernel Patch **
-
-There is presently a bug in FUSE which causes namespace consistency issues in GlusterFS. We have submitted an upstream patch and are working to ensure that  future versions of the Linux Kernel will include it automatically.
-
-In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernels.  This workaround does not work with Fedora. 
-
-* Please download the two RPMs required, [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-2.6.32-220.34.1.el6.test.x86_64.rpm) and [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm)
-* Distribute the downloaded RPMs to each server in the cluster or ensure they are acessible via an NFS mount
-* Navigate to the directory with the RPMS and install them as follows:
-
-`yum -y install kernel-2.6.32-220.34.1.el6.test.x86_64.rpm` 
-`yum -y install kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm`
-
+This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with RHEL 6.2  or Fedora 19 and then follow the instructions below.
 
 ** Installing and Configure GlusterFS** 
 
-Install and configure GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. 
-Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
+Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS and configure a GlusterFS volume. [Follow these instructions here to achieve this](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS).
+
+The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' GlusterFS volume types. Additional Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
 
 ** Install Oracle Java 1.6 **
 
