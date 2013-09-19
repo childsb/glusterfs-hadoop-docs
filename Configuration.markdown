@@ -51,7 +51,8 @@ Mount the Gluster volume to /mnt/glusterfs on every node within the trusted stor
 
 Open a terminal and run the following command:
 
-   mkdir -p /mnt/glusterfs/mapred/system
+`mkdir -p /mnt/glusterfs/mapred/system`
+`chmod -R 1777 /mnt/glusterfs`
 
 **Configure Passwordless SSH**
 
