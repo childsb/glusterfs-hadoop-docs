@@ -21,13 +21,27 @@ Stop the Firewall so you can successfully peer probe
 Create your brick. This can a single directory or a block device you mount onto this directory
 `mkdir /mnt/brick1`
 
-3) On server-1, peer probe the other servers within the cluster to create a gluster trusted storage pool (this defines the GlusterFS "cluster") by running the following commands:
+3) Installing the FUSE Kernel Patch
+
+There is presently a bug in FUSE which causes namespace consistency issues in GlusterFS. We have submitted an upstream patch and are working to ensure that future versions of the Linux Kernel will include it automatically.
+
+In the interim, we have provided a workaround for RHEL 6.2 and Fedora 19 
+
+RHEL 6 - Download the two RPMs required, [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-2.6.32-220.34.1.el6.test.x86_64.rpm) and [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm) 
+Fedora 19 - Download the two RPMs required here and here 
+
+Distribute the downloaded RPMs to each server in the cluster or ensure they are acessible via an NFS mount
+
+Navigate to the directory with the RPMS and install them as follows:
+`yum -y install kernel-2.6.32-220.34.1.el6.test.x86_64.rpm `
+`yum -y install kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm`
+
+4) On server-1, peer probe the other servers within the cluster to create a gluster trusted storage pool (this defines the GlusterFS "cluster") by running the following commands:
 `gluster peer probe server-2`
 `gluster peer probe server-3`
 `gluster peer probe server-4`
 
-4) On server-1, run the following commands to build the GlusterFS Volume:
+5) On server-1, run the following commands to build the GlusterFS Volume:
 `gluster volume create HadoopVol  server-1:/mnt/brick1/hadoop server-2:/mnt/brick1/hadoop server-3:/mnt/brick1/hadoop server-4:/mnt/brick1/hadoop `
 `gluster volume start HadoopVol`
 `gluster volume status`
-
