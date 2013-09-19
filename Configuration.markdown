@@ -29,23 +29,12 @@ In the interim, we have provided a workaround for RHEL 6.x and Centos 6.x kernel
 
 ** Installing and Configure GlusterFS** 
 
-Install and configure GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. Once that has been done you need to set the following appropriate parameters on the gluster volume to ensure consistency across the namespace. This example assumes your Gluster volume is called "HadoopVol":
-
-`gluster volume set HadoopVol quick-read off`
-`gluster volume set HadoopVol cluster.eager-lock on`
-`gluster volume set HadoopVol performance.stat-prefetch off`
-
+Install and configure GlusterFS on a cluster of servers. Build your trusted storage pool and create your gluster volume. The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' volume types. 
 Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
 
 ** Install Oracle Java 1.6 **
 
 This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work. The JRE needs to be installed on every server within the trusted storage pool that your Gluster Volume uses.
-
-** Specialized Gluster Volume Mount **
-
-Mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
-
-`glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
 
 ** Create the Mapred System Directory on the Gluster Volume Mount **
 
