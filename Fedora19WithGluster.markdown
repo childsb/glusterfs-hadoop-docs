@@ -31,12 +31,3 @@ Create your brick. This can a single directory or a block device you mount onto 
 `gluster volume start HadoopVol`
 `gluster volume status`
 
-Mount the Volume
-`mkdir /mnt/glusterfs`
-`chmod -R 1777 /mnt/glusterfs`
-`mount -t glusterfs <host>:/HadoopVol /mnt/glusterfs`
-
-Set permissions for the getfattr process
-`vi /etc/sudoers.d/gluster`
-`mapred ALL= NOPASSWD: /usr/bin/getfattr`
-`chmod 440 /etc/sudoers.d/gluster`
