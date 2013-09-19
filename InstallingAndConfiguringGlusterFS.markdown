@@ -45,3 +45,14 @@ Navigate to the directory with the RPMS and install them as follows:
 `gluster volume create HadoopVol  server-1:/mnt/brick1/hadoop server-2:/mnt/brick1/hadoop server-3:/mnt/brick1/hadoop server-4:/mnt/brick1/hadoop `
 `gluster volume start HadoopVol`
 `gluster volume status`
+
+6) On server-1, once the GlusterFS volume has been created, one needs to set the following appropriate parameters on the GlusterFS volume to ensure consistency across the namespace. This example assumes your GlusterFS volume is called "HadoopVol":
+
+`gluster volume set HadoopVol quick-read off`
+`gluster volume set HadoopVol cluster.eager-lock on`
+`gluster volume set HadoopVol performance.stat-prefetch off`
+
+7) On each server, mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
+
+`glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
+
