@@ -23,10 +23,9 @@ Create your brick. This can a single directory or a block device you mount onto 
 
 There is presently a bug in FUSE which causes namespace consistency issues in GlusterFS. We have submitted an upstream patch and are working to ensure that future versions of the Linux Kernel will include it automatically.
 
-In the interim, we have provided a workaround for RHEL 6.2 and Fedora 19 
+In the interim, we have provided a workaround for RHEL 6.2 
 
 RHEL 6 - Download the two RPMs required, [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-2.6.32-220.34.1.el6.test.x86_64.rpm) and [here](http://rhbd.s3.amazonaws.com/glusterfs-hadoop/kernel-firmware-2.6.32-220.34.1.el6.test.noarch.rpm) 
-Fedora 19 - Download the two RPMs required here and here 
 
 Distribute the downloaded RPMs to each server in the cluster or ensure they are acessible via an NFS mount
 
