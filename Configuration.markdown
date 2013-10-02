@@ -28,7 +28,7 @@ This is a requirement of Hadoop. Hadoop has not yet been widely tested with Open
 Open a terminal and run the following command:
 
 `mkdir -p /mnt/glusterfs/mapred/system`
-`chmod -R 1777 /mnt/glusterfs`
+`chmod -R 2770 /mnt/glusterfs`
 
 **Configure Passwordless SSH**
 
