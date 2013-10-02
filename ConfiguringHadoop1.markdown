@@ -39,12 +39,12 @@ Note:
 
 ` <property>`
 `  <name>mapred.system.dir</name>`
-`  <value>/mapred/system/</value>`
+`  <value>glusterfs:///mapred/system/</value>`
 `</property>`
 
 ` <property>`
 `  <name>mapred.local.dir</name>`
-`  <value>$HADOOP_HOME/mapred/</value>`
+`  <value>/tmp/mapred/</value>`
 ` </property>`
 
 `</configuration>`
