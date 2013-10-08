@@ -21,7 +21,7 @@ Additional Gluster Documentation and Downloads [are available here](http://www.g
 
 ** Install Oracle Java 1.6 **
 
-This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work. The JRE needs to be installed on every server within the trusted storage pool that your Gluster Volume uses.
+This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work. The JRE needs to be installed on every server within the trusted storage pool that your Gluster Volume uses. [Download it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk6u38-downloads-1877406.html)
 
 ** Configuring Hadoop **
 
