@@ -40,6 +40,7 @@ To update the clock on each machine run:
 
 Consult the ntpd documentation to configure periodic time resync.
 
+** Installing and Configuring GlusterFS **
 
 1) On each server install and start GlusterFS on each server by doing the following:
 `yum install glusterfs glusterfs-server glusterfs-fuse`
