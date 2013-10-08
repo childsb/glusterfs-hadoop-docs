@@ -5,9 +5,12 @@ To use the automated installer, select one machine in your cluster to run the in
    `git clone https://github.com/jeffvance/glusterfs-cluster-install.git`
 
 * Navigate to the glusterfs-cluster-install directory 
+
 * Create your hosts file per the instructions in the README.txt
+
 * Setup passwordless SSH by running:
    `devutils/passwordless-ssh.sh`
+
 * Launch the installer by running:
    `./install.sh /dev/sdb`
 
