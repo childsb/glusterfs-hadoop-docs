@@ -11,13 +11,11 @@ The following components are required to successfully deploy a working solution.
 
 ## Configuration Guide ##
 
-This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with RHEL 6.2  or Fedora 19 and then follow the instructions below.
+This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with Fedora 19 and then follow the instructions below.
 
 ** Installing and Configure GlusterFS** 
 
-Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS across the cluster and configure a GlusterFS volume. 
-
-[You can do this manually](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS) or  [you can use our automated deployment tool](https://forge.gluster.org/hadoop/pages/GlusterfsClusterInstall).
+Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS across the cluster and configure a GlusterFS volume.  This is easy to do [with our automated deployment tool](https://forge.gluster.org/hadoop/pages/GlusterfsClusterInstall). You can also [do this manually](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS) 
 
 The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' GlusterFS volume types. Additional Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
 
