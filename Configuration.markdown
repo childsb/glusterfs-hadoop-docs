@@ -15,9 +15,9 @@ This guide is focused on giving the community a way to quickly evaluate Hadoop o
 
 ** Installing and Configure GlusterFS** 
 
-Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS across the cluster and configure a GlusterFS volume.  This is easy to do [with our automated deployment tool](https://forge.gluster.org/hadoop/pages/GlusterfsClusterInstall). You can also [do this manually](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS) 
+Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS across the cluster and configure a Distributed Replicated 2 GlusterFS volume.  This is easy to do [with our automated deployment tool](https://forge.gluster.org/hadoop/pages/GlusterfsClusterInstall). You can also [do this manually](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS) 
 
-The majority of testing with Hadoop has been done on 'Distributed' and 'Distributed Replicated 2' GlusterFS volume types. Additional Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
+Additional Gluster Documentation and Downloads [are available here](http://www.gluster.org/download/)
 
 ** Install Oracle Java 1.6 **
 
