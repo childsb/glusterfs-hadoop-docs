@@ -11,7 +11,7 @@ The following components are required to successfully deploy a working solution.
 
 ## Configuration Guide ##
 
-This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. When our work on the Apache Ambari project is complete, we will be able to automate all of this via an installer. A popular way to try the solution out is to set up 4 Virtual Machines with Fedora 19 and then follow the instructions below.
+This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. A popular way to try the solution out is to set up 4 Virtual Machines with Fedora 19 and then follow the instructions below.
 
 ** Installing and Configure GlusterFS** 
 
