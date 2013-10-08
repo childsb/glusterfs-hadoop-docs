@@ -16,7 +16,7 @@ Stop the Firewall so you can successfully peer probe
 `chkconfig iptables off`
 `systemctl stop firewalld.service`
 
-Create your brick. This can a single directory or a block device you mount onto this directory
+Create your brick. This can be a single directory or a block device you mount onto this directory
 `mkdir /mnt/brick1`
 
 2) Installing the FUSE Kernel Patch
