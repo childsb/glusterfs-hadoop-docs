@@ -1,7 +1,8 @@
 **Note: These instructions will only work on RHEL. Apache Ambari does not yet work on Fedora **
 
 These instructions will provide you step-by-step instructions for using Ambari to configure your Hadoop 1.x Cluster on top of GlusterFS.
-These instructions assume you have already installed and configured GlusterFS per this link (https://forge.gluster.org/hadoop/pages/Configuration)
+
+These instructions assume you have already [installed and configured GlusterFS](https://forge.gluster.org/hadoop/pages/Configuration)
 
 **Download the Ambari RPMS**
 
