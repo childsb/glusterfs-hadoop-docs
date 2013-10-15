@@ -1,4 +1,4 @@
-To use the automated installer, select one machine in your cluster to run the installer from.  On that machine:
+To use the automated installer, select one machine in your cluster to run the installer from.  You must be logged in as root. On that machine:
 
 * Open a terminal window and run
    `yum -y install git`
