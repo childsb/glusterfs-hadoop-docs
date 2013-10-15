@@ -89,14 +89,14 @@ Navigate to the directory with the RPMS and install them as follows:
 `gluster volume set HadoopVol cluster.eager-lock on`
 `gluster volume set HadoopVol performance.stat-prefetch off`
 
-6) On each server, mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
-
-`glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
-
-
-7) Create the Mapred System Directory on the Gluster Volume Mount **
+6) Create the Mapred System Directory on the Gluster Volume Mount **
 
 Open a terminal and run the following command:
 
 `mkdir -p /mnt/glusterfs/mapred/system`
 `chmod -R 2770 /mnt/glusterfs`
+
+7) On each server, mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
+
+`glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
+
