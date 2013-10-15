@@ -56,8 +56,10 @@ Stop the Firewall so you can successfully peer probe
 `chkconfig iptables off`
 `systemctl stop firewalld.service`
 
-Create your brick. This can be a single directory or a block device you mount onto this directory
+Create your brick. This can be a single directory or a block device you mount onto this directory. The example below shows how one can XFS format and mount a /dev/sdb block device.
 `mkdir /mnt/brick1`
+`mkfs -t xfs -i size=512 -f /dev/sdb`
+`mount -t xfs /dev/sdb /mnt/brick1/`
 
 2) Installing the FUSE Kernel Patch
 
@@ -99,4 +101,3 @@ Open a terminal and run the following command:
 7) On each server, mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
 
 `glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
-
