@@ -38,7 +38,6 @@ ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/g
 
 - on each node, update your hbase-env.sh script to point to your java installation:
 
-#edit this line in your conf/hbase-env.sh script on each node as necessary
 export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk.x86_64"
 
 - run the following smoke test to confirm operation
