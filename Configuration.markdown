@@ -13,7 +13,7 @@ The following components are required to successfully deploy a working solution.
 
 This guide is focused on giving the community a way to quickly evaluate Hadoop on GlusterFS. A popular way to try the solution out is to set up 4 Virtual Machines with Fedora 19 and then follow the instructions below.
 
-** Installing and Configure GlusterFS** 
+** Installing and Configure GlusterFS ** 
 
 Prior to Installing and Configuring Hadoop, once needs to first install GlusterFS across the cluster and configure a Distributed Replicated 2 GlusterFS volume.  This is easy to do [with our automated deployment tool](https://forge.gluster.org/hadoop/pages/GlusterfsClusterInstall). You can also [do this manually](https://forge.gluster.org/hadoop/pages/InstallingAndConfiguringGlusterFS) 
 
@@ -23,11 +23,13 @@ Additional Gluster Documentation and Downloads [are available here](http://www.g
 
 This is a requirement of Hadoop. Hadoop has not yet been widely tested with OpenJDK, although it may well work. The JRE needs to be installed on every server within the trusted storage pool that your Gluster Volume uses. [Download it here](http://www.oracle.com/technetwork/java/javase/downloads/jdk6u38-downloads-1877406.html)
 
-** Configuring Hadoop **
+** Configuring Hadoop related tools **
 
 **For Hadoop 1.x:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
 **For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
+
+**For HBase 94.x:** please see - [Configuring HBase](https://forge.gluster.org/hadoop/pages/ConfiguringHBase)
 
 ** Troubleshooting Tips ** 
 [Troubleshooting Hadoop Install](https://forge.gluster.org/hadoop/pages/TroubleShootHadoop)
