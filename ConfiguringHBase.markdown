@@ -1,4 +1,4 @@
-## Just curious ? ##
+## Method 1: Just testing?  Try out vagrant-gluster-hbase ! ##
 
 If you are just testing the plugin and want to experiment with Hbase, we have a vagrant-gluster-hbase on fedora19 setup which can be run to automatically provision a 2 node gluster and hbase cluster with smoke tests: 
 
@@ -6,9 +6,7 @@ git clone https://forge.gluster.org/vagrant/fedora19-gluster/
 cd gluster-hbase-example
 vagrant up
 
-^^ yes its that easy :)
-
-## Introduction to HBase ##
+## Method 2: Detailed Instructions  ##
 
 For HBase to be running, you really will need to enable two services: Zookeeper and HBase.  Zookeeper can be started for you by HBase, if you configure it to do so.  In any case, you need a zookeeper service to elect and maintain masters, region servers to store your and shard your data, and an HMaster to coordinate the table information and monitor region servers.  Most important of all is to note that your /etc/hosts has to be perfect for everything to work properly, based on the fragile nature of how HBase connects to hosts. 
 
@@ -32,13 +30,25 @@ Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed,
 
 - untar hbase on each node 
 
-- wget  /mnt/glusterfs/lib/
+- wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://23.23.239.119/archiva/repository/snapshots/rhbd/glusterfs-hadoop/2.1.4/glusterfs-hadoop-2.1.4.jar 
 
-- symlink to /mnt/glusterfs/lib from inside of hbase/conf/lib
+- On each node, symlink to /mnt/glusterfs/lib from inside of hbase/conf/lib
 
-- on each node, update your hbase-env.sh script to point to your java installation.
+ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/glusterfs-hadoop.jar
+
+- on each node, update your hbase-env.sh script to point to your java installation:
+
+#edit this line in your conf/hbase-env.sh script on each node as necessary
+export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk.x86_64"
 
 - run the following smoke test to confirm operation
+
+        sudo hbase-0.94.11/bin/hbase shell -d <<EOF
+create 't1','f1' 
+put 't1', 'row1', 'f1:a', 'val1'
+scan 't1'
+EOF
+
 
 (more to come)..
 
