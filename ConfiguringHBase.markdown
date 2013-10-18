@@ -18,7 +18,6 @@ http://hbase.apache.org/book/zookeeper.html
 
 http://hbase.apache.org/book/regionserver.arch.html
 
-## HBase basic setup instructions ##
 
 Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed, and that there is a gluster volume mounted on /mnt/glusterfs, and that each region server in your cluster has that volume mounted:
 
