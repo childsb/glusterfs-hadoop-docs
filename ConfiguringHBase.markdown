@@ -1,4 +1,4 @@
-## Just curious ? ## 
+## Just curious ? ##
 
 If you are just testing the plugin and want to experiment with Hbase, we have a vagrant-gluster-hbase on fedora19 setup which can be run to automatically provision a 2 node gluster and hbase cluster with smoke tests: 
 
@@ -8,7 +8,7 @@ vagrant up
 
 ^^ yes its that easy :)
 
-## Introduction to HBase ## 
+## Introduction to HBase ##
 
 HBase setup is complex - you need a zookeeper service to elect and maintain masters, region servers to store your and shard your data, and an HMaster to coordinate the table information and monitor region servers. 
 
@@ -40,4 +40,4 @@ Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed,
 
 - run the following smoke test to confirm operation
 
-(more to come) 
+(more to come)..
