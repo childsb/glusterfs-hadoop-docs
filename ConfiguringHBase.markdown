@@ -1,4 +1,4 @@
-## option 1: Try out vagrant-gluster-hbase ##
+## Vagrant setup for 2 node test cluster ##
 
 If you are just testing the plugin and want to experiment with Hbase, we have a vagrant-gluster-hbase on fedora19 setup which can be run to automatically provision a 2 node gluster and hbase cluster with smoke tests: 
 
@@ -6,7 +6,7 @@ git clone https://forge.gluster.org/vagrant/fedora19-gluster/
 cd gluster-hbase-example
 vagrant up
 
-## option 2: Detailed Instructions  ##
+## Detailed Instructions (WIP) ##
 
 For HBase to be running, you really will need to enable two services: Zookeeper and HBase.  Zookeeper can be started for you by HBase, if you configure it to do so.  In any case, you need a zookeeper service to elect and maintain masters, region servers to store your and shard your data, and an HMaster to coordinate the table information and monitor region servers.  Most important of all is to note that your /etc/hosts has to be perfect for everything to work properly, based on the fragile nature of how HBase connects to hosts. 
 
