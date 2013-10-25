@@ -1,3 +1,18 @@
+------------------------------------------------------------
+**ERROR**:
+
+Resource glusterfs:/..../.staging/job_1330116323296_0140/job.jar changed on src filesystem (expected 2971811411, was 1330116705875)
+ 
+**SOLUTION**: 
+
+Trying to manually sync up your ntp can fix this: 
+service ntpd stop ; sudo ntpdate -s time.nist.gov ; sudo service ntpd start 
+ 
+**NOTES**:
+
+This error occurs because yarn expects the last modified time of a file to be identical on in its FSDownload implementation.  Since file modification times can vary between nodes if the underlying clock is not synchronized in glusterfs, its best to make sure you are tightly regulating your NTP.  In Hadoop 1.x, Mapreduce will not enforce any ntp penalties, but HBase will, so get your clocks straightened out !
+
+------------------------------------------------------------
 **ERROR**:
 in /var/log/hadoop/mapred/ hadoop-mapred-jobtracker-xxx.log
 2013-06-17 22:01:23,820 FATAL org.apache.hadoop.mapred.JobTracker: java.lang.RuntimeException: java.lang.ClassNotFoundException: org.apache.hadoop.fs.glusterfs.GlusterFileSystem
@@ -82,3 +97,5 @@ at java.security.AccessController.doPrivileged(Native Method)
      Note: getfattr uses sudo, when you run hadoop by passing the hadoop command in the ssh command line
      you don't get a tty, so you must comment out the following line in /etc/sudoers.
      #Defaults    requiretty
+
+
