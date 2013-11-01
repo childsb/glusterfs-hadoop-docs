@@ -2,7 +2,7 @@
 Hadoop can run in multiple configurations with varying security.  Each section below outlines additional setup configuration to secure your cluster.
 
 ## Run-as-root
-This is the least secure method.  All services are started as root, and map reduce jobs are launched by the 'root' user.  This is a security risk don't do it.
+This is the least secure method.  All services are started as root, and map reduce jobs are launched by root user.  This is a security risk don't do it.
 
 ## Single User
 The single tenant non-root setup is covered by the basic Install Guide.
