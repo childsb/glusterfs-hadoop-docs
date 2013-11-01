@@ -1,5 +1,5 @@
 # Securing your Hadoop Cluster
-Hadoop can run in multiple configurations with varying security.  Each section below outlines additional setup configuration
+Hadoop can run in multiple configurations with varying security.  Each section below outlines additional setup configuration to secure your cluster.
 
 ## Run-as-root
 This is the least secure method.  All services are started as root, and map reduce jobs are launched by the 'root' user.  This is insecure so avoid this.
@@ -35,4 +35,3 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 
 ### Running map/reduce Jobs
 Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  Users must have read to data files on the volume and write access to output directories.  Then simply login to the system as that user and launch the map/reduce job.
-
