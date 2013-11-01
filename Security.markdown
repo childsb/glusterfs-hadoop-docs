@@ -5,7 +5,7 @@ Hadoop can run in multiple configurations with varying security.  Each section b
 This is the least secure method.  All services are started as root, and map reduce jobs are launched by root user.  This is a security risk don't do it.
 
 ## Single User
-The single tenant non-root setup is covered by the basic Install Guide.
+The single tenant non-root setup is covered by the basic (https://forge.gluster.org/hadoop/pages/Configuration) Configuration
 
 ## Multi-User
 In order for hadoop to run in full multi-user mode, a special user has to be designated to run the hadoop daemons.  This user may be restricted from logging in, or accessing the entire file system.  However, the user must be granted read and write permission to the map/reduce staging directory.  This is accomplished using POSIX ACLs.  To enable ACLs on your gluster volume, mount it with the ACL flag (on every node in the cluster).
