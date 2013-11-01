@@ -5,7 +5,7 @@ Hadoop can run in multiple configurations with varying security.  Each section b
 This is the least secure method.  All services are started as root, and map reduce jobs are launched by root user.  This is a security risk don't do it.
 
 ## Single User
-The single tenant non-root setup is covered by the basic (https://forge.gluster.org/hadoop/pages/Configuration) Configuration
+The single tenant non-root setup is covered by the basic [configuration] (https://forge.gluster.org/hadoop/pages/Configuration).
 
 ## Multi-User
 In order for hadoop to run in full multi-user mode, a special user has to be designated to run the hadoop daemons.  This user may be restricted from logging in, or accessing the entire file system.  However, the user must be granted read and write permission to the map/reduce staging directory.  This is accomplished using POSIX ACLs.  To enable ACLs on your gluster volume, mount it with the ACL flag (on every node in the cluster).
@@ -14,7 +14,7 @@ In order for hadoop to run in full multi-user mode, a special user has to be des
 `localhost:/gv0 /mnt/glusterfs glusterfs acl,auto,transport=tcp 0 0` 
 
 ### Create the Hadoop Daemon User
-`adduser --no-create-home --system --uid 1357 -gid 1357 jobtracker`
+`adduser --no-create-home --system --uid 1004 -gid 500 yarn`
 
 ### Create Hadoop Users
 Hadoop users can be created like other users (LDAP, command line, etc) and require no special configuration
@@ -25,12 +25,12 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 **In core-site.xml**:
 `  <property>`
 `    <name>gluster.daemon.user</name>`
-`    <value>jobtracker</value>`
+`    <value>yarn</value>`
 `  </property>`
 **In mapred-site.xml**:
 `  <property>`
 `   <name>mapreduce.jobtracker.staging.root.dir</name>`
-`   <value>glusterfs:///jobtracker-staging</value> `
+`   <value>glusterfs:///job-staging</value> `
 `   </property>`
 
 ### Running map/reduce Jobs
