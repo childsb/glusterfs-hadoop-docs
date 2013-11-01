@@ -34,4 +34,6 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 `   </property>`
 
 ### Running map/reduce Jobs
-Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  Users must have read to data files on the volume and write access to output directories.  Then simply login to the system as that user and launch the map/reduce job.
+Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  **Users must have read to data files on the volume and write access to output directories.**  
+
+Once the user has permissions to the required input and output directories, login to the cluster as that user and submit the job.
