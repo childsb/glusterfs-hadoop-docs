@@ -13,8 +13,12 @@ In order for hadoop to run in full multi-user mode, a special user has to be des
 ### fstab entry for Gluster Volume w/ACL
 `localhost:/gv0 /mnt/glusterfs glusterfs acl,auto,transport=tcp 0 0` 
 
+### Create the Hadoop Group
+`groupadd -g 500 hadoop`
+
+
 ### Create the Hadoop Daemon User
-`adduser --no-create-home --system --uid 1004 -gid 500 yarn`
+`adduser --no-create-home --system --uid 1000 -gid 500 yarn`
 
 ### Create Hadoop Users
 Hadoop users can be created like other users (LDAP, command line, etc) and require no special configuration
