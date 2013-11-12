@@ -4,11 +4,14 @@ Hadoop can run in multiple configurations with varying security.  Each section b
 ## Run-as-root
 This is the least secure method.  All services are started as root, and map reduce jobs are launched by root user.  This is a security risk don't do it.
 
-## Single User
+## Single (Mapred or Yarn) User
 The single tenant non-root setup is covered by the basic [configuration] (https://forge.gluster.org/hadoop/pages/Configuration).
 
 ## Multi-User
-In order for hadoop to run in full multi-user mode, a special user has to be designated to run the hadoop daemons.  This user may be restricted from logging in, or accessing the entire file system.  However, the user must be granted read and write permission to the map/reduce staging directory.  This is accomplished using POSIX ACLs.  To enable ACLs on your gluster volume, mount it with the ACL flag (on every node in the cluster).
+
+What if we want our users who SUBMIT jobs to be different than the yarn daemon ?  In this case, we use ACLs, which will by default add the running daemon permissions to read files which have been written by any user on the system which writes to a particular directory. 
+
+Thus, in order for hadoop to run in full multi-user mode, a special user has to be designated to run the hadoop daemons (typically, this special user already exists on a production cluster, and is either called "yarn" or "mapred").  This user may be restricted from logging in, or accessing the entire file system.  However, the user must be granted read and write permission to the map/reduce staging directory.  This is accomplished using POSIX ACLs.  To enable ACLs on your gluster volume, mount it with the ACL flag (on every node in the cluster).
 
 ### fstab entry for Gluster Volume w/ACL
 `localhost:/gv0 /mnt/glusterfs glusterfs acl,auto,transport=tcp 0 0` 
@@ -16,8 +19,7 @@ In order for hadoop to run in full multi-user mode, a special user has to be des
 ### Create the Hadoop Group
 `groupadd -g 500 hadoop`
 
-
-### Create the Hadoop Daemon User
+### Create the Hadoop Daemon User 
 `adduser --no-create-home --system --uid 1000 -gid 500 yarn`
 
 ### Create Hadoop Users
