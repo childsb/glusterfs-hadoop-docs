@@ -20,7 +20,7 @@ Thus, in order for hadoop to run in full multi-user mode, a special user has to 
 `groupadd -g 500 hadoop`
 
 ### Create the Hadoop Daemon User 
-`adduser --no-create-home --system --uid 1000 -gid 500 yarn`
+`adduser --no-create-home --system --uid 1000 --gid 500 yarn`
 
 ### Create Hadoop Users
 Hadoop users can be created like other users (LDAP, command line, etc) and require no special configuration
