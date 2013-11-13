@@ -39,6 +39,18 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 `   <value>glusterfs:///job-staging</value> `
 `   </property>`
 
+Additional For Hadoop 2.x:
+`  <property>`
+`    <name>mapreduce.jobhistory.done-dir</name>`
+`    <value>glusterfs:///job-history/done</value>`
+`  </property>`
+  
+`  <property>`
+`    <name>mapreduce.jobhistory.intermediate-done-dir</name>`
+`    <value>glusterfs:///job-history/intermediate-done</value>`
+`  </property>`
+
+
 ### Running map/reduce Jobs
 Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  **Users must have read to data files on the volume and write access to output directories.**  
 
