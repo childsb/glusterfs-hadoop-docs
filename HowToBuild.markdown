@@ -22,7 +22,7 @@
 
 -DGLUSTER_MOUNT=/mnt/glusterfs
 
-## Building with MAVEN ## 
+## Building with MAVEN ##
 
 export HCFS_FILE_SYSTEM_CONNECTOR="org.apache.hadoop.fs.test.connector.glusterfs.GlusterFileSystemTestConnector" 
 export DHCFS_CLASSNAME="org.apache.hadoop.fs.glusterfs.GlusterFileSystem" 
