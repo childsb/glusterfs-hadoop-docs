@@ -6,17 +6,31 @@
 
 - JDK  1.6+.  OpenJDK is fine for development.   Different deployments may use different vendor specific JVM's, however, so you should always test your MapReduce code according to whats on your cluster.
 
-## Build Process ##
+## ECLIPSE DEVELOPMENT ##
 
-1) edit your .bashrc, or else at your terminal run : 
+1) Setup gluster mount /mnt/glusterfs or whatever. 
 
-export GLUSTER_VOLUME=MyVolume <-- replace with your preferred volume name (default is HadoopVol)
-export GLUSTER_HOST=192.0.1.2 <-- replace with your host (default will be determined at runtime in the JVM)
+    mount -t glusterfs -o acl localhost:/HadoopVol /mnt/glusterfs 
+   
+2) To run any unit tests, or all unit tests click your project, click on "Run As", click "Run Configurations", and add these parameters as "VM Arguments"
 
-2) Change to glusterfs-hadoop directory in the GlusterFS source tree and build the plugin by running: 
-   mvn package
+-DHCFS_FILE_SYSTEM_CONNECTOR=org.apache.hadoop.fs.test.connector.glusterfs.GlusterFileSystemTestConnector 
 
-  On a successful build the plugin (glusterfs-hadoop-<version>) will be present in the `target` directory.
+-DHCFS_CLASSNAME=org.apache.hadoop.fs.glusterfs.GlusterFileSystem 
 
-  # ls target/
-  classes  glusterfs-hadoop-2.1.2.jar maven-archiver  surefire-reports  test-classes
+-DHCFS_CLASSNAME=org.apache.hadoop.fs.glusterfs.GlusterFileSystem 
+
+-DGLUSTER_MOUNT=/mnt/glusterfs
+
+## Building with MAVEN ## 
+
+export HCFS_FILE_SYSTEM_CONNECTOR="org.apache.hadoop.fs.test.connector.glusterfs.GlusterFileSystemTestConnector" 
+export DHCFS_CLASSNAME="org.apache.hadoop.fs.glusterfs.GlusterFileSystem" 
+export HCFS_CLASSNAME="org.apache.hadoop.fs.glusterfs.GlusterFileSystem" 
+export GLUSTER_MOUNT="/mnt/glusterfs"
+
+And then run: 
+
+mvn package; 
+
+You will see the shim written out to the target/ folder.  
