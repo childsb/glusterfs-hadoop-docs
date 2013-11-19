@@ -120,17 +120,17 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the
 `    <value>org.apache.hadoop.mapred.ShuffleHandler</value>`
  ` </property>`
 `</configuration>`
-``
+
 `  <property>`
 `    <name>yarn.resourcemanager.resource-tracker.address</name>`
 `    <value>node-1:8025</value>`
 `  </property>`
-``
+
 `  <property>`
 `    <name>yarn.resourcemanager.scheduler.address</name>`
 `    <value>node-1:8030</value>`
 `  </property>`
-``
+
 `  <property>`
 `    <name>yarn.resourcemanager.address</name>`
 `    <value>node-1:9040</value>`
