@@ -98,6 +98,29 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 
 `</configuration>`
 
+
+** Modify the yarn-site.xml **
+
+Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the following (note: node-1 needs to be replaced a server in your storage pool):
+
+`<?xml version="1.0"?>`
+`<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
+
+`<!-- Put site-specific property overrides in this file. -->`
+
+`<configuration>`
+`<property>`
+`    <name>yarn.nodemanager.aux-services</name>`
+`    <value>mapreduce_shuffle</value>`
+`    <description>Auxilliary services of NodeManager</description>`
+`  </property>`
+
+`  <property>`
+`    <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>`
+`    <value>org.apache.hadoop.mapred.ShuffleHandler</value>`
+ ` </property>`
+`</configuration>`
+
 ** Synchronize the configuration across the cluster **
 
 SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
