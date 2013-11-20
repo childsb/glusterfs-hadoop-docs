@@ -63,12 +63,12 @@ Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (addition
 `<configuration>`
 ` <property>`
 `  <name>fs.defaultFS</name>`
-`  <value>glusterfs://node-1:9000</value>`
+`  <value>glusterfs:///</value>`
 ` </property>`
 
 ` <property>`
 `  <name>fs.default.name</name>`
-`  <value>glusterfs://node-1:9000</value>`
+`  <value>glusterfs:///</value>`
 ` </property>`
 
 ` <property>`
@@ -84,11 +84,6 @@ Edit the $HADOOP_HOME/conf/core-site.xml file to include the following (addition
 ` <property>`
 `  <name>fs.glusterfs.mount</name>`
 `  <value>/mnt/glusterfs</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.glusterfs.server</name>`
-`  <value>node-1</value>`
 ` </property>`
 
 `</configuration>`
