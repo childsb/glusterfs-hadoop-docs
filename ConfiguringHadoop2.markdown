@@ -134,7 +134,7 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the
 `    <name>yarn.resourcemanager.address</name>`
 `    <value>node-1:9040</value>`
 `  </property>`
-
+` </configuration>`
 ** Synchronize the configuration across the cluster **
 
 SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
