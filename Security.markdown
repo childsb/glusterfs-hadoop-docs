@@ -59,6 +59,21 @@ Additional For Hadoop 2.x:
 `    <value>glusterfs:///job-history/intermediate-done</value>`
 `  </property>`
 
+** One last step: Make your user's working directory writable by your mapreduce daemons ** 
+
+Now, if you want bob to submit jobs to the cluster, and allow "yarn" to run them, you can set your acl's for all files created under bob's home directory: 
+
+setfacl -dm u::rwx,g::rwx,o::r /mnt/glusterfs/user/bob/
+
+This assumes that "bob" and "yarn" are in the same group.
+
+At the end of mapreduce jobs, files are often generally placed in directories on the DFS corresponding to the home directory where the job was originally run.  This is because the job client creates paths from the default working directory.   For example, jobs such as "calculate pi" create output directories by using relative paths, such as this:
+
+` static private final Path TMP_DIR = new Path(MyJobClass.class.getSimpleName() + System.currentTimeInMillis());
+
+As you can see above, a path is created which is NOT qualified.  Thus, if user "bob" runs the calculate pi job, the output will be in a path (on the DFS) such as:
+
+"/user/bob/MyJobClass+1384972545371"
 
 ### Running map/reduce Jobs
 Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  **Users must have read to data files on the volume and write access to output directories.**  
