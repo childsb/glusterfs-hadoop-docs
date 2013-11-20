@@ -61,7 +61,8 @@ Additional For Hadoop 2.x:
 
 ### Linux Task Controller 
 
-Setup the LinuxTaskController on each node
+Setup the LinuxTaskController on each node.  Details can be found here:
+[Securing Hadoop](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Running_Hadoop_in_Secure_Mode)
 
 ### Running map/reduce Jobs
 Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  **Users must have read to data files on the volume and write access to output directories.**  
