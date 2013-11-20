@@ -68,12 +68,12 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 `<configuration>`
 ` <property>`
 `  <name>fs.defaultFS</name>`
-`  <value>glusterfs://node-1:9000</value>`
+`  <value>glusterfs:///</value>`
 ` </property>`
 
 ` <property>`
 `  <name>fs.default.name</name>`
-`  <value>glusterfs://node-1:9000</value>`
+`  <value>glusterfs:///</value>`
 ` </property>`
 
 ` <property>`
@@ -89,11 +89,6 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 ` <property>`
 `  <name>fs.glusterfs.mount</name>`
 `  <value>/mnt/glusterfs</value>`
-` </property>`
-
-` <property>`
-`  <name>fs.glusterfs.server</name>`
-`  <value>node-1</value>`
 ` </property>`
 
 `</configuration>`
@@ -164,8 +159,8 @@ Verify that all the hosts listed within your storage pool have reported in. If a
 
 Navigate to $HADOOP_HOME and run the following:
 
-bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-<$VERSION>-.jar teragen 10000 in-dir
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar teragen 10000 in-dir
 
 and then once TeraGen has complete, run
 
-bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-<$VERSION>-.jar terasort in-dir out-dir
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar terasort in-dir out-dir
