@@ -45,7 +45,7 @@ Additional For Hadoop 2.x:
 **in yarn-site.xml**:
 `  <property>`
 `   <name>yarn.app.mapreduce.am.staging-dir</name>    `
-`   <value>>glusterfs:///job-staging-yarn</value> `
+`   <value>glusterfs:///job-staging-yarn</value> `
 `   </property>`
 
 **in mapred-site.xml**
