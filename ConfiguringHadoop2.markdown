@@ -119,7 +119,6 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the
 `    <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>`
 `    <value>org.apache.hadoop.mapred.ShuffleHandler</value>`
  ` </property>`
-`</configuration>`
 
 `  <property>`
 `    <name>yarn.resourcemanager.resource-tracker.address</name>`
