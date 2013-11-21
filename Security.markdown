@@ -51,18 +51,28 @@ Additional For Hadoop 2.x:
 **in mapred-site.xml**
 `  <property>`
 `    <name>mapreduce.jobhistory.done-dir</name>`
-`    <value>glusterfs:///job-history/done</value>`
+`    <value>glusterfs:///mr_history/done</value>`
 `  </property>`
   
 `  <property>`
 `    <name>mapreduce.jobhistory.intermediate-done-dir</name>`
-`    <value>glusterfs:///job-history/intermediate-done</value>`
+`    <value>glusterfs:///mr_history/tmp</value>`
 `  </property>`
 
 ### Linux Task Controller 
 
 Setup the LinuxTaskController on each node.  Details can be found here:
 [Securing Hadoop](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Running_Hadoop_in_Secure_Mode)
+
+**in container-executor.cfg**
+`   yarn.nodemanager.linux-container-executor.group=hadoop #configured value of `   `   yarn.nodemanager.linux-container-executor.group`
+`   banned.users=#comma separated list of users who can not run applications`
+`   min.user.id=1000#Prevent other super-users`
+`   allowed.system.users=mapred #list of system users who CAN run applications`
+
+** Set the UID bit on Container Executor **
+`  chown root:hadoop $HADOOP_INSTALL/bin/container-executor`
+`  chmod 6050 $HADOOP_INSTALL/bin/container-executor`
 
 ### Running map/reduce Jobs
 Ensure that your Hadoop Cluster users have appropriate permissions to the Gluster Volume.  This can be accomplished with permissions/mode on data files and output directories or ACL.  **Users must have read to data files on the volume and write access to output directories.**  
