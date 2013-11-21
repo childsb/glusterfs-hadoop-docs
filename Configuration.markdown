@@ -31,5 +31,19 @@ This is a requirement of Hadoop. Hadoop has not yet been widely tested with Open
 
 **For HBase 94.x:** please see - [Configuring HBase](https://forge.gluster.org/hadoop/pages/ConfiguringHBase)
 
+**Sync Clocks**
+		
+It is important that the time and date be synchronized for each server within the cluster.   The Network Time Protocol (NTP) is a popular method to achieve this. 
+		
+To install NTP on each node run:
+		
+   yum install ntp
+		
+To update the clock on each machine run:
+		     
+    ntpd -qg
+		
+Consult the ntpd documentation to configure periodic time resync.
+
 ** Troubleshooting Tips ** 
 [Troubleshooting Hadoop Install](https://forge.gluster.org/hadoop/pages/TroubleShootHadoop)
