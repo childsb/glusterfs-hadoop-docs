@@ -33,10 +33,11 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 `    <name>gluster.daemon.user</name>`
 `    <value>yarn</value>`
 `  </property>`
+
 **In mapred-site.xml**:
 `  <property>`
 `   <name>mapreduce.jobtracker.staging.root.dir</name>`
-`   <value>glusterfs:///job-staging</value> `
+`   <value>glusterfs:///user</value> `
 `   </property>`
 
 
@@ -47,10 +48,17 @@ Additional For Hadoop 2.x:
 `   <name>yarn.app.mapreduce.am.staging-dir</name>    `
 `   <value>glusterfs:///job-staging-yarn</value> `
 `   </property>`
+
 `   <property>`
 `     <name>yarn.nodemanager.linux-container-executor.group</name>`
 `      <value>hadoop</value>`
 `    </property>`
+
+`<property>`
+`  <name>yarn.nodemanager.container-executor.class</name>`	
+ `<value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>`
+`</property>`
+
 
 **in mapred-site.xml**
 `  <property>`
@@ -69,10 +77,10 @@ Setup the LinuxTaskController on each node.  Details can be found here:
 [Securing Hadoop](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/ClusterSetup.html#Running_Hadoop_in_Secure_Mode)
 
 **in container-executor.cfg**
-`   yarn.nodemanager.linux-container-executor.group=hadoop #configured value of `   `   yarn.nodemanager.linux-container-executor.group`
-`   banned.users=#comma separated list of users who can not run applications`
-`   min.user.id=1000#Prevent other super-users`
-`   allowed.system.users=mapred #list of system users who CAN run applications`
+`   yarn.nodemanager.linux-container-executor.group=hadoop`
+`   banned.users=yarn`
+`   min.user.id=1000`
+`   allowed.system.users=mapred`
 
 ** Set the UID bit on Container Executor **
 `  chown root:hadoop $HADOOP_INSTALL/bin/container-executor`
