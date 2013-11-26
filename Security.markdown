@@ -47,6 +47,10 @@ Additional For Hadoop 2.x:
 `   <name>yarn.app.mapreduce.am.staging-dir</name>    `
 `   <value>glusterfs:///job-staging-yarn</value> `
 `   </property>`
+`   <property>`
+`     <name>yarn.nodemanager.linux-container-executor.group</name>`
+`      <value>hadoop</value>`
+`    </property>`
 
 **in mapred-site.xml**
 `  <property>`
