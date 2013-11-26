@@ -34,13 +34,6 @@ The GlusterFS plugin will add the hadoop daemon user to certain system directori
 `    <value>yarn</value>`
 `  </property>`
 
-**In mapred-site.xml**:
-`  <property>`
-`   <name>mapreduce.jobtracker.staging.root.dir</name>`
-`   <value>glusterfs:///user</value> `
-`   </property>`
-
-
 Additional For Hadoop 2.x:
 
 **in yarn-site.xml**:
