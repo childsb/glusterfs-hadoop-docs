@@ -31,7 +31,7 @@ Navigate to $HADOOP_HOME/etc/hadoop and modify the mapred-site.xml to reflect th
 
 `  <property>`
 `    <name>yarn.app.mapreduce.am.staging-dir</name>`
-`    <value>glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging</value>`
+`    <value>glusterfs:///job-staging-yarn</value>`
 `  </property>`
 
 `  <property>`
