@@ -101,3 +101,10 @@ Open a terminal and run the following command:
 7) On each server, mount the Gluster volume to /mnt/glusterfs on every node within the trusted storage pool. Please note that this is a specialized mount command that sets the attribute and entry timeouts to zero. This is also required for namespace consistency in highly parallel environments. It is recommended that you take measures to ensure the mount is persisted upon reboot.
 
 `glusterfs --attribute-timeout=0 --entry-timeout=0 --volfile-id=/HadoopVol --volfile-server=<HOST_NAME> /mnt/glusterfs`
+
+8) Update the /etc/fstab on each server to make sure that your brick and glusterfs mounts are persisted upon reboot (otherwise you'll have to manually re-add them after each reboot). In the example below, replace the /dev/sda with the device you used to create the brick. 
+
+Add the following lines to the end of your /etc/fstab:
+
+`/dev/sda /mnt/brick1 xfs noatime,inode64 0 0`
+`localhost:/HadoopVol  /mnt/glusterfs  glusterfs  acl,auto,transport=tcp,entry-timeout=0,attribute-timeout=0,_netdev  0 0`
