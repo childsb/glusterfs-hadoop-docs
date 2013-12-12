@@ -100,10 +100,7 @@ at java.security.AccessController.doPrivileged(Native Method)
 
 
 ------------------------------------------------------------
-
-When adding hosts to gluster trusted storage pool ... 
  ** ERROR ** : 
-
 gluster peer probe <hostname>
 peer probe: failed: Probe returned with unknown errno 107
 
@@ -119,3 +116,5 @@ option 2)
 turn off the firewall completely.  this is not the best option in most cases.
 iptables -F  
 
+Notes:
+When adding hosts to a gluster trusted storage pool, using "gluster peer probe <hostname> you may encounter this error.  Out-of-the-box Linux has security enabled, you have to disable it if you don't want it, or modify it to meet your needs. The firewall (iptables) is part of the default security, selinux is the other part.
