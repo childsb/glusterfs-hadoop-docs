@@ -100,14 +100,15 @@ at java.security.AccessController.doPrivileged(Native Method)
 
 
 ------------------------------------------------------------
+
+When adding hosts to gluster trusted storage pool ... 
  ** ERROR ** : 
-when adding hosts to gluster trusted storage pool... 
 
 gluster peer probe <hostname>
 peer probe: failed: Probe returned with unknown errno 107
 
 
-** SOLUTIONS *** 
+** SOLUTIONS ** 
 You might be getting this error because linux enables iptables by default.
 
 option 1) 
