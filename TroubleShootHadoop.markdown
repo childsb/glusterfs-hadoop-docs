@@ -99,3 +99,22 @@ at java.security.AccessController.doPrivileged(Native Method)
      #Defaults    requiretty
 
 
+------------------------------------------------------------
+ ** ERROR ** : 
+when adding hosts to gluster trusted storage pool... 
+
+gluster peer probe <hostname>
+peer probe: failed: Probe returned with unknown errno 107
+
+
+** SOLUTIONS *** 
+You might be getting this error because linux enables iptables by default.
+
+option 1) 
+use iptables -I to add rules to allow gluster to access ports it needs with
+protocols it needs. 
+
+option 2) 
+turn off the firewall completely.  this is not the best option in most cases.
+iptables -F  
+
