@@ -104,6 +104,18 @@ at java.security.AccessController.doPrivileged(Native Method)
 gluster peer probe <hostname>
 peer probe: failed: Probe returned with unknown errno 107
 
+/var/log/glusterfs/cli.log:
+[2013-12-12 04:10:34.603003] E [cli-rpc-ops.c:116:gf_cli_probe_cbk] 0-cli: Probe returned with unknown errno 107
+[2013-12-12 04:10:34.603096] I [input.c:36:cli_batch] 0-: Exiting with: -1
+[2013-12-12 16:08:24.432419] I [socket.c:3485:socket_init] 0-glusterfs: SSL support is NOT enabled
+[2013-12-12 16:08:24.432481] I [socket.c:3500:socket_init] 0-glusterfs: using system polling thread
+[2013-12-12 16:08:24.460613] I [socket.c:3485:socket_init] 0-glusterfs: SSL support is NOT enabled
+[2013-12-12 16:08:24.460655] I [socket.c:3500:socket_init] 0-glusterfs: using system polling thread
+[2013-12-12 16:08:24.796256] I [socket.c:2235:socket_event_handler] 0-transport: disconnecting now
+[2013-12-12 16:08:24.829402] I [cli-rpc-ops.c:111:gf_cli_probe_cbk] 0-cli: Received resp to probe
+[2013-12-12 16:08:24.829454] E [cli-rpc-ops.c:116:gf_cli_probe_cbk] 0-cli: Probe returned with unknown errno 107
+[2013-12-12 16:08:24.829531] I [input.c:36:cli_batch] 0-: Exiting with: -1
+
 
 ** SOLUTIONS ** 
 You might be getting this error because linux enables iptables by default.
