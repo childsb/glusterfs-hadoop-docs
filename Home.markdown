@@ -8,7 +8,7 @@ While Apache Hadoop typically ships with the Hadoop Distributed FileSystem (HDFS
 
 ## Releases ##
 
-The Plugin supports both Apache Hadoop 1.x and 2.x releases and has thus far been successfully tested against both the Hortonworks and Intel Hadoop Distributions. The plugin is backwards compatible and thus we recommend you always obtain the latest version (the highest numerical value). [Plugin jars are stored in our s3 maven repository, which is indexed here: rhbd.s3.amazonaws.com/maven/index.html ). 
+The Plugin supports both Apache Hadoop 1.x and 2.x releases and has thus far been successfully tested against both the Hortonworks and Intel Hadoop Distributions. The plugin is backwards compatible and thus we recommend you always obtain the latest version (the highest numerical value). [Plugin jars are stored in our s3 maven repository, which is indexed here:] (http://rhbd.s3.amazonaws.com/maven/index.html ). 
 
 ## Configuration and Installation ##
 
