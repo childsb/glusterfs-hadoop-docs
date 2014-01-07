@@ -118,7 +118,12 @@ yarn.log.server.url http://localhost:19888/jobhistory/nmlogs
 # MapReduce Config # 
 
 Change map reduce settings:
+
 mapreduce.jobhistory.done-dir = glusterfs://
+
+<name>mapreduce.jobhistory.intermediate-done-dir</name>
+<value>glusterfs:///mr_history/tmp</value>
+
 
 IN the advanced section:
  <property>
