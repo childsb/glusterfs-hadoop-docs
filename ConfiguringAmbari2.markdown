@@ -23,10 +23,15 @@ https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red
 
 * Identify the name of your RAID 6 volume on the filesystem for each server, this is usually /dev/sdb
 
-* Create and Configure a Gluster volume for Hadoop by running
+* Create and Configure a Distributed Replicated 2 RHS volume for Hadoop by running:
+
 `./install.sh <NameOfRAID6Volume>`
+
 for example
+
 `./install.sh /dev/sdb`
+
+* Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
 ** Installing and Configuring HDP **
 
