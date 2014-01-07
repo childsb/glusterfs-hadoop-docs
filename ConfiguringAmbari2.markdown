@@ -46,64 +46,44 @@ for example
 `enabled=1`
 `priority=1`
 
-
-[HDP-UTILS-1.1.0.16]
-name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.16
-baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6
-gpgcheck=0
-gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
-enabled=1
-priority=1
-
-
-2. Verify the Ambari Repo was successfully added, by running:
+`[HDP-UTILS-1.1.0.16]`
+`name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.16`
+`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6`
+`gpgcheck=0`
+`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
+`enabled=1`
+`priority=1`
 
 
-   yum repolist 
+* Verify the Ambari Repo was successfully added, by running:
 
+`yum repolist` 
 
    You should see the Ambari packages in the list.
 
+* Install the Ambari Server on your Management Server :    
 
-# Setting up the Ambari Server #
+`yum -y install ambari`
 
-
-1. Install the Ambari Server on your Management Server :    
-
-
-   yum -y install ambari*
-
-
-Note: The Ambari packages have dependencies, such as postgresql-server. At present, you will need to rhn_register your server in order for it to have access to the Red Hat Network so that these dependencies can be resolved and installed. 
-
-
-2. On the management server, activate the GlusterFS enabled HDP Stack in Ambari:
-
+* On the management server, activate the GlusterFS enabled HDP Stack in Ambari:
 
    Edit /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml
 
-
    Set the active flag to true:
      
-     <metainfo>
-         <versions>
-               <active>true</active>
-         </versions>
-     </metainfo>
+`     <metainfo>`
+`        <versions>`
+`               <active>true</active>`
+`         </versions>`
+`     </metainfo>`
+
+* On the management server, start the Ambari Server:
+
+`     ambari-server setup -s`
+`     ambari-server start`
 
 
-
-3. On the management server, start the Ambari Server:
-
-
-     ambari-server setup -s
-     ambari-server start
-
-
-
-# Setting up the Ambari Agents #
-
-Follow these instructions on all other servers within your cluster:
+* Follow these instructions on all other servers within your cluster:
 
  Install the Ambari Agent :    
 
