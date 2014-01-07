@@ -33,7 +33,7 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
-** Installing and Configuring HDP **
+** Installing and Configuring Apache Ambari **
 
 
 * Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
@@ -83,66 +83,51 @@ for example
 `     ambari-server start`
 
 
-* Follow these instructions on all other servers within your cluster:
+*  Install the Ambari Agent on all other servers within your cluster:
 
- Install the Ambari Agent :    
+`     yum -y install ambari-agent`
 
+      Configure the Agent with the Ambari Server Hostname: 
 
-     yum -y install ambari-agent
+     `sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini`
 
-1. Configure the Agent with the Ambari Server Hostname: 
-
-
-     sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini
      (where <managementnodename> is your managment host name ie. hwx17.rhs)
 
-
-2. Start the Ambari Agent 
+     Start the Ambari Agent 
  
-     ambari-agent start
+     `ambari-agent start`
 
 
+** Deploying and Configuring the HDP Stack on Red Hat Storage **
 
-Using Apache Ambari to deploy your HDP Stack on Red Hat Storage
 
-
-3. Launch a browser and enter the following in the URL by replacing <hostname> with the hostname of your ambari server 
-
+* Launch a browser and enter the following in the URL by replacing <hostname> with the hostname of your ambari server 
 
 http://<hostname>:8080
 
 
-4. Enter "admin" and "admin" for the login and password.
+* Enter "admin" and "admin" for the login and password.
 
-5. Assign your cluster a name
+* Assign your cluster a name, such as "MyCluster"
 
-6. select the "HDP 2.0.6.GlusterFS" stack
-(Follow the standard Ambari instuctions paste the registration point)
+* Select the "HDP 2.0.6.GlusterFS" stack
 
-7. select the services you woudl like to install
+* Select the services within the stack that you would like to install
 
-8. Assign these values to each service:
+* Specify the appropriated configuration parameters for the services:
 
-# Yarn Config # 
+_Yarn_
 
-yarn.log.server.url http://localhost:19888/jobhistory/nmlogs
+yarn.log.server.url = http://localhost:19888/jobhistory/nmlogs
 
-# MapReduce Config # 
-
-Change map reduce settings:
+_MapReduce_
 
 mapreduce.jobhistory.done-dir = glusterfs://
 
-<name>mapreduce.jobhistory.intermediate-done-dir</name>
-<value>glusterfs:///mr_history/tmp</value>
+mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr_history/tmp
 
-
-IN the advanced section:
- <property>
-<name>yarn.app.mapreduce.am.staging-dir</name>
-<value>glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging</value>
-</property>
-
+(Advanced Section)
+yarn.app.mapreduce.am.staging-dir=glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging
 mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr-history/tmp
 mapreduce.jobhistory.done-dir = glusterfs:///mr-history/done
 
