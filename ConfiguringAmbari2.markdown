@@ -1,6 +1,17 @@
-Here's how to configure Ambari with GlusterFS and Hadoop 2.x.
+In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
 
-#Pre-Setup#
+** Installing and Configuring Red Hat Storage (RHS) **
+
+* Identify a set of servers on which you wish to create a Red Hat Storage volume. Note: Each server should comply with requirements for RHS outlined in the RHS Installation and Configuration guide and should have a RAID 6 volume available to be configured as a brick on the RHS server.
+
+* Login to the Red Hat Network and download the RHS ISO from the following location: 
+https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red%20hat%20storage
+
+* Install the ISO and specify the FQDN for each server but do not configure the brick. Note: Each server must have a FQDN specified, a hostname alone will not meet the requirements for the HDP Ambari deployment tool.
+
+** Creating and Configuring your Gluster Volume **
+
+** Installing and Configuring HDP **
 
 
 1. Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
