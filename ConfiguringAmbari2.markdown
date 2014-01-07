@@ -101,10 +101,9 @@ for example
 ** Deploying and Configuring the HDP Stack on Red Hat Storage **
 
 
-* Launch a browser and enter the following in the URL by replacing <hostname> with the hostname of your ambari server 
+* Launch a browser and enter the following in the URL by replacing `<hostname>` with the hostname of your ambari server 
 
-http://<hostname>:8080
-
+`http://<hostname>:8080`
 
 * Enter "admin" and "admin" for the login and password.
 
