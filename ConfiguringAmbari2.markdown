@@ -9,7 +9,24 @@ https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red
 
 * Install the ISO and specify the FQDN for each server but do not configure the brick. Note: Each server must have a FQDN specified, a hostname alone will not meet the requirements for the HDP Ambari deployment tool.
 
+* Register each server with the Red Hat Network, using rhn_register. This is required for the HDP Ambari deployment tool to be able resolve the dependencies of all the packages it will deploy.
+
 ** Creating and Configuring your Gluster Volume **
+
+* Designate the server in your cluster that will become your Management Server and the server upon which you will install the HDP Ambari Management tool. This is the same server which will deploy your Hadoop stack to all the nodes in your cluster (which is the same thing as the RHS trusted storage pool for your volume).
+
+* On your Management server, open a terminal and change directory to /usr/share/rhs-hadoop-install-0_50/
+
+* Edit the hosts.example file and replace the sample hosts with all the hosts within your cluster. Then rename "hosts.example" to "hosts".
+
+* Setup passwordless SSH from your Management Server to every server listed within your hosts file
+
+* Identify the name of your RAID 6 volume on the filesystem for each server, this is usually /dev/sdb
+
+* Create and Configure a Gluster volume for Hadoop by running
+`./install.sh <NameOfRAID6Volume>`
+for example
+`./install.sh /dev/sdb`
 
 ** Installing and Configuring HDP **
 
