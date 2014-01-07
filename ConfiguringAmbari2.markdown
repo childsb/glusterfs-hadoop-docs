@@ -127,29 +127,12 @@ mapreduce.jobhistory.done-dir = glusterfs://
 mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr_history/tmp
 
 (Advanced Section)
-yarn.app.mapreduce.am.staging-dir=glusterfs:///tmp/hadoop-yarn/staging/mapred/.staging
+yarn.app.mapreduce.am.staging-dir=/tmp/user
 mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr-history/tmp
 mapreduce.jobhistory.done-dir = glusterfs:///mr-history/done
 
-Add these as map-reduce custom properties:
-<property>
-<name>mapred.healthChecker.script.path</name>
-<value>glusterfs:///mapred/jobstatus</value>
-</property>
+mapred.healthChecker.script.path=glusterfs:///mapred/jobstatus
+mapred.job.tracker.history.completed.location=glusterfs:///mapred/history/done
 
-<property>
-<name>mapred.job.tracker.history.completed.location</name>
-<value>glusterfs:///mapred/history/done</value>
-</property>
-
-<property>
-<name>mapred.system.dir</name>
-<value>glusterfs:///mapred/system</value>
-</property>
-
-<property>
-<name>mapreduce.jobtracker.staging.root.dir</name>
-<value>glusterfs:///user</value>
-</property>
-
-</configuration>
+mapred.system.dir=glusterfs:///mapred/system
+mapreduce.jobtracker.staging.root.dir=glusterfs:///user
