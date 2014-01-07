@@ -36,16 +36,15 @@ for example
 ** Installing and Configuring HDP **
 
 
-1. Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
+* Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
 
-
-[AMBARI.bw-m15-1.x]
-name=Ambari 1.x
-baseurl=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6
-gpgcheck=1
-gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
-enabled=1
-priority=1
+`[AMBARI.bw-m15-1.x]`
+`name=Ambari 1.x`
+`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6`
+`gpgcheck=1`
+`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
+`enabled=1`
+`priority=1`
 
 
 [HDP-UTILS-1.1.0.16]
