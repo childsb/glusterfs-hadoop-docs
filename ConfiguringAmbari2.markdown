@@ -36,24 +36,7 @@ for example
 ** Installing and Configuring Apache Ambari **
 
 
-* Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
-
-`[AMBARI.bw-m15-1.x]`
-`name=Ambari 1.x`
-`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6`
-`gpgcheck=1`
-`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
-`enabled=1`
-`priority=1`
-
-`[HDP-UTILS-1.1.0.16]`
-`name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.16`
-`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6`
-`gpgcheck=0`
-`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
-`enabled=1`
-`priority=1`
-
+* Add the Ambari repo to /etc/yum.repos.d/
 
 * Verify the Ambari Repo was successfully added, by running:
 
