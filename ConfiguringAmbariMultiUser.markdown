@@ -1,6 +1,9 @@
-# Multiple Users in Ambari#
-1. Stop the hadoop services
-2. Run this script on the node:
+**Multiple Users in Ambari**
+
+* Stop the hadoop services
+
+* Run this script on the node:
+
 `#!/bin/sh`
 
 `gluster_mount=/mnt/glusterfs`
@@ -41,7 +44,8 @@
 `chown root:${process_group} ${task_controler} ; chmod 6050 ${task_controler}`
 `chown root:${process_group} ${task_cfg}`
 
-3. modify my /etc/hadoop/conf/container-executor to look like:
+* modify my /etc/hadoop/conf/container-executor to look like:
+
 `yarn.nodemanager.linux-container-executor.group=hadoop `
 `banned.users=yarn min.user.id=1000 `
 `allowed.system.users=tom`
