@@ -33,10 +33,13 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
+** Add the Red Hat Storage Plugin **
+
+* Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib
+
 ** Installing and Configuring Apache Ambari **
 
-
-* Add the Ambari repo to /etc/yum.repos.d/
+* Add the Ambari repo to /etc/yum.repos.d/ - Note: This will be shipped by Hortonworks as of HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the Ambari Server and Agent from our S3 Repo:
 
 * Verify the Ambari Repo was successfully added, by running:
 
