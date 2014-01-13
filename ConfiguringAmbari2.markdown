@@ -15,7 +15,7 @@ https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red
 
 * Designate the server in your cluster that will become your Management Server and the server upon which you will install the HDP Ambari Management tool. This is the same server which will deploy your Hadoop stack to all the nodes in your cluster (which is the same thing as the RHS trusted storage pool for your volume).
 
-* On your Management server, open a terminal and change directory to /usr/share/rhs-hadoop-install-<version>/   Note: If this does not exist, it is because you have not yum installed rhs-hadoop-install. 
+* On your Management server, open a terminal and change directory to /usr/share/rhs-hadoop-install-$version/   Note: If this does not exist, it is because you have not yum installed rhs-hadoop-install. 
 
 * Edit the hosts.example file and replace the sample hosts with all the hosts within your cluster. Then rename "hosts.example" to "hosts".
 
