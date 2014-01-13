@@ -39,11 +39,23 @@ for example
 
 ** Installing and Configuring Apache Ambari **
 
-* Add the Ambari repo to /etc/yum.repos.d/ - Note: This will be shipped by Hortonworks as of HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the Ambari Server and Agent from our S3 Repo:
-
-http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm
-
-http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm
+* Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
+		
+`[AMBARI.bw-m15-1.x]`
+`name=Ambari 1.x`
+`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6`
+		`gpgcheck=1`
+		`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.bw-m15-1.x/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
+		`enabled=1`
+		`priority=1`
+		
+		`[HDP-UTILS-1.1.0.16]`
+		`name=Hortonworks Data Platform Utils Version - HDP-UTILS-1.1.0.16`
+		`baseurl=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6`
+		`gpgcheck=0`
+		`gpgkey=http://s3.amazonaws.com/dev.hortonworks.com/HDP-UTILS-1.1.0.16/repos/centos6/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins`
+		`enabled=1`
+		`priority=1`
 
 * Verify the Ambari Repo was successfully added, by running:
 
@@ -51,9 +63,9 @@ http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.n
 
    You should see the Ambari packages in the list.
 
-* Install the Ambari Server on your Management Server :    
+* Install the Ambari Server and Agent on your Management Server :    
 
-`yum -y install ambari`
+Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the [http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm](Ambari Server) and [http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm](Agent) from our S3 Repo:
 
 * On the management server, activate the GlusterFS enabled HDP Stack in Ambari:
 
@@ -73,7 +85,7 @@ http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.n
 `     ambari-server start`
 
 
-*  Install the Ambari Agent on all other servers within your cluster:
+*  Install only the Ambari Agent on all other servers within your cluster:
 
 `     yum -y install ambari-agent`
 
