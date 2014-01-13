@@ -91,13 +91,13 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 
       Configure the Agent with the Ambari Server Hostname: 
 
-     `sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini`
+`     sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini`
 
      (where <managementnodename> is your managment host name ie. hwx17.rhs)
 
      Start the Ambari Agent 
  
-     `ambari-agent start`
+`    ambari-agent start`
 
 
 ** Deploying and Configuring the HDP Stack on Red Hat Storage **
