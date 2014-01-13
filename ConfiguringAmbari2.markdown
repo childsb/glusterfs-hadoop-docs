@@ -41,6 +41,10 @@ for example
 
 * Add the Ambari repo to /etc/yum.repos.d/ - Note: This will be shipped by Hortonworks as of HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the Ambari Server and Agent from our S3 Repo:
 
+http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm
+
+http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm
+
 * Verify the Ambari Repo was successfully added, by running:
 
 `yum repolist` 
