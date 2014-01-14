@@ -112,11 +112,11 @@ Start the Ambari Agent
 
 * Assign your cluster a name, such as "MyCluster"
 
-* Enter your target hosts using their FQDN and select the "Perform Manual Registration  on hosts and not use SSH" radio button. Select Next and Ignore the Warnings.
+* Select the "HDP 2.0.6.GlusterFS" stack
+
+* Enter your target hosts using their FQDN and select the "Perform Manual Registration  on hosts and not use SSH" radio button. Click on the the "Register and Confirm" button and Ignore the Warnings.
 
 <TODO: Erin to add Screenshots and Steps for Host Registration etc.>
-
-* Select the "HDP 2.0.6.GlusterFS" stack
 
 * Select the services within the stack that you would like to install and accept the defaults for the configuration parameters, with the exception of the MapReduce Tab. For MapReduce, scroll down to the bottom and add the following 4 custom properties:
 
