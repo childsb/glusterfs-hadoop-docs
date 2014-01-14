@@ -112,6 +112,8 @@ Start the Ambari Agent
 
 * Assign your cluster a name, such as "MyCluster"
 
+* Enter your target hosts using their FQDN and select the "Perform Manual Registration  on hosts and not use SSH" radio button. Select Next and Ignore the Warnings.
+
 <TODO: Erin to add Screenshots and Steps for Host Registration etc.>
 
 * Select the "HDP 2.0.6.GlusterFS" stack
