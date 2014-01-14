@@ -63,12 +63,7 @@ for example
 
 Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the [http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm](Ambari Server) and [http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm](Agent) from our S3 Repo:
 
-* On the management server, activate the GlusterFS enabled HDP Stack in Ambari:
-
-   Edit /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml
-
-   Set the active flag to true:
-     
+* On the management server, activate the GlusterFS enabled HDP Stack in Ambari by editing the /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml and setting the active flag to true:
 `     <metainfo>`
 `        <versions>`
 `               <active>true</active>`
@@ -76,22 +71,19 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 `     </metainfo>`
 
 * On the management server, start the Ambari Server:
-
 `     ambari-server setup -s`
 `     ambari-server start`
 
-
 *  Install only the Ambari Agent on all other servers within your cluster:
-
 `     yum -y install ambari-agent`
 
-      Configure the Agent with the Ambari Server Hostname: 
+* Configure the Agent with the Ambari Server Hostname: 
 
 `     sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini`
 
-     (where <managementnodename> is your managment host name ie. hwx17.rhs)
+(where <managementnodename> is your managment host name ie. hwx17.rhs)
 
-     Start the Ambari Agent 
+Start the Ambari Agent 
  
 `    ambari-agent start`
 
