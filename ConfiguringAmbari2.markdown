@@ -33,10 +33,6 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
-** Add the Red Hat Storage Plugin **
-
-* Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib
-
 ** Installing and Configuring Apache Ambari **
 
 * Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
@@ -113,7 +109,18 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 
 * Select the "HDP 2.0.6.GlusterFS" stack
 
-* Select the services within the stack that you would like to install
+* Select the services within the stack that you would like to install and accept the defaults for the configuration parameters.
+
+* The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
+
+** Starting the MapReduce2 service **
+
+* Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster.
+
+* Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
+
+------------------
+
 
 * Specify the appropriated configuration parameters for the services:
 
