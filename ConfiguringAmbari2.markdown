@@ -129,9 +129,11 @@ Start the Ambari Agent
 `mapred.system.dir=glusterfs:///mapred/system`
 `mapreduce.jobtracker.staging.root.dir=glusterfs:///user`
 
-* Review your configuration and then click the "Deploy" button. The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
+* Review your configuration and then click the "Deploy" button. The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios. Note: If you select the YARN service, you will notice that the NodeManagers are not yet running. This is because the Hadoop Linux Container Executor for the NodeManagers still needs to be configured.
 
-** Starting the MapReduce2 service **
+** Configuring the Linux Container Executor**
+
+* In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
 * [Download](http://rhbd.s3.amazonaws.com/steve/setup_container_executor.sh) and run the setup_container_executor.sh script on each server in the cluster.
 
