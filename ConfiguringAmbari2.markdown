@@ -119,6 +119,14 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 
 * [http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh](Download) and run the post_install_dirs.sh script on each server in the cluster.
 
+* For each server within the cluster, edit the /etc/hadoop/conf/container-executor.cfg file and replace the contents, with the following:
+`yarn.nodemanager.linux-container-executor.group=hadoop`
+`banned.users=yarn`
+`min.user.id=1000`
+`allowed.system.users=tom`
+
+Note: Make sure there is no additional whitespace at the end of each line or at the end of the file. Also, "tom" is an example user. You need to explicitly add each user, in a comma delimited list, that is allowed to use the cluster, as the value for the allowed.system.users parameter.
+
 * Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
 
 
