@@ -39,6 +39,10 @@ for example
 
 Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster. Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
 
+`mkdir -p /usr/lib/hadoop/lib`
+`cd /usr/lib/hadoop/lib`
+`wget $url_of_plugin`
+
 ** Installing and Configuring Apache Ambari **
 
 * Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
