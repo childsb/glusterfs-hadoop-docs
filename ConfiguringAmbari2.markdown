@@ -116,16 +116,20 @@ Start the Ambari Agent
 
 * Enter your target hosts using their FQDN and select the "Perform Manual Registration  on hosts and not use SSH" radio button. Click on the the "Register and Confirm" button and Ignore the Warnings.
 
-<TODO: Erin to add Screenshots and Steps for Host Registration etc.>
+* Select the services within the stack that you would like to install (YARN, Nagios, etc.)
 
-* Select the services within the stack that you would like to install and accept the defaults for the configuration parameters, with the exception of the MapReduce Tab. For MapReduce, scroll down to the bottom and add the following 4 custom properties:
+* On the "Assign Masters" screen, specify the same server for all the services. This is often the Ambari Management server.
+
+* On the "Assign Slaves and Clients" screen, click "all" for both the NodeManagers and the Clients.
+
+* On the "Customize Services" screen, click on the MapReduce2 tab, scroll down to the bottom and under the "custom mapred-site.xml" add the following 4 custom properties and then click on the "Next" button.
 
 `mapred.healthChecker.script.path=glusterfs:///mapred/jobstatus`
 `mapred.job.tracker.history.completed.location=glusterfs:///mapred/history/done`
 `mapred.system.dir=glusterfs:///mapred/system`
 `mapreduce.jobtracker.staging.root.dir=glusterfs:///user`
 
-* The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
+* Review your configuration and then click the "Deploy" button. The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
 
 ** Starting the MapReduce2 service **
 
