@@ -119,6 +119,8 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 
 * Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
 
+* run the script to set the perms on the LinuxContainerExecutor
+
 ------------------
 
 
