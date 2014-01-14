@@ -146,7 +146,7 @@ Start the Ambari Agent
 Note: Make sure there is no additional whitespace at the end of each line or at the end of the file. Also, "tom" is an example user. You need to explicitly add each user, in a comma delimited list, that is allowed to use the cluster, as the value for the allowed.system.users parameter. For each user that add, that same user needs to exist on every node on the cluster. This can be relatively easily if you are using LDAP for authentication, but if you are not, you will need to run the following command on each server in the cluster, for each user:
 `useradd -g hadoop tom`
 
-* Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
+* In the Ambari Dashboard, select the YARN service and then click the "Start-All" button. Note: Both stopping and starting the services can take some time.
 
 ** Using Hadoop  **
 
