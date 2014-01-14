@@ -117,13 +117,15 @@ Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1
 
 * Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster.
 
-* Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
-
 * Manually create the app-log directory on every machine in your cluster by running the following command:
 
-`mkdir /app-logs; chown mapred:hadoop /app-logs`
+`      mkdir /app-logs; chown mapred:hadoop /app-logs`
 
 * run the script to set the perms on the LinuxContainerExecutor
+
+* Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
+
+
 
 ------------------
 
