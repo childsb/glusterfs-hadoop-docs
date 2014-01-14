@@ -130,30 +130,15 @@ Note: Make sure there is no additional whitespace at the end of each line or at 
 
 * Go back to the Ambari Web UI Dashboard. Select the YARN Service and click the "stop-all" button. Once all the services have stopped, Select the "start-all" button. Both stopping and starting the services can take some time.
 
+** Using Hadoop  **
+
+* To test your cluster, open a terminal window and navigate to /usr/lib/hadoop. Then su to one of the configured allowed.system.users (such as tom) and submit a Hadoop Job:
+
+`bin/hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples-2.2.0.2.0.6.0-101.jar teragen 1000 in`
 
 
+** Common Errors  **
+
+* If you see an exception stating that "job.jar changed on src filesystem" it means that you need to synchronize the clocks across your cluster. You can do this by running the following command on each node:
+`ntpd -qg`
 ------------------
-
-
-* Specify the appropriated configuration parameters for the services:
-
-_Yarn_
-
-yarn.log.server.url = http://localhost:19888/jobhistory/nmlogs
-
-_MapReduce_
-
-mapreduce.jobhistory.done-dir = glusterfs://
-
-mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr_history/tmp
-
-(Advanced Section)
-yarn.app.mapreduce.am.staging-dir=/tmp/user
-mapreduce.jobhistory.intermediate-done-dir = glusterfs:///mr-history/tmp
-mapreduce.jobhistory.done-dir = glusterfs:///mr-history/done
-
-mapred.healthChecker.script.path=glusterfs:///mapred/jobstatus
-mapred.job.tracker.history.completed.location=glusterfs:///mapred/history/done
-
-mapred.system.dir=glusterfs:///mapred/system
-mapreduce.jobtracker.staging.root.dir=glusterfs:///user
