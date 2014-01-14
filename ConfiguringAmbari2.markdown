@@ -74,7 +74,7 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 
 * Install the Ambari Server and Agent on your Management Server :    
 
-Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, please yum install the [http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm](Ambari Server) and [http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm](Agent) from our S3 Repo:
+Note: The working glusterfs stack will only be shipped by Hortonworks with HDP 1.4.3.1, this is not internally or externally available yet. In the meantime, on the server intended to be your Ambari Server, please yum install the [Ambari Server](http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm) and the [Ambari Agent](http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm) from our S3 Repo.
 
 * On the management server, activate the GlusterFS enabled HDP Stack in Ambari by editing the /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml and setting the active flag to true:
 `     <metainfo>`
