@@ -112,6 +112,8 @@ Start the Ambari Agent
 
 * Assign your cluster a name, such as "MyCluster"
 
+<TODO: Erin to add Screenshots and Steps for Host Registration etc.>
+
 * Select the "HDP 2.0.6.GlusterFS" stack
 
 * Select the services within the stack that you would like to install and accept the defaults for the configuration parameters, with the exception of the MapReduce Tab. For MapReduce, scroll down to the bottom and add the following 4 custom properties:
