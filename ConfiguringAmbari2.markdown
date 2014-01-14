@@ -107,7 +107,12 @@ Start the Ambari Agent
 
 * Select the "HDP 2.0.6.GlusterFS" stack
 
-* Select the services within the stack that you would like to install and accept the defaults for the configuration parameters.
+* Select the services within the stack that you would like to install and accept the defaults for the configuration parameters, with the exception of the MapReduce Tab. For MapReduce, scroll down to the bottom and add the following 4 custom properties:
+
+`mapred.healthChecker.script.path=glusterfs:///mapred/jobstatus`
+`mapred.job.tracker.history.completed.location=glusterfs:///mapred/history/done`
+`mapred.system.dir=glusterfs:///mapred/system`
+`mapreduce.jobtracker.staging.root.dir=glusterfs:///user`
 
 * The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
 
