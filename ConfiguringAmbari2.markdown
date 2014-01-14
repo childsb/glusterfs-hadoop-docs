@@ -33,7 +33,7 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
-* [http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh](Download) and run the post_install_dirs.sh script on each server in the cluster.
+* [Download](http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh) and run the post_install_dirs.sh script on each server in the cluster.
 
 ** Installing the Red Hat Storage Hadoop FileSystem Plugin **
 
@@ -113,7 +113,7 @@ Start the Ambari Agent
 
 ** Starting the MapReduce2 service **
 
-* [http://rhbd.s3.amazonaws.com/steve/setup_container_executor.sh](Download) and run the setup_container_executor.sh script on each server in the cluster.
+* [Download](http://rhbd.s3.amazonaws.com/steve/setup_container_executor.sh) and run the setup_container_executor.sh script on each server in the cluster.
 
 * For each server within the cluster, edit the /etc/hadoop/conf/container-executor.cfg file and replace the contents, with the following:
 `yarn.nodemanager.linux-container-executor.group=hadoop`
