@@ -48,7 +48,7 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 
 ** Installing and Configuring Apache Ambari **
 
-* Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
+* On every server within the cluster, add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
 		
 `[AMBARI.bw-m15-1.x]`
 `name=Ambari 1.x`
