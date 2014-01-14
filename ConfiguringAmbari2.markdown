@@ -33,10 +33,10 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
-* Create the yarn user:
+* Create the yarn user on the management server that is intended to run Ambari:
 `adduser --no-create-home --system --uid 502 --gid 500 yarn`
 
-* [Download](http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh) and run the post_install_dirs.sh script on each server in the cluster.
+* [Download](http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh) and run the post_install_dirs.sh script on the management server that is intended to run Ambari.
 
 ** Installing the Red Hat Storage Hadoop FileSystem Plugin **
 
