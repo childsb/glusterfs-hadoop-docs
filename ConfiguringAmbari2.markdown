@@ -33,6 +33,10 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
+** Installing the Red Hat Storage Hadoop FileSystem Plugin **
+
+Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster. Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
+
 ** Installing and Configuring Apache Ambari **
 
 * Add the Ambari repo by creating the following file: /etc/yum.repos.d/ambari.repo and adding the following contents to it:
@@ -106,8 +110,6 @@ Start the Ambari Agent
 * The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios and MapReduce2.
 
 ** Starting the MapReduce2 service **
-
-* Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster.
 
 * [http://rhbd.s3.amazonaws.com/steve/post_install_dirs.sh](Download) and run the post_install_dirs.sh script on each server in the cluster.
 
