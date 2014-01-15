@@ -1,5 +1,7 @@
 In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
 
+ 
+
 ** Installing and Configuring Red Hat Storage (RHS) **
 
 * Identify a set of servers on which you wish to create a Red Hat Storage volume. Note: Each server should comply with requirements for RHS outlined in the RHS Installation and Configuration guide and should have a RAID 6 volume available to be configured as a brick on the RHS server.
@@ -131,7 +133,18 @@ Start the Ambari Agent
 
 * Review your configuration and then click the "Deploy" button. The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios. Note: If you select the YARN service, you will notice that the NodeManagers are not yet running. This is because the Hadoop Linux Container Executor for the NodeManagers still needs to be configured.
 
-** Configuring the Linux Container Executor**
+** Configuring the Linux Container Executor (LCE) **
+
+Note for the curious on how LCE works and why its important :  
+
+This feature utilizes theorg.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor,  configuration in hadoop.  Hadoop allows you to run tasks in different executors, normally, we just use the default.  In gluster's case, we use the linux container executor - because it allows job tasks to run under the same user that created a task.  That means users tasks are isolated from one another.  This is necessary for job submission in a secure, multiuser environment because it allows tasks to read the job metadata files submitted by an original user over the distributed file system.  ** Ambari will enable this for you if you are using gluster.**  \
+
+But just for context, you should probably know that in vanilla hadoop, you set this by modifying your yarn-site.xml file to have this property.
+
+`  <name>yarn.nodemanager.container-executor.class</name>`	
+`<value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>`
+
+
 
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
