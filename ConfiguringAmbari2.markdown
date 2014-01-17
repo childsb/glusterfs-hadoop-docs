@@ -103,7 +103,7 @@ Start the Ambari Agent
 
 * On the "Assign Slaves and Clients" screen, click "all" for both the NodeManagers and the Clients.
 
-On the "Customize Services" screen, click on the YARN tab, expand the "Advanced" section and enter "
+* On the "Customize Services" screen, click on the YARN tab, expand the "Advanced" section and set the "yarn.log.server.url" to "http://localhost:19888/jobhistory/nmlogs" 
 
 * On the "Customize Services" screen, click on the MapReduce2 tab, scroll down to the bottom and under the "custom mapred-site.xml" add the following 4 custom properties and then click on the "Next" button.
 
