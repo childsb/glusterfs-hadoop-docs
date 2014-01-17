@@ -54,6 +54,9 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 
    You should see the Ambari packages in the list.
 
+* Install the Ambari Server and Agent on the Management Server:
+`yum install ambari-*`
+
 * On the management server, activate the GlusterFS enabled HDP Stack in Ambari by editing the /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml and setting the active flag to true:
 `     <metainfo>`
 `        <versions>`
