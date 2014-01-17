@@ -1,7 +1,5 @@
 In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
 
- 
-
 ** Installing and Configuring Red Hat Storage (RHS) **
 
 * Identify a set of servers on which you wish to create a Red Hat Storage volume. Note: Each server should comply with requirements for RHS outlined in the RHS Installation and Configuration guide and should have a RAID 6 volume available to be configured as a brick on the RHS server.
@@ -120,7 +118,8 @@ Start the Ambari Agent
 
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
-* [Download](http://rhbd.s3.amazonaws.com/steve/setup_container_executor.sh) and run the setup_container_executor.sh script on each server in the cluster.
+* On each server, open a terminal and change directory to /usr/share/rhs-hadoop-install-$version/   Note: If this does not exist, it is because you have not yum installed rhs-hadoop-install. Run the setup_container_executor.sh script.
+`./setup_container_executor.sh`
 
 * For each server within the cluster, edit the /etc/hadoop/conf/container-executor.cfg file and replace the contents, with the following:
 `yarn.nodemanager.linux-container-executor.group=hadoop`
