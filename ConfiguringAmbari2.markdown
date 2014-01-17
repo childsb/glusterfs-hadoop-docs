@@ -105,6 +105,8 @@ Start the Ambari Agent
 
 * On the "Customize Services" screen, click on the YARN tab, expand the "Advanced" section and set the "yarn.log.server.url" to "http://localhost:19888/jobhistory/nmlogs" 
 
+* On the "Customize Services" screen, click on the YARN tab, expand the "Node Manager" section and remove any entries that refer to /mnt/glusterfs in the "yarn.nodemanager.log-dirs" and "yarn.nodemanager.local-dirs" properties.
+
 * On the "Customize Services" screen, click on the MapReduce2 tab, scroll down to the bottom and under the "custom mapred-site.xml" add the following 4 custom properties and then click on the "Next" button.
 
 `mapred.healthChecker.script.path=glusterfs:///mapred/jobstatus`
