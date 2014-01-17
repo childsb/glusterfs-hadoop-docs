@@ -118,17 +118,6 @@ Start the Ambari Agent
 
 ** Configuring the Linux Container Executor (LCE) **
 
-Note for the curious on how LCE works and why its important :  
-
-This feature utilizes theorg.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor,  configuration in hadoop.  Hadoop allows you to run tasks in different executors, normally, we just use the default.  In gluster's case, we use the linux container executor - because it allows job tasks to run under the same user that created a task.  That means users tasks are isolated from one another.  This is necessary for job submission in a secure, multiuser environment because it allows tasks to read the job metadata files submitted by an original user over the distributed file system.  ** Ambari will enable this for you if you are using gluster.**  \
-
-But just for context, you should probably know that in vanilla hadoop, you set this by modifying your yarn-site.xml file to have this property.
-
-`  <name>yarn.nodemanager.container-executor.class</name>`	
-`<value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>`
-
-
-
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
 * [Download](http://rhbd.s3.amazonaws.com/steve/setup_container_executor.sh) and run the setup_container_executor.sh script on each server in the cluster.
@@ -155,4 +144,5 @@ Note: Make sure there is no additional whitespace at the end of each line or at 
 
 * If you see an exception stating that "job.jar changed on src filesystem" it means that you need to synchronize the clocks across your cluster. You can do this by running the following command on each node:
 `ntpd -qg`
+
 ------------------
