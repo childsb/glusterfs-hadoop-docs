@@ -125,7 +125,7 @@ Start the Ambari Agent
 
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
-* On each server, open a terminal and change directory to /usr/share/rhs-hadoop-install-$version/   Note: If this does not exist, it is because you have not yum installed rhs-hadoop-install. Run the setup_container_executor.sh script.
+* On the management server, open a terminal and change directory to /usr/share/rhs-hadoop-install-$version/   Note: If this does not exist, it is because you have not yum installed rhs-hadoop-install. Copy the setup_container_executor.sh script to all servers within the cluster and run it:
 `./setup_container_executor.sh`
 
 * For each server within the cluster, edit the /etc/hadoop/conf/container-executor.cfg file and replace the contents, with the following:
