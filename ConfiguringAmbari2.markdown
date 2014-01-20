@@ -58,7 +58,9 @@ Note: The Ambari Server and Agents must be manually installed as the Ambari Repo
 
 On the server intended to be your Ambari Server, please yum install the [Ambari Server](http://ambari-fork.s3.amazonaws.com/ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm) and the [Ambari Agent](http://ambari-fork.s3.amazonaws.com/ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm) from our S3 Repo.
 
-`yum install ambari-*`
+Navigate to the directory where you downloaded the RPMs and run:
+`yum install ambari-server-1.3.0-SNAPSHOT20140110162116.noarch.rpm`
+`yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
 * On the management server, activate the GlusterFS enabled HDP Stack in Ambari by editing the /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml and setting the active flag to true:
 `     <metainfo>`
@@ -72,7 +74,7 @@ On the server intended to be your Ambari Server, please yum install the [Ambari 
 `     ambari-server start`
 
 *  Install only the Ambari Agent on all other servers within your cluster:
-`     yum -y install ambari-agent`
+`     yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
 * Configure the Agent with the Ambari Server Hostname: 
 
