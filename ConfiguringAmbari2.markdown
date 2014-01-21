@@ -134,6 +134,8 @@ Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent:
 
 * Review your configuration and then click the "Deploy" button. The services should deploy successfully with a few warnings and take you through to the Ambari Dashboard. You should see all the services started with the exception of Nagios. Note: If you select the YARN service, you will notice that the NodeManagers are not yet running. This is because the Hadoop Linux Container Executor for the NodeManagers still needs to be configured.
 
+----------------------------------------
+
 ** Configuring the Linux Container Executor (LCE) **
 
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
