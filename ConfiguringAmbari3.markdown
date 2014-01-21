@@ -2,7 +2,7 @@ Fast directions
 
 ** Before you start ** 
 
-* **Identify a set of servers**on which you wish to create a Red Hat Storage volume. 
+* **Identify a set of servers** on which you wish to create a Red Hat Storage volume. 
 * Note: Each server should comply with **requirements for RHS **outlined in the RHS Installation and Configuration guide and should have a **RAID 6**volume available to be configured as a brick on the RHS server.
 * Login to the Red Hat Network  and **download the RHS ISO **from the following location: 
 https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red%20hat%20storage
