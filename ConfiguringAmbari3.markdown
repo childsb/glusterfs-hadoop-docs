@@ -76,11 +76,12 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
 **Start the MASTER AMBARI SERVER **
 * Activate the GlusterFS enabled HDP Stack ~
 
-    * edit : `/var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml`, set "active" to true:
+* edit : `/var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml`, set "active" to true:
                <active>true</active>
-    * **Now start the server ! **
-        * `     ambari-server setup -s`
-        * `     ambari-server start`
+* **Now start the server ! **
+
+ `     ambari-server setup -s`
+ `     ambari-server start`
 
 **Start all the AMBARI AGENTS (Hadoop Nodes) in your cluster: **
 *  `     yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
@@ -89,7 +90,7 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
     * `ambari-agent start`
 
 
-**NOW START THE MASTER AMBARI SERVER AND CONFIGURE IT **
+**NOW, Configure and DEPLOY your HADOOP CLUSTER ! **
 
 * Launch a browser 
 
