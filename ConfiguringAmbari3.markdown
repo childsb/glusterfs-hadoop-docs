@@ -60,6 +60,7 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
     * Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
 
 `mkdir -p /usr/lib/hadoop/lib ; cd /usr/lib/hadoop/lib ; wget $url_of_plugin`
+
 ---------------------------------------
 
 **Installing and Configuring Apache Ambari**
