@@ -82,7 +82,7 @@ Navigate to the directory where you downloaded the RPMs and run:
 
 (where <managementnodename> is your managment host name ie. hwx17.rhs)
 
-Start the Ambari Agent 
+Now, On *** EACH *** node which will serve as a host, Start the Ambari Agent: 
  
 `    ambari-agent start`
 
