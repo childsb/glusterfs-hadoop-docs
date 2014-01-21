@@ -157,9 +157,12 @@ Next page:
 Now... what next?  The services should deploy successfully with a **few warnings **and take you through to the Ambari Dashboard. 
 
 You should see all the services started with the exception of Nagios. 
+
 ---------------------------------------
 
 **YOUR CLUSTER ISNT READY JUST YET... WAIT !!! **
+
+---------------------------------------
 
 The NodeManagers are **NOT YET **running. This is because the Hadoop **Linux Container Executor**for the NodeManagers still needs to be configured.  
 
