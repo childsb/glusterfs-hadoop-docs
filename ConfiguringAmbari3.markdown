@@ -95,13 +95,15 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
 
  `     ambari-server start`
 
-**Start all the AMBARI AGENTS (Hadoop Nodes) in your cluster: **
+**Start all the AMBARI AGENTS (Hadoop Nodes) in your cluster.  Do this FOR EACH NODE on your cluster. **
 
 `     yum install ambari-agent-1.3.0-
 SNAPSHOT20140110162153.x86_64.rpm`
 * Configure the Agent with the Ambari Server Hostname: 
 
-` sed -i 's/'localhost'/$MASTER_SERVER/' /etc/ambari-agent/conf/ambari-agent.ini` 
+Replace "YOUR_MASTER_SERVER" with FQDN to your Management Server below, and run this command to update the agent files.  
+
+` sed -i 's/'localhost'/YOUR_MASTER_SERVER/' /etc/ambari-agent/conf/ambari-agent.ini`  
  
 `ambari-agent start`
 
