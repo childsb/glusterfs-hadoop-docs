@@ -7,6 +7,8 @@ Fast directions
 * Login to the Red Hat Network  and **download the RHS ISO **from the following location: 
 https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red%20hat%20storage
 
+---------------------------------------
+
 FOR EACH SERVER Install the ISO (see below):
 
 * **Specify the FQDN **for each server but...
@@ -14,6 +16,8 @@ FOR EACH SERVER Install the ISO (see below):
 * **EACH server must have a FQDN specified (i.e. `hadoop1.lab.test`, NOT `hadoop1`)**, otherwise, Hadoop services wont work properly.
 * Register with the Red Hat Network, using rhn_register. 
     * **REGISTRATION IS REQUIRED**for the HDP Ambari deployment (otherwise, all packages wont be resolved)
+
+---------------------------------------
 
 ** SETUP GLUSTER VOLUME **
 
@@ -53,6 +57,7 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
     * Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
 
 `mkdir -p /usr/lib/hadoop/lib ; cd /usr/lib/hadoop/lib ; wget $url_of_plugin`
+---------------------------------------
 
 **Installing and Configuring Apache Ambari**
 
@@ -72,8 +77,10 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
     
     `yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
+---------------------------------------
 
 **Start the MASTER AMBARI SERVER **
+
 * Activate the GlusterFS enabled HDP Stack ~
 
 * edit : `/var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml`, set "active" to true:
@@ -88,7 +95,7 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
 * Configure the Agent with the Ambari Server Hostname: 
     * ` sed -i 's/'localhost'/$MASTER_SERVER/' /etc/ambari-agent/conf/ambari-agent.ini` 
     * `ambari-agent start`
-
+---------------------------------------
 
 **NOW, Configure and DEPLOY your HADOOP CLUSTER ! **
 
