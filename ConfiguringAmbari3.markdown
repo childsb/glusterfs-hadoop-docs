@@ -41,6 +41,8 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
 
 * Identify the **name of your RAW DISK (i.e. RAID 6 volume)**on the filesystem for each server, this is usually /dev/sdb . If using 
 
+---------------------------------------
+
 * Create and Configure a **Distributed Replicated 2 NODE RHS **volume for Hadoop by running:
    ./install.sh NameOfRAID6Volume, for example:
                  ./install.sh /dev/sdb # 
@@ -49,6 +51,7 @@ This file will get copied to /etc/hosts, must match ambari hosts defined later o
     * verify the volume was created successfully. 
         *   **Type `mount`**on each server, ensure that you see /mnt/glusterfs in the list of mounts. 
         *   **Type `gluster volume info`**, ensure that you see "HadoopVol" (the volume name), with Bricks online:
+---------------------------------------
 
 **Installing the Red Hat Storage Hadoop FileSystem Plugin**
 
@@ -153,6 +156,7 @@ Next page:
 Now... what next?  The services should deploy successfully with a **few warnings **and take you through to the Ambari Dashboard. 
 
 You should see all the services started with the exception of Nagios. 
+---------------------------------------
 
 **YOUR CLUSTER ISNT READY JUST YET... WAIT !!! **
 
