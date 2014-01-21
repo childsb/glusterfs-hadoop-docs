@@ -11,6 +11,9 @@ https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red
 
 * Register each server with the Red Hat Network, using rhn_register. This is required for the HDP Ambari deployment tool to be able resolve the dependencies of all the packages it will deploy.
 
+
+------------------------------------------------
+
 ** Creating and Configuring your Gluster Volume **
 
 * Designate the server in your cluster that will become your Management Server and the server upon which you will install the HDP Ambari Management tool. This is the same server which will deploy your Hadoop stack to all the nodes in your cluster (which is the same thing as the RHS trusted storage pool for your volume).
@@ -41,6 +44,9 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 `cd /usr/lib/hadoop/lib`
 `wget $url_of_plugin`
 
+------------------------------------------------
+
+
 ** Installing and Configuring Apache Ambari **
 
 * On every server within the cluster, add the Ambari repo by running the following command:		
@@ -51,6 +57,9 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 `yum repolist` 
 
    You should see the Ambari packages in the list.
+
+
+------------------------------------------------
 
 * Install the Ambari Server and Agent on the Management Server:
 
@@ -69,23 +78,27 @@ Navigate to the directory where you downloaded the RPMs and run:
 `         </versions>`
 `     </metainfo>`
 
-* On the management server, start the Ambari Server:
+* On the **management server **, start the Ambari Server:
 `     ambari-server setup -s`
 `     ambari-server start`
 
-*  Install only the Ambari Agent on all other servers within your cluster:
+------------------------------------------------
+
+*  Install  **only the Ambari Agent **  on  **all servers ** within your cluster:
 `     yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
 * Configure the Agent with the Ambari Server Hostname: 
 
-`     sed -i 's/'localhost'/<managementnodename>/' /etc/ambari-agent/conf/ambari-agent.ini`
+`     sed -i 's/'localhost'/<MgmtNode>/' /etc/ambari-agent/conf/ambari-agent.ini`
 
-(where <managementnodename> is your managment host name ie. hwx17.rhs)
+(where <MgmtNode> is your managment host name ie. hwx17.rhs)
 
-Now, On *** EACH *** node which will serve as a host, Start the Ambari Agent: 
+Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent: 
  
 `    ambari-agent start`
 
+
+------------------------------------------------
 
 ** Deploying and Configuring the HDP Stack on Red Hat Storage **
 
