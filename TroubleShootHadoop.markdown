@@ -1,3 +1,11 @@
+**ERROR**:
+
+While running a Hadoop job, if you see a File Not Found Exception with a "jobtoken does not exist" message
+
+**SOLUTION**: 
+
+This is occurring because the user IDs(UID) and group IDs(GID) are not consistent across the cluster. For example, user "tom" has a UID of 1002 on server1, but on server2 the user "tom" has a UID of 1003. The simplest and recommended approach is to leverage LDAP authentication to resolve this issue. After creating the necessary user and groups on an LDAP server, the servers within the cluster can be configured to use the LDAP server for authentication. A detailed guide on how to set this up for RHEL/CentOS can be found here - https://access.redhat.com/site/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/ch-Configuring_Authentication.html
+
 ------------------------------------------------------------
 **ERROR**:
 
