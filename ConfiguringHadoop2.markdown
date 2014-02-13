@@ -148,7 +148,7 @@ Setup container executor by creating the following script (in $HADOOP_HOME):
     chown root:${process_group} ${task_controller} 
     chmod 6050 ${task_controller}
     chown root:${process_group} ${task_cfg}
-    chown -r ${process_user}:${process_group} ${HADOOP}/logs
+    chown -R ${process_user}:${process_group} ${HADOOP}/logs
 
 ------------------------------
 
