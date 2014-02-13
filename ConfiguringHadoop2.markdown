@@ -130,18 +130,12 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the
 `    <value>node-1:9040</value>`
 `  </property>`
 ` </configuration>`
-** Synchronize the configuration across the cluster **
-
-SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
-    scp -r $HADOOP_HOME/ root@svr2:/opt/
-    scp -r $HADOOP_HOME/ root@svr3:/opt/
-    scp -r $HADOOP_HOME/ root@svr4:/opt/
-    etc...
 
 **Configure for Multiple Users**
 
-Setup container executor by creating the following script:
+Setup container executor by creating the following script (in $HADOOP_HOME):
 
+---------------------------
 `#!/bin/sh`
 `HADOOP_HOME=/opt/hadoop`
 `process_user=yarn`
@@ -152,7 +146,23 @@ Setup container executor by creating the following script:
 `echo "Configuring the Linux Container Executor for Hadoop"`
 `chown root:${process_group} ${task_controller} ; chmod 6050 ${task_controller}`
 `chown root:${process_group} ${task_cfg}`
+------------------------------
 
+Set the $HADOOP_HOME/etc/hadop/container-executor.cfg to:
+`yarn.nodemanager.linux-container-executor.group=hadoop`
+`banned.users=yarn`
+`min.user.id=1000`
+`allowed.system.users=tom`
+
+** Synchronize the configuration across the cluster **
+
+SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
+    scp -r $HADOOP_HOME/ root@svr2:/opt/
+    scp -r $HADOOP_HOME/ root@svr3:/opt/
+    scp -r $HADOOP_HOME/ root@svr4:/opt/
+    etc...
+
+Then ssh to each node, and run the container-executor script.
 
 
 
