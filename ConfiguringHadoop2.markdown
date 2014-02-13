@@ -136,23 +136,26 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the yarn-site.xml to reflect the
 Setup container executor by creating the following script (in $HADOOP_HOME):
 
 ---------------------------
-`#!/bin/sh`
-`HADOOP_HOME=/opt/hadoop`
-`process_user=yarn`
-`process_group=hadoop`
-`task_controller= $HADOOP_HOME/bin/container-executor`
-`task_cfg= $HADOOP_HOME/etc/hadoop/container-executor.cfg`
 
-`echo "Configuring the Linux Container Executor for Hadoop"`
-`chown root:${process_group} ${task_controller} ; chmod 6050 ${task_controller}`
-`chown root:${process_group} ${task_cfg}`
+    #!/bin/sh
+    HADOOP_HOME=/opt/hadoop
+    process_user=yarn
+    process_group=hadoop
+    task_controller=$HADOOP_HOME/bin/container-executor
+    task_cfg=$HADOOP_HOME/etc/hadoop/container-executor.cfg
+
+    echo "Configuring the Linux Container Executor for Hadoop"
+    chown root:${process_group} ${task_controller} 
+    chmod 6050 ${task_controller}
+    chown root:${process_group} ${task_cfg}
+
 ------------------------------
 
 Set the $HADOOP_HOME/etc/hadop/container-executor.cfg to:
-`yarn.nodemanager.linux-container-executor.group=hadoop`
-`banned.users=yarn`
-`min.user.id=1000`
-`allowed.system.users=tom`
+    yarn.nodemanager.linux-container-executor.group=hadoop
+    banned.users=yarn
+    min.user.id=1000
+    allowed.system.users=tom
 
 ** Synchronize the configuration across the cluster **
 
