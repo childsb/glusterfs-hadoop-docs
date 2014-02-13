@@ -138,6 +138,24 @@ SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
     scp -r $HADOOP_HOME/ root@svr4:/opt/
     etc...
 
+**Configure for Multiple Users**
+
+Setup container executor by creating the following script:
+
+`#!/bin/sh`
+`HADOOP_HOME=/opt/hadoop`
+`process_user=yarn`
+`process_group=hadoop`
+`task_controller= $HADOOP_HOME/bin/container-executor`
+`task_cfg= $HADOOP_HOME/etc/hadoop/container-executor.cfg`
+
+`echo "Configuring the Linux Container Executor for Hadoop"`
+`chown root:${process_group} ${task_controller} ; chmod 6050 ${task_controller}`
+`chown root:${process_group} ${task_cfg}`
+
+
+
+
 **Starting Hadoop**
 
 On the Master server, open a terminal window, navigate to $HADOOP_HOME and run the following commands:
