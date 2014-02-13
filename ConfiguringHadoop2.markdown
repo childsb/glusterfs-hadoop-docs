@@ -22,7 +22,15 @@ Navigate to $HADOOP_HOME/etc/hadoop and modify the mapred-site.xml to reflect th
 `<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>`
 
 `<!-- Put site-specific property overrides in this file. -->`
+`<property>`
+`<name>yarn.nodemanager.linux-container-executor.group</name>`
+`<value>hadoop</value>`
+`</property>`
 
+`<property>`
+`<name>yarn.nodemanager.container-executor.class</name> `
+`<value>org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor</value>`
+`</property>`
 ` <configuration>`
 `   <property>`
 `     <name>mapreduce.framework.name</name>`
