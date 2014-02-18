@@ -9,7 +9,7 @@ First, setup your hadoop cluster and confirm that you can run a standard mapredu
 
 --------------------
 
-Now, add oozie to the impersonator settings in your core-site.xml.  These two parameters are used in the YARN MapReduce job submission process.  If they are not permissive enough, oozie will fail with the error "oozie is not allowed to impersonate ...", when it attempts to submit jobs.   
+** Now, add oozie to the impersonator settings in your core-site.xml. **  These two parameters are used in the YARN MapReduce job submission process.  If they are not permissive enough, oozie will fail with the error "oozie is not allowed to impersonate ...", when it attempts to submit jobs.   
 
     <!-- machine addresses which allow oozie to impersonate --> 
     <property>
@@ -24,7 +24,7 @@ Now, add oozie to the impersonator settings in your core-site.xml.  These two pa
     </property>
 
 --------------------
-Setup your task controllers to support oozie, and make sure oozie is above the min user id.
+** Setup your task controllers to support oozie, ** and make sure oozie is above the min user id.  You may have to take the below and adapt it to your already existing task controller file. 
 
     cat << EOF > execfile
     yarn.nodemanager.linux-container-executor.group=hadoop
@@ -40,10 +40,12 @@ Make sure the file above is on all nodes of your cluster, and is identical.  You
     scp execfile node2:/etc/hadoop/conf/container-executor.cfg
 ---------------------
 
-Now, make sure that oozie allows the gluster file system.  Add this to your oozie-site.xml. 
+** Now, make sure that oozie allows the gluster file system.  ** 
+You do this by adding this to your oozie-site.xml. 
 
     <property>  
-    <name>oozie.service.HadoopAccessorService.supported.filesystems</name>
+  
+<name>oozie.service.HadoopAccessorService.supported.filesystems</name>
     <value>glusterfs</value>
     </property>
 
