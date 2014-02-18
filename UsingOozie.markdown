@@ -3,6 +3,8 @@ Apache Oozie on GlusterFS-Hadoop
 
 ** Please note that our support of oozie is still somewhat experimental.** 
 
+This wiki page demonstrates how to run oozie on top of gluster by utilization of the glusterfs-hadoop plugin.  It can also be used as a generic proof-of-concept of how to run oozie on any HCFS file system (this is a somehwat underdocumented feature of oozie, see https://issues.apache.org/jira/browse/OOZIE-1695 for progress we are making on this front).
+
 In this setup, we will run a job as user "oozie", although that is quite unconventional.  We are actively working to verify more conventional multiuser workloads. 
 
 First, setup your hadoop cluster and confirm that you can run a standard mapreduce job as a user, such as tom.  See ConfiguringAmbari2 for details.
@@ -94,14 +96,23 @@ Now, create your workflow.xml file, along with any libraries, into the dfs speci
 
     hadoop fs -put workflow.xml glusterfs:///user/oozie/oozietest2/workflow.xml
     
-Finally, you will need one of more binaries in that oozie will run.  The simplest place to start is with the oozie examples jar, like this one: https://forge.gluster.org/hadoop/simple-smokes/blobs/master/oozie-smoke/lib/oozie-examples-2.3.2-cdh3u4.jar
+**  Time to create the last component: you will need one of more binaries in that oozie will run. **   
+
+Binaries are simply the jar file which are the code which oozie calls in tasks.  ** Oozie can call "main" methods in arbitrary java classes, or it can use its MapReduce XML definitions to call Mapper and Reducer classes. **  It can also run pig/hive tasks as well. In any case, one way or another certain jars must obviously be made available to the job submission runtime.   In this particular case, we are using a MapReduce example.
+
+This is done by putting them in the "lib/" folder under your job's main directory.   
+
+** The simplest place to start is with the oozie examples jar,** like this one: https://forge.gluster.org/hadoop/simple-smokes/blobs/master/oozie-smoke/lib/oozie-examples-2.3.2-cdh3u4.jar.  So, the final step in creating our "oozietest2" job, might be to do this:
     
+    wget https://forge.gluster.org/hadoop/simple-smokes/blobs/master/oozie-smoke/lib/oozie-examples-2.3.2-cdh3u4.jar -O myjar.jar
     hadoop fs -put myjar.jar glusterfs:///user/oozie/oozietest2/lib/myjar.jar
     
-Now, finally, you can submit your oozie job like this: 
+** At this point, you have created all the necessary components for your workflow, ** both locally (your job.properties file) and on the DFS (your DFS home job directory has a workflow.xml and jar files under lib/)
+
+Now, finally, you can **  submit your oozie job **  like this: 
 
     oozie job -oozie http://localhost:11000/oozie -config j2.properties -run
     
-And monitor its progress in the YARN UI (you can also monitor it using oozie job -log commands, but sometimes it appears that OOZIE-1700 causes oozie to report failure when jobs actually succeed, so for now, we suggest monitoring the actual YARN history server).
+** And monitor its progress in the YARN UI **  (you can also monitor it using oozie job -log commands, but sometimes it appears that OOZIE-1700 causes oozie to report failure when jobs actually succeed, so for now, we suggest monitoring the actual YARN history server).
 
 
