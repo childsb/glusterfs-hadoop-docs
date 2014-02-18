@@ -1,7 +1,7 @@
 Apache Oozie on GlusterFS-Hadoop
 --------------------------------
 
-Please note that our support of oozie is still somewhat experimental.
+** Please note that our support of oozie is still somewhat experimental.** 
 
 In this setup, we will run a job as user "oozie", although that is quite unconventional.  We are actively working to verify more conventional multiuser workloads. 
 
@@ -34,7 +34,7 @@ First, setup your hadoop cluster and confirm that you can run a standard mapredu
     EOF
 -------------------
 
-Make sure the file above is on all nodes of your cluster, and is identical.  You will want to copy it over like so:
+** Make sure the file above is on all nodes of your cluster, and is identical.**  You will want to copy it over like so:
 
     scp execfile node1:/etc/hadoop/conf/container-executor.cfg
     scp execfile node2:/etc/hadoop/conf/container-executor.cfg
@@ -49,7 +49,7 @@ You do this by adding this to your oozie-site.xml.
     <value>glusterfs</value>
     </property>
 
-Drop the latest version of the glusterfs-hadoop plugin into libext, so that oozie runtime sees it and can use it to read your workflows: 
+** Drop the latest version of the glusterfs-hadoop plugin into libext, so that oozie runtime sees it** and can use it to read your workflows.   
 
     ln -s /usr/lib/hadoop/lib/glusterfs-hadoop-2.1.6.jar /usr/lib/oozie/libext/glusterfs-hadoop-symlink.jar
 
@@ -57,9 +57,15 @@ Restart all your YARN services, and start oozie.
 
 -------------------------
 
-To be safe, since its not always consistent how oozie deployments are adding jars, you can also add the plugin to the running oozie war application library path.
+To be safe, since ** its not always consistent how oozie deployments are adding jars to the oozie web app ** , you can also add the plugin to the running oozie war application library path.
 
     ln -s /usr/lib/hadoop/lib/glusterfs-hadoop-2.1.6.jar /usr/lib/oozie/libext/glusterfs-hadoop-symlink.jar
+
+---------------------------
+
+Okay ! You did it.  Now, we will breifly overview how to submit jobs into an oozie cluster.  
+
+Before moving on, breifly scan /var/log/oozie/oozie.log for errors, and if anything particularly vexing comes up, feel free to ping us on the gluster mailing list.
 
 ---------------------------
 ** How to write your own jobs ** 
