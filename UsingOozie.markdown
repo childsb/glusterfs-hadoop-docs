@@ -45,11 +45,12 @@ First, setup your hadoop cluster and confirm that you can run a standard mapredu
 ** Now, make sure that oozie allows the gluster file system.  ** 
 You do this by adding this to your oozie-site.xml. 
 
-    <property>  
-  
-<name>oozie.service.HadoopAccessorService.supported.filesystems</name>
+    <property>
+    <name>oozie.service.HadoopAccessorService.supported.filesystems</name>
     <value>glusterfs</value>
     </property>
+
+
 
 ** Drop the latest version of the glusterfs-hadoop plugin into libext, so that oozie runtime sees it** and can use it to read your workflows.   
 
