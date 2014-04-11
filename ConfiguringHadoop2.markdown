@@ -39,7 +39,7 @@ Navigate to $HADOOP_HOME/etc/hadoop and modify the mapred-site.xml to reflect th
 
 `  <property>`
 `    <name>yarn.app.mapreduce.am.staging-dir</name>`
-`    <value>glusterfs:///job-staging-yarn/</value>`
+`    <value>glusterfs:///user</value>`
 `  </property>`
 
 `  <property>`
@@ -94,10 +94,22 @@ Navigate to $HADOOP_HOME/etc/hadoop) and modify the core-site.xml to reflect the
 `  <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>`
 ` </property>`
 
-` <property>`
-`  <name>fs.glusterfs.mount</name>`
-`  <value>/mnt/glusterfs</value>`
-` </property>`
+`<!-- two volume setup. gv0 and gv1 -->`
+`<property>`
+`<name>fs.glusterfs.volumes</name>`
+`<value>gv0,gv1</value>`
+`</property>`
+
+`<property>`
+`<name>fs.glusterfs.volume.fuse.gv0</name>`
+`<value>/mnt/gv0</value>`
+`</property>`
+
+`<property>`
+`<name>fs.glusterfs.volume.fuse.gv1</name>`
+`<value>/mnt/gv1</value>`
+`</property>`
+
 
 `</configuration>`
 
