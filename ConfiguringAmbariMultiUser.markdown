@@ -37,7 +37,7 @@
 `          echo "Setting permissions on Gluster Volume located at ${gluster_mount}"`
 
 `          paths=("/tmp" "/user" "/mr_history" "${yarn_nodemanager_remote_app_log_dir}"    "${mapreduce_jobhistory_intermediate_done_dir}" "${mapreduce_jobhistory_done_dir}" "/mapred" "${yarn_staging_dir}" "${mapreduce_jobhistory_apps_logs}");`
-`          perms=(1777 0775 0755 1777 1777 0750 0770 0770 1777);`
+`          perms=(1777 0775 0755 1777 1777 0750 0770 2770 1777);`
 `          setPerms paths[@] perms[@] ${gluster_mount} ${process_user} ${process_group}`
 
 `          echo "Setuid bit on task controller"`
