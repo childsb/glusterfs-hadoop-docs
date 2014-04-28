@@ -138,13 +138,15 @@ Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent:
 
 ** Configuring the Linux Container Executor (LCE) **
 
-Note that for hadoop 2.3.0, you need to run 
+-----------------------------------------
 
-```
-org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor 
-```
+Note that amabri sets up linux containers for you, but for hadoop 2.3.0,  you need to ensure that it is running:
 
-Or enable Kerberos security in order to support multitenancy.  
+` org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor 
+
+Or that you have enabled Kerberos security in order to operate the glusterfs-hadoop plugin with normal multitenancy.
+
+------------------------------------------
 
 * In the Ambari Dashboard, select the YARN service and then click the "Stop-All" button.
 
