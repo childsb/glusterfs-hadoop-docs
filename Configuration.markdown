@@ -35,7 +35,7 @@ please see - [Configuring CDH5] (https://forge.gluster.org/hadoop/pages/Configur
 
 **For Cloudera Hadoop 5 (CDH 5): Full security mode ** 
 
-please see - [Configuring CDH5[ (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
+please see - [Configuring CDH5] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
 
 
 **User Guide:** If you have questions about using specific components within the Hadoop Ecosystem, [please see the user guide](https://forge.gluster.org/hadoop/pages/UserGuide)
