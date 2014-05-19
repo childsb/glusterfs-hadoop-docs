@@ -10,8 +10,7 @@
 
 3) Now add these properties to your core-site.xml 
 
-```
-<property>
+`<property>
     <name>fs.glusterfs.impl</name>
     <value>org.apache.hadoop.fs.glusterfs.GlusterFileSystem</value>
   </property>
@@ -33,14 +32,11 @@
     <property>
     <name>fs.AbstractFileSystem.glusterfs.impl</name>
     <value>org.apache.hadoop.fs.local.GlusterFsCRC</value>
-  </property>
-```
+  </property>`
 
 4) Now edit your yarn-site.xml file
 
-
-```
-<property>
+`<property>
     <name>yarn.nodemanager.aux-services</name>
     <value>mapreduce_shuffle</value>
 </property>
@@ -71,43 +67,33 @@
 <property>
    <name>mapreduce.jobtracker.address</name>
    <value>localhost</value>
-</property>
-```
+</property>'
 
 5) Make sure all your hadoop libraries are on the classpath.  A good way to do this is to simply hardcode them, into the mapreduce.application.classpath parameter.  This prevents reliance on environmental variables and is easier to debug.  
 
-```
-   <name>mapreduce.application.classpath</name>
-   <value>/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*</value>
-```
+`<name>mapreduce.application.classpath</name>
+   <value>/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*</value>`
 
 6) And then add this property to your mapred-site.xml as well.
 
-```
-<name>yarn.app.mapreduce.am.staging-dir</name>
-<value>glusterfs:///tmp/hadoop-yarn/staging</value>
-
-```
+`<name>yarn.app.mapreduce.am.staging-dir</name>
+<value>glusterfs:///tmp/hadoop-yarn/staging</value>`
 
 7) Update your remote logging directory to write logs to glusterfs:///.  
 
 
-```
-<property>
+`<property>
     <description>Where to aggregate logs to.</description>
     <name>yarn.nodemanager.remote-app-log-dir</name>
     <value>glusterfs:///var/log/hadoop-yarn/apps</value>
-  </property>
-```
+  </property>`
 
 Later, if you need to debug a job, yarn will be able to pull the logs up for you using this command (replace the 1234... number with the application id of your job) : `/usr/lib/hadoop-yarn/bin/yarn --applicationId 12345678_1234 `
 
 8) Update your staging directory in yarn-site.xml
 
-```
- <name>yarn.app.mapreduce.am.staging-dir</name>
- <value>glusterfs:///tmp/hadoop-yarn/staging</value>
-```
+ `<name>yarn.app.mapreduce.am.staging-dir</name>
+ <value>glusterfs:///tmp/hadoop-yarn/staging</value>`
 
 9) Thats it ! Now you can run users, albeit just as the yarn user, in CDH5.  
 
@@ -123,15 +109,14 @@ And finally, on each node, make sure "yarn.nodemanager.hostname" points to the I
 
 2) You can now restart all your hadoop services.   A simple snippet to do this follows:
 
-```
-killall -9 java
-export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
-export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
-export HADOOP_COMMON_HOME=/usr/lib/hadoop/
-/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop nodemanager
-/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop resourcemanager 
-/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
-/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager 
+    killall -9 java
+    export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
+    export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
+    export HADOOP_COMMON_HOME=/usr/lib/hadoop/
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop nodemanager
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop resourcemanager 
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager 
 
-```
+
 
