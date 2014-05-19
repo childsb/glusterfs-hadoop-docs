@@ -2,7 +2,7 @@
 
 Configuring glusterfs-hadoop on CDH-5
 
-[[Configuration_GENERIC]]
+[[General_Configuration_CDH5]]
 This document is a work in progress.  The steps for setting up CDH5 on glusterfs-hadoop are outlined below. 
 
 1) yum install CDH5 as you normally would from the cloudera repos. 
