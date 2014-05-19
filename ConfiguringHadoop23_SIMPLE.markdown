@@ -15,19 +15,15 @@ At this point, you should be able to run jobs as the "yarn" user, but as no othe
     echo "yarn.nodemanager.linux-container-executor.group=hadoop`
     banned.users=yarn
     min.user.id=1000
-    allowed.system.users=tom"
-    >> /etc/hadoop/conf/ container-executor.cfg
+    allowed.system.users=tom" >> /etc/hadoop/conf/ container-executor.cfg
 
 * Copy the above file to all machines on your cluster. 
 
-* Now, you must make sure there is some mechanism to ensure that ll the **users** and **groups** i the above file have identical UIDs or GIDs.  
-
-Method 1) One simple way is to copy /etc/passwd and /etc/group from your head node to all others.  
-
-Method 2) Checkout out the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] .  This section can be implemented independently. 
+* Now, you must make sure there is some mechanism to ensure that ll the **users** and **groups** i the above file have identical UIDs or GIDs.   There are many ways to do this.  (1) you can copy /etc/passwd and /etc/group from your head node to all others OR  (2) Follow the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] OR (3) Use your companies internal LDAP servers to provision system ids for you.    
 
 * Ensure that the entries in allowed.system.users have UID > 1000.  
 
 * Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP""  section of  [[
 General_Configuration_CDH5]]
+
 
