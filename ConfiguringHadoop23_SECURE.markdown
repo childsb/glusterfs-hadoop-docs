@@ -1,6 +1,14 @@
 Follow the Part 1 of [[ConfiguringHadoop23_SIMPLE]].
 
-# Securing your cluster with Kerberos and IPA # 
+# STOP all hadoop services and remove hadoop users. # 
+
+* Stop all hadoop services.  You can do this quickly with `killall -9 java` or you can find pids for the NodeManager and ResourceManager processes running  "jps" (do this as root, so you're gauranteed to see all of them), and kill them directly.
+
+* Remove users/groups created for your old cluster, such as "tom", "yarn", and group "hadoop". 
+
+# Set up IPA #
+
+1) As root, remove or back up any data for users deleted in the previous step.  You can restore that data later.  
 
 2) Now, the head node of your cluster, `yum install ipa-server.`
 
@@ -10,7 +18,7 @@ Follow the Part 1 of [[ConfiguringHadoop23_SIMPLE]].
 
 5) Add the hadoop group, the yarn group - using ipa group-add.
 
-6) Add members using "ipa group-add-member" , for each user who will be running hadoop jobs on your cluster.  
+6) Add members using "ipa group-add-member" , for each user who will be running hadoop jobs on your cluster.   For example, user tom would be added using ipa.  
 
 Assuming your principals are "rm" / "nm"
 
