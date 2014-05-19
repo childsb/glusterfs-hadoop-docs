@@ -4,7 +4,7 @@
 
 This is the easiest way to get started, and then we can layer security on to the cluster afterwards.
 
-[[General_Configuration_CDH5 Instructions for base setup of CDH 5]]
+[[General_Configuration_CDH5]]
 
 # Securing your cluster with Kerberos and IPA # 
 
