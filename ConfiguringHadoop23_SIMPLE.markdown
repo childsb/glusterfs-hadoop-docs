@@ -23,7 +23,6 @@ At this point, you should be able to run jobs as the "yarn" user, but as no othe
 
 * Ensure that the entries in allowed.system.users have UID > 1000.  
 
-* Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP""  section of  [[
-General_Configuration_CDH5]]
+* Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP""  section of  [[General_Configuration_CDH5]]
 
 
