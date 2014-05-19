@@ -1,4 +1,4 @@
-# Setting up a basic hadoop cluster on CDH5 on glusterfs-hadoop #
+# Base CDH5 Setup #
 
 1) First, set up a base hadoop on gluster configuration in CDH5, in insecure mode, without linux containers. 
 
