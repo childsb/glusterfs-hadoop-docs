@@ -10,7 +10,7 @@ This is the easiest way to get started, and then we can layer security on to the
 
 2) Now, the head node of your cluster, `yum install ipa-server.`
 
-3) Run ipa-client-install on each client.  Enter in the master name as the KDC server when doing this. 
+3) Run `ipa-client-install` on each client.  Enter in the master name as the KDC server when doing this. 
 
 4) Add service principals on the head node using ipa-service-add for resource manager and node manager.
 
