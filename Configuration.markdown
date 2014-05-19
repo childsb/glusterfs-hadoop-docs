@@ -25,15 +25,17 @@ This is a requirement of Hadoop. Hadoop has not yet been widely tested with Open
 
 ** Configuring Hadoop related tools **
 
-**For Hadoop 1.x:** please see - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
+**For Hadoop 1.x:** 
+See - [Configuring Hadoop 1.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop1) for GlusterFS
 
-**For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
+**For Hadoop 2.x:** 
+See - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
 
 **For CDH5: Simple Security Mode ** 
-please see - [CDH5 (simple) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SIMPLE) for GlusterFS
+See - [CDH5 (simple) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SIMPLE) for GlusterFS
 
 **For CDH 5: Full security mode ** 
-please see - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
+See - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
 
 
 **User Guide:** If you have questions about using specific components within the Hadoop Ecosystem, [please see the user guide](https://forge.gluster.org/hadoop/pages/UserGuide)
