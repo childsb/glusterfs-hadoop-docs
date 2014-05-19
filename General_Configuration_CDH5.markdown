@@ -1,21 +1,13 @@
-Generic Configuration instructions 
+## On each machine ## 
 
-1) Install into your /etc/yum.repos.d/ the CDH5 yum repos .
-
-Get the repo: 
+1) Get the CDH5 repo: `yum-config-manager --add-repo http://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo`
     
-    yum-config-manager --add-repo http://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo
+2) and then install it: `yum-config-manager --enable cloudera-cdh5`
+
+3) Now, yum install the hadoop contents on your system: `yum install hadoop hadoop-mapreduce hadoop-yarn`
     
-and then install it: 
+## On head node ##
 
-    yum-config-manager --enable cloudera-cdh5
-
-2) Now, yum install the hadoop contents on your system: 
-
-    yum install hadoop
-    yum install hadoop-mapreduce
-    yum install hadoop-yarn
-    
 3) Now add these properties to your core-site.xml 
 
 ```
@@ -80,7 +72,6 @@ and then install it:
    <name>mapreduce.jobtracker.address</name>
    <value>localhost</value>
 </property>
-
 ```
 
 5) Make sure all your hadoop libraries are on the classpath.  A good way to do this is to simply hardcode them, into the mapreduce.application.classpath parameter.  This prevents reliance on environmental variables and is easier to debug.  
@@ -109,11 +100,9 @@ and then install it:
   </property>
 ```
 
-Later, if you need to debug a job, yarn will be able to pull the logs up for you using this command (replace the 1234... number with the application id of your job).
+Later, if you need to debug a job, yarn will be able to pull the logs up for you using this command (replace the 1234... number with the application id of your job) : `/usr/lib/hadoop-yarn/bin/yarn --applicationId 12345678_1234 `
 
-`/usr/lib/hadoop-yarn/bin/yarn --applicationId 12345678_1234 `
-
-8) 
+8) Update your staging directory in yarn-site.xml
 
 ```
  <name>yarn.app.mapreduce.am.staging-dir</name>
@@ -121,3 +110,28 @@ Later, if you need to debug a job, yarn will be able to pull the logs up for you
 ```
 
 9) Thats it ! Now you can run users, albeit just as the yarn user, in CDH5.  
+
+## SYNCHRONIZE CONFIGURATION SETTINGS
+
+Copy your core-site.xml, yarn-site.xml, and mapred-site.xml files to each node on the cluster.
+
+And finally, on each node, make sure "yarn.nodemanager.hostname" points to the IP of your master node.
+
+## TESTING STARTUP 
+
+1) su to user "yarn".
+
+2) You can now restart all your hadoop services.   A simple snippet to do this follows:
+
+```
+killall -9 java
+export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
+export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
+export HADOOP_COMMON_HOME=/usr/lib/hadoop/
+/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop nodemanager
+/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop resourcemanager 
+/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
+/usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager 
+
+```
+
