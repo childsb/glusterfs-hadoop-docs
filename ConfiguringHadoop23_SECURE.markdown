@@ -1,10 +1,4 @@
-# Base CDH5 Setup #
-
-1) First, set up a base hadoop on gluster configuration in CDH5, in insecure mode, without linux containers. 
-
-This is the easiest way to get started, and then we can layer security on to the cluster afterwards.
-
-[[General_Configuration_CDH5]]
+Follow the Part 1 of [[ConfiguringHadoop23_SIMPLE]].
 
 # Securing your cluster with Kerberos and IPA # 
 
