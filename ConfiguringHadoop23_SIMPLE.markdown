@@ -1,14 +1,33 @@
-**WORK IN PROGRESS**
+## Part 1 : Base setup.
 
-This page outlines how to use our GlusterContainerExecutor to run CDH5 (cloudera hadoop) with simple security, while still maintaining multitenancy.
+First, we'll set up hadoop on gluster, with no security, using the yarn container executor (which is the default).
 
-1) Install the glusterfs-hadoop plugin as you normally would
+**After that** we will add the GlusterContainer Executor in as a quick and simple way to run jobs on CDH5 against glusterfs with multitenancy.
 
-2) Setup the LinuxContainerExecutor as you normally would.
+[[General_Configuration_CDH5]]
 
-3) Change the Container executor class in your yarn-site.xml to 
+## Part 2 : Adding simple "linux container" based multitenancy 
 
-'''
-org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor.java
-'''
+At this point, you should be able to run jobs as the "yarn" user, but as no other user.  
+
+* Create a container-executor.cfg file , and write it out to /etc/hadoop/conf.  You can do this in the shell like so, for a user "tom".  You can add other users as well in a comma separated list (i.e. `allowed.system.users=tom,mary,joe` )
+
+    echo "yarn.nodemanager.linux-container-executor.group=hadoop`
+    banned.users=yarn
+    min.user.id=1000
+    allowed.system.users=tom"
+    >> /etc/hadoop/conf/ container-executor.cfg
+
+* Copy the above file to all machines on your cluster. 
+
+* Now, you must make sure there is some mechanism to ensure that ll the **users** and **groups** i the above file have identical UIDs or GIDs.  
+
+Method 1) One simple way is to copy /etc/passwd and /etc/group from your head node to all others.  
+
+Method 2) Checkout out the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] .  This section can be implemented independently. 
+
+* Ensure that the entries in allowed.system.users have UID > 1000.  
+
+* Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP""  section of  [[
+General_Configuration_CDH5]]
 
