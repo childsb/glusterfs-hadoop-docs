@@ -29,11 +29,10 @@ This is a requirement of Hadoop. Hadoop has not yet been widely tested with Open
 
 **For Hadoop 2.x:** please see - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/ConfiguringHadoop2) for GlusterFS
 
-**For Cloudera Hadoop 5 (CDH5): Simple Security Mode ** 
+**For CDH5: Simple Security Mode ** 
 please see - [CDH5 (simple) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SIMPLE) for GlusterFS
 
-**For Cloudera Hadoop 5 (CDH 5): Full security mode ** 
-
+**For CDH 5: Full security mode ** 
 please see - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
 
 
