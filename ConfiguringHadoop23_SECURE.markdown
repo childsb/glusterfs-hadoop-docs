@@ -1,10 +1,4 @@
-**WORK IN PROGRESS**
-
-Configuring glusterfs-hadoop on CDH-5
-
 # Setting up a basic hadoop cluster on CDH5 on glusterfs-hadoop #
-
-This document is a work in progress.  The steps for setting up CDH5 on glusterfs-hadoop are outlined below. 
 
 1) First, set up a base hadoop on gluster configuration in CDH5, in insecure mode, without linux containers. 
 
@@ -14,7 +8,7 @@ This is the easiest way to get started, and then we can layer security on to the
 
 # Securing your cluster with Kerberos and IPA # 
 
-2) Now, the head node of your cluster, yum install ipa-server.
+2) Now, the head node of your cluster, `yum install ipa-server.`
 
 3) Run ipa-client-install on each client.  Enter in the master name as the KDC server when doing this. 
 
