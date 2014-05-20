@@ -23,8 +23,10 @@
 `yarn.nodemanager.local-dirs=/var/lib/hadoop-yarn/cache/${user.name}/nm-local-dir` 
 `yarn.nodemanager.log-dirs=/var/log/hadoop-yarn/containers` 
 `yarn.nodemanager.remote-app-log-dir=glusterfs:///var/log/hadoop-yarn/apps` 
-`yarn.application.classpath=$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*</value>
+`yarn.application.classpath=/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*</value>
 mapreduce.jobtracker.address=**MASTER**`
+
+Now, in your mapred-site.xml file:
 
 5) Make sure all your hadoop libraries are on the classpath.  A good way to do this is to simply hardcode them, into the mapreduce.application.classpath parameter.  This prevents reliance on environmental variables and is easier to debug.  
 
@@ -32,7 +34,7 @@ mapreduce.jobtracker.address=**MASTER**`
 
 6) And then add this property to your mapred-site.xml as well.
 
-`<name>yarn.app.mapreduce.am.staging-dir</name>
+`<name></namyarn.app.mapreduce.am.staging-dire>
 <value>glusterfs:///tmp/hadoop-yarn/staging</value>`
 
 7) Update your remote logging directory to write logs to glusterfs:///.  
@@ -59,7 +61,7 @@ And finally, on each node, make sure "yarn.nodemanager.hostname" points to the I
 
 ## TESTING STARTUP 
 
-1) su to user "yarn".
+1) su to user "yarn".  This user is created for you when you yum install cloudera hadoop. 
 
 2) You can now restart all your hadoop services.   A simple snippet to do this follows:
 
