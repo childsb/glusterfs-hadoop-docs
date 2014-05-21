@@ -5,6 +5,8 @@
 2) and then install it: `yum-config-manager --enable cloudera-cdh5`
 
 3) Now, yum install the hadoop contents on your system: `yum install hadoop hadoop-mapreduce hadoop-yarn`
+
+4) Install jdk-devel packages.  For example `yum install -y java-1.6.0-openjdk-devel.x86_64`
     
 ## On head node ##
 
