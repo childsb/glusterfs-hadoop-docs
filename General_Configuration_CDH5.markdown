@@ -81,6 +81,7 @@ We will reference it at other times.
 
 2) You can now restart all your hadoop services.   A simple snippet to do this follows:
 
+    chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
     export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
     export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
