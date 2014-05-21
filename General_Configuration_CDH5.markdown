@@ -77,11 +77,14 @@ Now save this snippet in /opt/env.sh, with executable permissions (make sure you
 
 We will reference it at other times. 
 
-## TESTING STARTUP 
+##  STARTUP 
+
+0)  Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn can write to it.
 
 1) su to user "yarn".  This user is created for you when you yum install cloudera hadoop. 
 
 2) You can now restart all your hadoop services.   A simple snippet to do this follows:
+
 
     chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
