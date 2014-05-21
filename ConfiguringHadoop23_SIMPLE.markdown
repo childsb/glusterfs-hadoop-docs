@@ -6,9 +6,15 @@ First, we'll set up hadoop on gluster, with no security, using the yarn containe
 
 [[General_Configuration_CDH5]]
 
-## Part 2 : Adding simple "linux container" based multitenancy 
+## Part 2 : Adding simple "gluster container executor" (which is a simplified version of the linux container executor which works w/o kerberos).
 
-At this point, you should be able to run jobs as the "yarn" user, but as no other user.  
+
+* Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
+
+    yarn.nodemanager.container-executor.class=     org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor
+
+    yarn.nodemanager.linux-container-executor.group=
+        hadoop
 
 * Create a container-executor.cfg file , and write it out to /etc/hadoop/conf.  You can do this in the shell like so, for a user "tom".  You can add other users as well in a comma separated list (i.e. `allowed.system.users=tom,mary,joe` )
 
