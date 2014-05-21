@@ -1,4 +1,4 @@
-Follow the [[General_Configuration_CDH5]] setup.  
+Follow the [[ConfiguringHadoop23_SIMPLE]] setup.  
 
 # STOP all hadoop services and remove hadoop users. # 
 
