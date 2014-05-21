@@ -59,6 +59,20 @@ Copy your core-site.xml, yarn-site.xml, and mapred-site.xml files to each node o
 
 And finally, on each node, make sure "yarn.nodemanager.hostname" points to the IP of your master node.
 
+## Saving hadoop Evn variables
+
+Now save this snippet in /opt/env.sh, with executable permissions (make sure you modify the JAVA_HOME to match your java distro).
+
+   (some might require fixing... TODO)
+    export HADOOP_CONF_DIR=/etc/hadoop/conf
+    export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
+    export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
+    export HADOOP_YARN_HOME=/usr/lib/hadoop-yarn/
+    export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce/
+    export YARN_HOME=/usr/lib/hadoop-yarn/
+
+We will reference it at other times. 
+
 ## TESTING STARTUP 
 
 1) su to user "yarn".  This user is created for you when you yum install cloudera hadoop. 
