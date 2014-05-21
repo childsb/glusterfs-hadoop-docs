@@ -79,12 +79,11 @@ We will reference it at other times.
 
 ##  STARTUP 
 
-0)  Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn can write to it.
+0)  Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn OWNS it.  This is essential for running a mapreduce job : Otherwise, your jobs can hang.  ALSO if on VMs,  set your yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. set it to half the memory you've allocated to the VM itself). 
 
 1) su to user "yarn".  This user is created for you when you yum install cloudera hadoop. 
 
 2) You can now restart all your hadoop services.   A simple snippet to do this follows:
-
 
     chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
