@@ -4,6 +4,8 @@ Follow the [[ConfiguringHadoop23_SIMPLE]] setup.
 
 * Stop all hadoop services.  You can do this quickly with `killall -9 java` or you can find pids for the NodeManager and ResourceManager processes running  "jps" (do this as root, so you're gauranteed to see all of them), and kill them directly.
 
+Now, we will change the GlusterContainerExecutor to the LinuxContainerExecutor.  Afterwards, we will move over to using kerberos authentication for the hadoop group, the yarn user, and our other system users.
+
 * Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
 
     yarn.nodemanager.container-executor.class=     org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor
