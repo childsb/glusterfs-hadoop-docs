@@ -1,14 +1,16 @@
 First, Follow the [[General_Configuration_CDH5/]] setup.  
 
+** setup linux container configuration ** 
+
 Then, Follow the "Setup Linux Container" Instructions on the Bottom of [[ConfiguringHadoop23_SIMPLE]]
 
-Now, we will setup kerberos:
+** setup kerberos ** 
 
 # STOP all hadoop services and remove hadoop users. # 
 
 * Stop all hadoop services.  You can do this quickly with `killall -9 java` or you can find pids for the NodeManager and ResourceManager processes running  "jps" (do this as root, so you're gauranteed to see all of them), and kill them directly.
 
-* Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
+* Now, edit yarn-site.xml to contain following properties:
 
     yarn.nodemanager.container-executor.class=     org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor
 
