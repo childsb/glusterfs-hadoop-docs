@@ -17,9 +17,7 @@ First, we'll set up hadoop on gluster, with no security, using the yarn containe
         hadoop
 
 
-* Create a linux container executor configuration as described here.
-
-[[LCE_SETUP]]
+* Create a linux container executor configuration as described at the end of this page.
 
 * Copy the above file container-executor.cfg file to all machines on your cluster, into the /etc/hadoop/conf/ directory.
 
@@ -29,4 +27,13 @@ First, we'll set up hadoop on gluster, with no security, using the yarn containe
 
 * Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP""  section of  [[General_Configuration_CDH5]]
 
+--------------------
 
+Linux Container Executor setup
+
+Create a container-executor.cfg file , and write it out to /etc/hadoop/conf.  You can do this in the shell like so, for a user "tom".  You can add other users as well in a comma separated list (i.e. `allowed.system.users=tom,mary,joe` )
+
+    echo "yarn.nodemanager.linux-container-executor.group=hadoop`
+    banned.users=yarn
+    min.user.id=1000
+    allowed.system.users=tom" >> /etc/hadoop/conf/ container-executor.cfg
