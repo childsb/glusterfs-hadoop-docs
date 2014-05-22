@@ -8,8 +8,6 @@ Now, we will setup kerberos:
 
 * Stop all hadoop services.  You can do this quickly with `killall -9 java` or you can find pids for the NodeManager and ResourceManager processes running  "jps" (do this as root, so you're gauranteed to see all of them), and kill them directly.
 
-Now, we will change the GlusterContainerExecutor to the LinuxContainerExecutor.  Afterwards, we will move over to using kerberos authentication for the hadoop group, the yarn user, and our other system users.
-
 * Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
 
     yarn.nodemanager.container-executor.class=     org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor
@@ -19,22 +17,50 @@ Now, we will change the GlusterContainerExecutor to the LinuxContainerExecutor. 
 
 # Set up IPA #
 
-1) As root, remove or back up any data for users deleted in the previous step.  You can restore that data later.  
+- Now, the head node of your cluster, `yum install ipa-server.`
 
-2) Now, the head node of your cluster, `yum install ipa-server.`
+-  Run `ipa-client-install` on each client.  Enter in the master name as the KDC server when doing this. 
 
-3) Run `ipa-client-install` on each client.  Enter in the master name as the KDC server when doing this. 
+-  Add service principals on the head node using ipa-service-add for resource manager and node manager.
 
-4) Add service principals on the head node using ipa-service-add for resource manager and node manager.
+-  Add the hadoop group, the yarn group - using ipa group-add.
 
-5) Add the hadoop group, the yarn group - using ipa group-add.
+-  Add members using "ipa group-add-member" , for each user who will be running hadoop jobs on your cluster.   For example, user tom would be added using ipa.  
 
-6) Add members using "ipa group-add-member" , for each user who will be running hadoop jobs on your cluster.   For example, user tom would be added using ipa.  
+Since you need a resourcemanager and nodemanager principal your principals are "rm" / "nm"
 
-Assuming your principals are "rm" / "nm"
+-  Now, get keytabs for each of the yarn and nodemanager services, and write them to a temp file.  We'll move it to /etc later.
 
-7) Now, get keytabs for each of the yarn and nodemanager services, and write them to a temp file.  We'll move it to /etc later.
+-  Copy those keytabs to a directory on your local file system for each node.  
 
-8) Copy those keytabs to a directory on your local file system for each node.  
+-  Configure your hadoop cluster with kerberos key tabs, updating the yarn-site.xml and core-site.xml the standard method.
 
-9) Configure your hadoop cluster with kerberos key tabs, updating the yarn-site.xml and core-site.xml the standard method.
+Note that: In this example, we reused keytab/service name for the first machine on all other nodes of cluster.  That is a bit of a comprimise in terms of security : it means that if someone intercepts the keytab, all machines are comprimised with respect to that particular service.
+
+# Follow Standard Kerberos Setup #
+
+On your core-site.xml:
+1) set hadoop.security.authentication=true
+2) set hadoop.security.authorization=true
+3) Add the following entry: 
+    <name>hadoop.security.auth_to_local</name>
+    <value>
+        RULE:[1:$1@$0](.*@LAB.BOS.REDHAT.COM)s/@.*//
+        DEFAULT
+    </value>
+
+On your yarn-site.xml: 
+
+1) set yarn.resourcemanager.keytab=/etc/hadoop/conf/rm.keytab
+2) yarn.nodemanager.keytab=nm/YOUR_HEAD_NODE@YOUR_REALM
+3)yarn.resourcemanager.keytab=rm/YOUR_HEAD_NODE@YOUR_REALM
+
+# Set user passwords for users # 
+
+You can set sally password through the free ipa web ui : http://www.freeipa.org/page/Web_UI.  
+
+# Log in a user and run a job # 
+
+Now, you will want to run "kinit yarn", and restart all services.  
+
+Then kerberos to login a hadoop user, i.e. `kinit sally`... and enter sally's password. 
