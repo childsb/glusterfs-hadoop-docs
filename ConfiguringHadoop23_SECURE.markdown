@@ -40,9 +40,10 @@ Note that: In this example, we reused keytab/service name for the first machine 
 # Follow Standard Kerberos Setup #
 
 On your core-site.xml:
-1) set hadoop.security.authentication=true
-2) set hadoop.security.authorization=true
-3) Add the following entry: 
+
+* set hadoop.security.authentication=true
+* set hadoop.security.authorization=true
+* Add the following entry: 
     <name>hadoop.security.auth_to_local</name>
     <value>
         RULE:[1:$1@$0](.*@LAB.BOS.REDHAT.COM)s/@.*//
@@ -51,9 +52,9 @@ On your core-site.xml:
 
 On your yarn-site.xml: 
 
-1) set yarn.resourcemanager.keytab=/etc/hadoop/conf/rm.keytab
-2) yarn.nodemanager.keytab=nm/YOUR_HEAD_NODE@YOUR_REALM
-3)yarn.resourcemanager.keytab=rm/YOUR_HEAD_NODE@YOUR_REALM
+* set yarn.resourcemanager.keytab=/etc/hadoop/conf/rm.keytab
+* yarn.nodemanager.keytab=nm/YOUR_HEAD_NODE@YOUR_REALM
+* yarn.resourcemanager.keytab=rm/YOUR_HEAD_NODE@YOUR_REALM
 
 # Set user passwords for users # 
 
