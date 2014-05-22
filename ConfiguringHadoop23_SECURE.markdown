@@ -1,4 +1,8 @@
-Follow the [[ConfiguringHadoop23_SIMPLE]] setup.  
+First, Follow the [[General_Configuration_CDH5/]] setup.  
+
+Then, Follow the "Setup Linux Container" Instructions on the Bottom of [[ConfiguringHadoop23_SIMPLE]]
+
+Now, we will setup kerberos:
 
 # STOP all hadoop services and remove hadoop users. # 
 
