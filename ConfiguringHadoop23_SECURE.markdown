@@ -46,7 +46,7 @@ On your core-site.xml:
 * Add the following entry: 
     <name>hadoop.security.auth_to_local</name>
     <value>
-        RULE:[1:$1@$0](.*@LAB.BOS.REDHAT.COM)s/@.*//
+        RULE:[1:$1@$0](.*@YOUR_REALM)s/@.*//
         DEFAULT
     </value>
 
