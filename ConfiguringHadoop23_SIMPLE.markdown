@@ -13,7 +13,9 @@ Then we will add the GlusterContainer Executor in as a quick and simple way to r
 
 * Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
 
-    yarn.nodemanager.container-executor.class=        org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor
+    yarn.nodemanager.container-executor.class=        
+    org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor   
+
     yarn.nodemanager.linux-container-executor.group=
     hadoop
 
