@@ -1,8 +1,10 @@
-## Part 1 : Base setup.
+## Overview.
 
 First, we'll set up hadoop on gluster, with no security, using the yarn container executor (which is the default).
 
-**After that** we will add the GlusterContainer Executor in as a quick and simple way to run jobs on CDH5 against glusterfs with multitenancy.
+Then we will add the GlusterContainer Executor in as a quick and simple way to run jobs on CDH5 against glusterfs with multitenancy.
+
+## Part 1 : Follow the directions for generic configuration of hadoop on Gluster for CDH5.
 
 [[General_Configuration_CDH5]]
 
