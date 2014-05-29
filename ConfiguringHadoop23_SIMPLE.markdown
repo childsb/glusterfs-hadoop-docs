@@ -10,7 +10,13 @@ Then we will add the GlusterContainer Executor in as a quick and simple way to r
 
 After this, you can execute jobs, but only as the "yarn" user.  To execute as any user, you we will enable the GlusterContainerExecutor.
 
-## Part 2 : Adding simple "gluster container executor" (which is a simplified version of the linux container executor which works w/o kerberos).
+In any case, confirm that you can indeed start your yarn service, by exporting environment variables and then starting NM and RM services.
+
+    source env.sh
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
+    /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager
+
+## Part 2 : Running a GlusterContainerExecutor
 
 
 Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
