@@ -8,6 +8,8 @@ Then we will add the GlusterContainer Executor in as a quick and simple way to r
 
 [[General_Configuration_CDH5]]
 
+After this, you can execute jobs, but only as the "yarn" user.  To execute as any user, you we will enable the GlusterContainerExecutor.
+
 ## Part 2 : Adding simple "gluster container executor" (which is a simplified version of the linux container executor which works w/o kerberos).
 
 
