@@ -15,10 +15,8 @@ Setup the linux container executor in your yarn-site.xml, add/modify the followi
 
     yarn.nodemanager.container-executor.class=        
     org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor   
-
     yarn.nodemanager.linux-container-executor.group=
     hadoop
-
 
 Create a linux container executor configuration as described at the end of this page.
 
