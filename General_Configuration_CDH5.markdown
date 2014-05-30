@@ -16,6 +16,9 @@
 `fs.default.name=glusterfs:///` 
 `fs.glusterfs.mount=/mnt/glusterfs` 
 `fs.AbstractFileSystem.glusterfs.impl=org.apache.hadoop.fs.local.GlusterFs` 
+`fs.glusterfs.volumes=HadoopVol`
+`fs.glusterfs.volume.fuse.gv0=/mnt/glusterfs`
+
 
 4) Now edit your yarn-site.xml file.  Note that the "**MASTER**" value at the bottom needs to be the IP of your master node.
 
@@ -34,7 +37,11 @@ Now, in your mapred-site.xml file:
 
 5.1) Make sure all your hadoop libraries are on the classpath.  A good way to do this is to simply hardcode them, into the mapreduce.application.classpath parameter.  This prevents reliance on environmental variables and is easier to debug.  
 
+`mapreduce.jobtracker.system.dir=glusterfs:///mapred/system`
 `mapreduce.application.classpath=/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*`
+
+5.2) Add a "mapred/system/" directory into /mnt/glusterfs.  Then set its privileges:
+`chown mapred:hadoop /mnt/glusterfs`.
 
 6) And then add this property to your mapred-site.xml as well.
 
