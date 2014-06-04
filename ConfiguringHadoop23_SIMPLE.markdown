@@ -8,31 +8,43 @@ Then we will add the GlusterContainer Executor in as a quick and simple way to r
 
 [[General_Configuration_CDH5]]
 
-After this, you can execute jobs, but only as the "yarn" user.  To execute as any user, you we will enable the GlusterContainerExecutor.
+After this, you can execute jobs, but only as the "yarn" user. 
 
-In any case, confirm that you can indeed start your yarn service, by exporting environment variables and then starting NM and RM services.
-
+Now, confirm that you can indeed start your yarn service, by exporting environment variables and then starting NM and RM services.  
+    
+    su yarn
     source env.sh
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager
 
-## Part 2 : Running a GlusterContainerExecutor
+These to services should start without error. 
 
+## Part 2 : Running Hadoop with the GlusterContainerExecutor
 
-Setup the linux container executor in your yarn-site.xml, add/modify the following properties:
+1) Add/modify the following properties in the yarn-site.xml file.
 
     yarn.nodemanager.container-executor.class=        
     org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor   
     yarn.nodemanager.linux-container-executor.group=
     hadoop
 
-Create a linux container executor configuration as described at the end of this page.
+2) Create a linux container executor configuration as described at the end of this page.
 
-Copy the above file container-executor.cfg file to all machines on your cluster, into the /etc/hadoop/conf/ directory.
+3) Copy the aforementioned container-executor.cfg file to all machines on your cluster, into the /etc/hadoop/conf/ directory.
 
-Now, you must make sure there is some mechanism to ensure that ll the **users** and **groups** i the above file have identical UIDs or GIDs.   There are many ways to do this.  (1) you can copy /etc/passwd and /etc/group from your head node to all others OR  (2) Follow the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] OR (3) Use your companies internal LDAP servers to provision system ids for you.    
+4) Now, you must make sure there is some mechanism to ensure that all the **users** and **groups** in the above file have identical UIDs or GIDs.   (i.e. user "hadoop" should have the same uid on both nodes).
 
-Ensure that the entries in allowed.system.users have UID > 1000.  
+4.0) Ensure that users who will execute jobs on the system have >=  the container exectuor  minimum id specified in the file above.
+
+There are many ways to do this do either 4.1,4.2, or 4.3 below:
+
+(4.1) you can copy /etc/passwd and /etc/group from your head node to all others  
+
+(4.2) Follow the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] OR 
+
+(4.3) Use your companies internal LDAP servers to provision system ids for you.    
+
+--------------------
 
 Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the TESTING STARTUP  section of  [[General_Configuration_CDH5]]
 
