@@ -1,100 +1,113 @@
-## On each machine ## 
+##On Each Node
 
-1) Get the CDH5 repo: `yum-config-manager --add-repo http://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo`
+1) Get the CDH5 repo: 
+    yum-config-manager --add-repo http://archive.cloudera.com/cdh5/redhat/5/x86_64/cdh/cloudera-cdh5.repo
     
-2) and then install it: `yum-config-manager --enable cloudera-cdh5`
+2) Then install it: 
+    yum-config-manager --enable cloudera-cdh5
 
-3) Now, yum install the hadoop contents on your system: `yum install hadoop hadoop-mapreduce hadoop-yarn`
+3) Install the hadoop contents on your system: 
+    yum install hadoop hadoop-mapreduce hadoop-yarn
 
-4) Install jdk-devel packages.  For example `yum install -y java-1.6.0-openjdk-devel.x86_64`
+4) Install jdk-devel packages.
+    yum install -y java-<$VERSION>-openjdk-devel.x86_64
     
-## On head node ##
+##On Head Node
 
-3) Now add these properties to your core-site.xml.  For brevity, we specify them as key=value pairs. 
+_All *.xml files below can be found in `/etc/hadoop/conf/`.  For brevity, we specify them as key = value pairs._
 
-`fs.glusterfs.impl=org.apache.hadoop.fs.glusterfs.GlusterFileSystem` 
-`fs.default.name=glusterfs:///` 
-`fs.glusterfs.mount=/mnt/glusterfs` 
-`fs.AbstractFileSystem.glusterfs.impl=org.apache.hadoop.fs.local.GlusterFs` 
-`fs.glusterfs.volumes=HadoopVol`
-`fs.glusterfs.volume.fuse.gv0=/mnt/glusterfs`
+e.g.
+    <property>
+        <name>I am a key</name>
+        <value>And I am the value</value>
+    </property>
+1) Edit **core-site.xml**.  
+
+* `fs.glusterfs.impl = org.apache.hadoop.fs.glusterfs.GlusterFileSystem` 
+* `fs.default.name = glusterfs:///` 
+* `fs.glusterfs.mount = /mnt/glusterfs`
+* `fs.AbstractFileSystem.glusterfs.impl=org.apache.hadoop.fs.local.GlusterFs`
+* `fs.glusterfs.volumes = HadoopVol`
+* `fs.glusterfs.volume.fuse.HadoopVol = /mnt/glusterfs`
 
 
-4) Now edit your yarn-site.xml file.  Note that the "**MASTER**" value at the bottom needs to be the IP of your master node.
+2) Edit **yarn-site.xml** .  The _$MASTER_ value at the bottom must be the IP address of the _master node_.
 
-`yarn.nodemanager.aux-services=mapreduce_shuffle` 
-`yarn.nodemanager.aux-services.mapreduce_shuffle.class=org.apache.hadoop.mapred.ShuffleHandler`
-`yarn.log-aggregation-enable=true` 
-`yarn.nodemanager.local-dirs=/var/lib/hadoop-yarn/cache/${user.name}/nm-local-dir` 
-`yarn.nodemanager.log-dirs=/var/log/hadoop-yarn/containers` 
-`yarn.nodemanager.remote-app-log-dir=glusterfs:///var/log/hadoop-yarn/apps` 
-`yarn.application.classpath=/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*</value>
-mapreduce.jobtracker.address=**MASTER**`
+* `yarn.nodemanager.aux-services = mapreduce_shuffle` 
+* `yarn.nodemanager.aux-services.mapreduce_shuffle.class = org.apache.hadoop.mapred.ShuffleHandler`
+* `yarn.log-aggregation-enable = true` 
+* `yarn.nodemanager.local-dirs = /var/lib/hadoop-yarn/cache/${user.name}/nm-local-dir` 
+* `yarn.nodemanager.log-dirs = /var/log/hadoop-yarn/containers` 
+* `yarn.nodemanager.remote-app-log-dir = glusterfs:///var/log/hadoop-yarn/apps` 
+* `yarn.application.classpath = /usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*`
+* `mapreduce.jobtracker.address =` <**$MASTER**>
 
-Now, in your mapred-site.xml file:
+Update your staging directory:
 
-5.0) Set/add the xml property "mapreduce.framework.name", and set it equal to "yarn".
+* `yarn.app.mapreduce.am.staging-dir = glusterfs:///tmp/hadoop-yarn/staging`
 
-5.1) Make sure all your hadoop libraries are on the classpath.  A good way to do this is to simply hardcode them, into the mapreduce.application.classpath parameter.  This prevents reliance on environmental variables and is easier to debug.  
+3) Edit  **mapred-site.xml**:
 
-`mapreduce.jobtracker.system.dir=glusterfs:///mapred/system`
-`mapreduce.application.classpath=/usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*`
+Make sure all your hadoop libraries are in the classpath property.  They can be hard-coded into `mapreduce.application.classpath` to remove reliance on environmental variables and ease debugging.
 
-5.2) Add a "mapred/system/" directory into /mnt/glusterfs.  Then set its privileges:
-`chown mapred:hadoop /mnt/glusterfs`.
+Add / Set the following properties:
 
-6) And then add this property to your mapred-site.xml as well.
+* `mapreduce.framework.name = yarn`
+* `mapreduce.jobtracker.system.dir = glusterfs:///mapred/system`
+* `mapreduce.application.classpath = /usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*`
 
-`<name></namyarn.app.mapreduce.am.staging-dire>
-<value>glusterfs:///tmp/hadoop-yarn/staging</value>`
+Just as in the yarn-site.xml, update staging directory:
 
-7) Update your remote logging directory to write logs to glusterfs:///.  
+* `yarn.app.mapreduce.am.staging-dir = glusterfs:///tmp/hadoop-yarn/staging`
 
-`<property>
-    <description>Where to aggregate logs to.</description>
-    <name>yarn.nodemanager.remote-app-log-dir</name>
-    <value>glusterfs:///var/log/hadoop-yarn/apps</value>
-  </property>`
+Create a mapred/system/ dir and set it's privileges.
+    mkdir -p /mnt/glusterfs/mapred/system
+    chown mapred:hadoop /mnt/glusterfs
 
-Later, if you need to debug a job, yarn will be able to pull the logs up for you using this command (replace the 1234... number with the application id of your job) : `/usr/lib/hadoop-yarn/bin/yarn --applicationId 12345678_1234 `
+##Synchronize Config Settings
 
-8) Update your staging directory in yarn-site.xml
+1) Copy core-site.xml, yarn-site.xml, and mapred-site.xml to each node on the cluster:
 
- `yarn.app.mapreduce.am.staging-dir=glusterfs:///tmp/hadoop-yarn/staging</value>` 
+    scp core-site.xml yarn-site.xml mapred-site.xml root@$NODE:/etc/hadoop/conf/
 
-9) Thats it ! Now you can run users, albeit just as the yarn user, in CDH5.  
+2) On each **slave** node, edit the following properties in **yarn-site.xml**. Do not edit master's yarn-site.xml.
 
-## SYNCHRONIZE CONFIGURATION SETTINGS
+* yarn.nodemanager.hostname = $LOCAL_IP
+* yarn.resourcemanager.hostname = $MASTER_IP
 
-Copy your core-site.xml, yarn-site.xml, and mapred-site.xml files to each node on the cluster.
+##On Each Node
 
-And finally, on each node, make sure "yarn.nodemanager.hostname" points to the IP of your master node.
+1) Set Hadoop Environmental Variables
 
-## Saving hadoop Evn variables
+    Create a shell script called `/etc/profile.d/hadoop_env.sh`. Be sure to set JAVA_HOME $VERSION to the installed version.
 
-Now save this snippet in /opt/env.sh, with executable permissions (make sure you modify the JAVA_HOME to match your java distro).
-
-   (some might require fixing... TODO)
     export HADOOP_CONF_DIR=/etc/hadoop/conf
-    export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
+    export JAVA_HOME=/usr/lib/jvm/jre-<$VERSION>-openjdk.x86_64/ 
     export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
     export HADOOP_YARN_HOME=/usr/lib/hadoop-yarn/
     export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce/
     export YARN_HOME=/usr/lib/hadoop-yarn/
+* (some might require fixing... TODO)
+
+2) On each node run:
+    su yarn -c "source /etc/profile.d/hadoop_env.sh"
 
 We will reference it at other times. 
 
-##  STARTUP 
+##Startup
 
-0)  Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn OWNS it.  This is essential for running a mapreduce job : Otherwise, your jobs can hang.  ALSO if on VMs,  set your yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. set it to half the memory you've allocated to the VM itself). 
+1) Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn OWNS it.  This is essential for running a mapreduce job.  Otherwise, your jobs can hang.  
 
-1) su to user "yarn".  This user is created for you when you yum install cloudera hadoop. 
+_On VMs Only_
+    Set yarn-site.xml yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. ~ 1/2 of allocated VM memory). 
 
-2) You can now restart all your hadoop services.   A simple snippet to do this follows:
+1) su to user "yarn".  This user was created when you installed Cloudera Hadoop. 
+
+2) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
 
     chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
-    export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64/ 
+    export JAVA_HOME=/usr/lib/jvm/jre-<$VERSION>-openjdk.x86_64
     export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
     export HADOOP_COMMON_HOME=/usr/lib/hadoop/
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh stop nodemanager
@@ -102,3 +115,6 @@ We will reference it at other times.
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager 
 
+
+##Finished!
+_That's it! Now you can run yarn in CDH5!_
