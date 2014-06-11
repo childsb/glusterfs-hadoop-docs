@@ -33,7 +33,7 @@ e.g.
 
 2) Edit **yarn-site.xml** .
 
-    The _$MASTER_ value at the bottom must be the IP address of the _master node_.
+    The $MASTER value at the bottom must be the IP address of the master node.
 
 * `yarn.nodemanager.aux-services = mapreduce_shuffle` 
 * `yarn.nodemanager.aux-services.mapreduce_shuffle.class = org.apache.hadoop.mapred.ShuffleHandler`
