@@ -33,8 +33,6 @@ e.g.
 
 2) Edit **yarn-site.xml** .
 
-    The $MASTER value at the bottom must be the IP address of the master node.
-
 * `yarn.nodemanager.aux-services = mapreduce_shuffle` 
 * `yarn.nodemanager.aux-services.mapreduce_shuffle.class = org.apache.hadoop.mapred.ShuffleHandler`
 * `yarn.log-aggregation-enable = true` 
@@ -42,7 +40,7 @@ e.g.
 * `yarn.nodemanager.log-dirs = /var/log/hadoop-yarn/containers` 
 * `yarn.nodemanager.remote-app-log-dir = glusterfs:///var/log/hadoop-yarn/apps` 
 * `yarn.application.classpath = /usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*`
-* `mapreduce.jobtracker.address =` <**$MASTER**>
+* `mapreduce.jobtracker.address =` <**$MASTER_IP**>
 
 Update your staging directory:
 
