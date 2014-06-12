@@ -101,9 +101,9 @@ We will reference it at other times.
 _On VMs Only_
     Set yarn-site.xml yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. ~ 1/2 of allocated VM memory). 
 
-1) su to user "yarn".  This user was created when you installed Cloudera Hadoop. 
+2) su to user "yarn".  This user was created when you installed Cloudera Hadoop. 
 
-2) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
+3) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
 
     chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
