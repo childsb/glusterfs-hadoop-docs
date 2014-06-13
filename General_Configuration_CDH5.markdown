@@ -105,6 +105,8 @@ _On VMs Only_
 
 3) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
 
+_Important!:_ Only start the resource manager on the master node.  Omit `resourcemanager` commands for all slave nodes.
+
     chown yarn /usr/lib/hadoop-yarn/  
     killall -9 java
     export JAVA_HOME=/usr/lib/jvm/jre-<$VERSION>-openjdk.x86_64
@@ -115,6 +117,7 @@ _On VMs Only_
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager 
 
+   
 
 ##Finished!
 _That's it! Now you can run yarn in CDH5!_
