@@ -32,6 +32,8 @@ Should return something similar to this (omiting ResourceManager on all slaves):
 
 ##Part 2: Running Hadoop with the GlusterContainerExecutor
 
+**On EACH node, do the following.**
+
 1) Add/modify the following properties in the yarn-site.xml file.
 
 * yarn.nodemanager.container-executor.class = org.apache.hadoop.yarn.server.nodemanager.GlusterContainerExecutor
