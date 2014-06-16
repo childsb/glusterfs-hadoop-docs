@@ -117,4 +117,4 @@ _Important!:_ Only start the resource manager on the master node.  Omit `resourc
    
 
 ##Finished!
-_That's it! Now you can run yarn in CDH5!_
+_That's it! Now you can run jobs as yarn user in CDH5!_
