@@ -39,7 +39,7 @@ Update the yarn class path:
 
 Add:
 
-* `mapreduce.jobtracker.address =` <**$MASTER_IP**>
+* `mapreduce.jobtracker.address =` **$MASTER_IP**
 * `yarn.app.mapreduce.am.staging-dir = glusterfs:///tmp/hadoop-yarn/staging`
 
 3) Edit  **mapred-site.xml**:
