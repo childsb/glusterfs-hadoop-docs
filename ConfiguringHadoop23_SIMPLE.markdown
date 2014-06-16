@@ -32,7 +32,7 @@ Should return something similar to this (omiting ResourceManager on all slaves):
 
 ##Part 2: Running Hadoop with the GlusterContainerExecutor
 
-**On EACH node, do the following.**
+Do 1 - 3 on **each** node.
 
 1) Add/modify the following properties in the yarn-site.xml file.
 
@@ -46,21 +46,17 @@ Should return something similar to this (omiting ResourceManager on all slaves):
     min.user.id=1000
     allowed.system.users=tom
 
-3) Copy container-executor.cfg to all machines on your cluster.
-
-    scp /etc/hadoop/conf/container-executor.cfg root@$NODE:/etc/hadoop/conf
-
-4) Create user "tom" if it does not already exist on master node.
+3) Create user "tom" if it does not already exist on master node.
 
     useradd -u 1024 -g hadoop tom
 
-5)  All hadoop users must have a UID of or greater than the value of `min.user.id` (1000) in the container-exectuor.cfg.  Any **one** of the following are appropriate ways to ensure identical UID/GID across the cluster.
+4)  All hadoop users must have a UID of or greater than the value of `min.user.id` (1000) in the container-exectuor.cfg.  Any **one** of the following are appropriate ways to ensure identical UID/GID across the cluster.
 
-* 5.1 ) Copy /etc/passwd and /etc/group from your head node to all others  
+* 4.1 ) Copy /etc/passwd and /etc/group from your head node to all others  
 
-* 5.2) Follow the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] OR 
+* 4.2) Follow the IPA based user setup section of  [[ConfiguringHadoop23_SECURE]] OR 
 
-* 5.3) Use your companies internal LDAP servers to provision system ids for you.    
+* 4.3) Use your companies internal LDAP servers to provision system ids for you.    
 
 
 5) Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the [Startup](https://forge.gluster.org/hadoop/pages/General_Configuration_CDH5#Startup)  section of 
