@@ -85,25 +85,29 @@ Create a mapred/system/ dir and set it's privileges.
     export YARN_HOME=/usr/lib/hadoop-yarn/
 * (some might require fixing... TODO)
 
-2) On each node run:
-    su yarn -c "source /etc/profile.d/hadoop_env.sh"
+2) On each node run as root:
+    source /etc/profile.d/hadoop_env.sh
 
+3) 
 We will reference it at other times. 
 
 ##Startup
 
 1) Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn OWNS it.  This is essential for running a mapreduce job.  Otherwise, your jobs can hang.  
 
+2) Set permissions for yarn log directory:
+        chown yarn /usr/lib/hadoop-yarn/
+
 _On VMs Only_
     Set yarn-site.xml yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. ~ 1/2 of allocated VM memory). 
 
-2) su to user "yarn".  This user was created when you installed Cloudera Hadoop. 
+3) su to user "yarn".  This user was created when you installed Cloudera Hadoop. 
 
-3) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
+4) You can now restart all your hadoop services.   A simple snippet can be copied to script as follows:
 
 _Important!:_ Only start the resource manager on the master node.  Omit `resourcemanager` commands for all slave nodes.
 
-    chown yarn /usr/lib/hadoop-yarn/  
+
     killall -9 java
     export JAVA_HOME=/usr/lib/jvm/jre-<$VERSION>-openjdk.x86_64
     export HADOOP_LIBEXEC_DIR=/usr/lib/hadoop/libexec
