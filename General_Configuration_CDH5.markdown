@@ -58,7 +58,7 @@ Just as in the yarn-site.xml, update staging directory:
 
 Create a mapred/system/ dir and set it's privileges.
     mkdir -p /mnt/glusterfs/mapred/system
-    chown mapred:hadoop /mnt/glusterfs
+    chown mapred:hadoop /mnt/glusterfs/mapred/system
 
 ##Synchronize Config Settings
 
