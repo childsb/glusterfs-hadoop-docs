@@ -14,7 +14,7 @@ If you have not already done so, confirm that you can start the yarn services. E
 
 _Important!:_ Only start the resource manager on the master node. Omit resourcemanager commands for all slave nodes.
 
-_Note:_ `source hadoop_env.sh` is only necessary if hadoop_env.sh is not located in /etc/profile.d/.  Otherwise, they will be set during on each login to yarn user.
+_Note:_ `source hadoop_env.sh` is only necessary if hadoop_env.sh is not located in /etc/profile.d/.
 
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start resourcemanager
     /usr/lib/hadoop-yarn/sbin/yarn-daemon.sh start nodemanager
