@@ -33,11 +33,13 @@ e.g.
 
 2) Edit **yarn-site.xml** .
 
+Update the yarn class path:
+
 * `yarn.application.classpath = /usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/share/hadoop/common/*,$HADOOP_COMMON_HOME/share/hadoop/common/lib/*,$HADOOP_YARN_HOME/share/hadoop/yarn/*,$HADOOP_YARN_HOME/share/hadoop/yarn/lib/*`
+
+Add:
+
 * `mapreduce.jobtracker.address =` <**$MASTER_IP**>
-
-Update your staging directory:
-
 * `yarn.app.mapreduce.am.staging-dir = glusterfs:///tmp/hadoop-yarn/staging`
 
 3) Edit  **mapred-site.xml**:
