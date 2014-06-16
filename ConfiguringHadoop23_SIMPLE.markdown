@@ -32,7 +32,7 @@ Should return something similar to this (omiting ResourceManager on all slaves):
 
 ##Part 2: Running Hadoop with the GlusterContainerExecutor
 
-Do 1 - 3 on **each** node.
+_NOTE:_ Do 1 - 3 on **each** node.
 
 1) Add/modify the following properties in the yarn-site.xml file.
 
