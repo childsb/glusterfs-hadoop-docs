@@ -26,7 +26,7 @@ e.g.
 * `fs.glusterfs.impl = org.apache.hadoop.fs.glusterfs.GlusterFileSystem` 
 * `fs.default.name = glusterfs:///` 
 * `fs.glusterfs.mount = /mnt/glusterfs`
-* `fs.AbstractFileSystem.glusterfs.impl=org.apache.hadoop.fs.local.GlusterFs`
+* `fs.AbstractFileSystem.glusterfs.impl = org.apache.hadoop.fs.local.GlusterFs`
 * `fs.glusterfs.volumes = HadoopVol`
 * `fs.glusterfs.volume.fuse.HadoopVol = /mnt/glusterfs`
 
