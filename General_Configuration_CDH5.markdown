@@ -11,7 +11,10 @@
 
 4) Install jdk-devel packages.
     yum install -y java-<$VERSION>-openjdk-devel.x86_64
-    
+
+5) Change the group ownership of the container-executor and reset the permissions.
+    chgrp hadoop /usr/lib/hadoop-yarn/bin/container-executor
+    chmod 6050 /usr/lib/hadoop-yarn/bin/container-executor
 ##On Head Node
 
 _All *.xml files below can be found in `/etc/hadoop/conf/`.  For brevity, we specify them as key = value pairs._
