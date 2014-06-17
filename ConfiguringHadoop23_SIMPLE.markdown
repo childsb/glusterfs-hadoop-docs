@@ -62,6 +62,10 @@ _NOTE:_ Do 1 - 3 on **each** node.
 5) Restart your yarn and nodemanager services.  To do this, you can follow the snippet in the [Startup](https://forge.gluster.org/hadoop/pages/General_Configuration_CDH5#Startup)  section of 
 General_Configuration_CDH5.
 
-## Part 3: _Finished!_
+## Part 3: _Run MapRed Jobs!_
 
-Test the cluster by executing hadoop jobs as `tom` (or whichever username you chose as job executor).
+To run mapreduce jobs, switch to the mapreduce designated user (tom) and run the following.
+
+    su tom
+    cd /usr/lib/hadoop/
+    bin/hadoop jar ../hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 1 1
