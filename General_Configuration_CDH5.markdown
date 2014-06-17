@@ -80,7 +80,7 @@ Create a mapred/system/ dir and set it's privileges.
     
     ntpd -qg
 
-##On Each Node
+##Again, On Each Node
 
 1) Set Hadoop Environmental Variables
 
