@@ -92,7 +92,7 @@ Create a mapred/system/ dir and set it's privileges.
     export HADOOP_YARN_HOME=/usr/lib/hadoop-yarn/
     export HADOOP_MAPRED_HOME=/usr/lib/hadoop-mapreduce/
     export YARN_HOME=/usr/lib/hadoop-yarn/
-* (some might require fixing... TODO)
+
 
 2) On each node run as root:
     source /etc/profile.d/hadoop_env.sh
