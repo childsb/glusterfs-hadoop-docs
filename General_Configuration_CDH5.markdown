@@ -124,5 +124,10 @@ _Important!:_ Only start the resource manager on the master node.  Omit `resourc
 
    
 
-##Finished!
-_That's it! Now you can run jobs as yarn user in CDH5!_
+##Run a MapReduce Job
+
+Switch to the mapreduce designated user (tom), and run a mapred job.
+
+    su tom
+    cd /usr/lib/hadoop
+    bin/hadoop jar ../hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 1 1
