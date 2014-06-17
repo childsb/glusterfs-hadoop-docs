@@ -76,6 +76,10 @@ Create a mapred/system/ dir and set it's privileges.
 * yarn.nodemanager.hostname = $LOCAL_IP
 * yarn.resourcemanager.hostname = $MASTER_IP
 
+3) Sync server clocks.  On each server, run the following. Creating a crontab command of it for every minute is also a good idea.
+    
+    ntpd -qg
+
 ##On Each Node
 
 1) Set Hadoop Environmental Variables
