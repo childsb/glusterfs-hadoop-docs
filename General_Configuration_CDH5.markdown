@@ -51,6 +51,8 @@ Make sure all your hadoop libraries are in the classpath property.  They can be 
 
 Add / Set the following properties:
 
+* `mapred.system.dir = glusterfs:///mapred/system`
+* `mapred.jobtracker.system.dir = glusterfs:///mapred/system`
 * `mapreduce.framework.name = yarn`
 * `mapreduce.jobtracker.system.dir = glusterfs:///mapred/system`
 * `mapreduce.application.classpath = /usr/lib/hadoop-yarn/lib/*,/usr/lib/hadoop-yarn/*,/usr/lib/hadoop/lib/*,/usr/lib/hadoop/*,/usr/lib/hadoop-mapreduce/*,$HADOOP_MAPRED_HOME/share/hadoop/mapreduce/*,$HADOOP_MAPRED_HOME/lib/*`
