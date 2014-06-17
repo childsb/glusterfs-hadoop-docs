@@ -97,7 +97,6 @@ Create a mapred/system/ dir and set it's privileges.
 2) On each node run as root:
     source /etc/profile.d/hadoop_env.sh
 
-3) 
 We will reference it at other times. 
 
 ##Startup
