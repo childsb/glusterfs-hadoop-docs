@@ -104,7 +104,7 @@ We will reference it at other times.
 1) Set the permissions on your container logging directory (i.e. /var/log/hadoop-yarn/containers/ ) so that yarn OWNS it.  This is essential for running a mapreduce job.  Otherwise, your jobs can hang.  
 
 2) Set permissions for yarn log directory:
-        chown yarn /usr/lib/hadoop-yarn/
+        chown -R yarn /usr/lib/hadoop-yarn/
 
 _On VMs Only_
     Set yarn-site.xml yarn.scheduler.minimum-allocation-mb to a low enough value (i.e. ~ 1/2 of allocated VM memory). 
