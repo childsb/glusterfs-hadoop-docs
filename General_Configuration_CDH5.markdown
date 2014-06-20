@@ -124,10 +124,7 @@ _Important!:_ Only start the resource manager on the master node.  Omit `resourc
 
    
 
-##Run a MapReduce Job
+## Next Steps
+_Almost there!_
 
-Switch to the mapreduce designated user (tom), and run a mapred job.
-
-    su tom
-    cd /usr/lib/hadoop
-    bin/hadoop jar ../hadoop-mapreduce/hadoop-mapreduce-examples.jar pi 1 1
+Continue on to [[ConfiguringHadoop23_SIMPLE]]
