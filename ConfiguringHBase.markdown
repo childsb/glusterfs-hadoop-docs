@@ -2,9 +2,9 @@
 
 If you are just testing the plugin and want to experiment with Hbase, we have a vagrant-gluster-hbase on fedora19 setup which can be run to automatically provision a 2 node gluster and hbase cluster with smoke tests: 
 
-git clone https://forge.gluster.org/vagrant/fedora19-gluster/ 
-cd gluster-hbase-example
-vagrant up
+    git clone https://forge.gluster.org/vagrant/fedora19-gluster/ 
+    cd gluster-hbase-example
+    vagrant up
 
 ## Detailed Instructions (WIP) ##
 
@@ -29,27 +29,26 @@ Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed,
 
 - untar hbase on each node 
 
-- wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://23.23.239.119/archiva/repository/snapshots/rhbd/glusterfs-hadoop/2.1.4/glusterfs-hadoop-2.1.4.jar 
+    wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://23.23.239.119/archiva/repository/snapshots/rhbd/glusterfs-hadoop/2.1.4/glusterfs-hadoop-2.1.4.jar 
 
 - On each node, symlink to /mnt/glusterfs/lib from inside of hbase/conf/lib
 
-ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/glusterfs-hadoop.jar
+    ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/glusterfs-hadoop.jar
 
 - on each node, update your hbase-env.sh script to point to your java installation:
 
-export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk.x86_64"
+    export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk.x86_64"
 
 ## Setting configuration properties ##
 
 Set the following properties: 
 
-`
-hbase.zookeeper.property.clientPort = (zookeeper properties file)
-hbase.cluster.distributed = true
-hbase.zookeeper.quorum = (select 1,3,5... zk machines)
-hbase.zookeeper.property.dataDir = (data dir property in /usr/lib/zookeeper...)
 
-`
+    hbase.zookeeper.property.clientPort = (zookeeper properties file)
+    hbase.cluster.distributed = true
+    hbase.zookeeper.quorum = (select 1,3,5... zk machines)
+    hbase.zookeeper.property.dataDir = (data dir property in /usr/lib/zookeeper...)
+
 
 ## Startup ##
 
@@ -66,21 +65,20 @@ You can start up a region server and an hbase master easily like this
 
 - run the following smoke test to confirm operation
 
-`
-        sudo hbase-0.94.11/bin/hbase shell -d <<EOF
-create 't1','f1' 
-put 't1', 'row1', 'f1:a', 'val1'
-scan 't1'
-EOF
- `
+    sudo hbase-0.94.11/bin/hbase shell -d <<EOF
+    create 't1','f1' 
+    put 't1', 'row1', 'f1:a', 'val1'
+    scan 't1'
+    EOF
+
 
 ## Troubleshooting ##
 
 1) If you get zookeeper or HMaster is down exceptions, make sure your /etc/hosts file should look something like this: 
-`
-127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
-99.10.10.11	rs1
-99.10.10.12	hmaster
-`
+
+    127.0.0.1       localhost localhost.localdomain localhost4 localhost4.localdomain4
+    99.10.10.11	rs1
+    99.10.10.12	hmaster
+
 (note that in the above, we have localhost = 127.0.0.1, and that there is a mapping both for 127.* and for the external IP 99.10.10.11).  
  
