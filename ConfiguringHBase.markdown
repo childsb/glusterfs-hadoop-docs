@@ -39,6 +39,31 @@ ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/g
 
 export JAVA_HOME="/usr/lib/jvm/java-1.7.0-openjdk.x86_64"
 
+## Setting configuration properties ##
+
+Set the following properties: 
+
+```
+hbase.zookeeper.property.clientPort = (zookeeper properties file)
+hbase.cluster.distributed = true
+hbase.zookeeper.quorum = (select 1,3,5... zk machines)
+hbase.zookeeper.property.dataDir = (data dir property in /usr/lib/zookeeper...)
+
+```
+
+## Startup ##
+
+You can start up a region server and an hbase master easily like this 
+
+```
+./bin/hbase-daemon.sh start zookeeper 
+./bin/hbase-daemon.sh start master 
+./bin/hbase-daemon.sh start regionserver 
+``
+
+
+## Testing ## 
+
 - run the following smoke test to confirm operation
 
         sudo hbase-0.94.11/bin/hbase shell -d <<EOF
