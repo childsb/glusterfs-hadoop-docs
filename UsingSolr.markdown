@@ -23,4 +23,4 @@ This starts a basic SOLR server on port 8983.
 
 From here, you will want to make sure you are plugged into the gluster file system for backend storage. 
 
-If the launch works, then you will be able to see a healthy SOLR core running on `http://mrg42.lab.bos.redhat.com:8983/solr/`
+If the launch works, then you will be able to see a healthy SOLR core running on `http://<SERVER>:8983/solr/`
