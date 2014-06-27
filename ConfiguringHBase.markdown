@@ -6,7 +6,7 @@ If you are just testing the plugin and want to experiment with Hbase, we have a 
     cd gluster-hbase-example
     vagrant up
 
-## Detailed Instructions (WIP) ##
+## Detailed Instructions for CDH5 ##
 
 For HBase to be running, you really will need to enable two services: Zookeeper and HBase.  Zookeeper can be started for you by HBase, if you configure it to do so.  In any case, you need a zookeeper service to elect and maintain masters, region servers to store your and shard your data, and an HMaster to coordinate the table information and monitor region servers.  Most important of all is to note that your /etc/hosts has to be perfect for everything to work properly, based on the fragile nature of how HBase connects to hosts. 
 
@@ -60,12 +60,13 @@ You can start up a region server and an hbase master easily like this
 ./bin/hbase-daemon.sh start regionserver 
 `
 
+After this, you can (on other servers), ssh in and follow the same steps, to start regionservers.  These regionserver daemons will be started when you start hbase.  Make sure their configuration matches that of the master.
 
 ## Testing ##
 
 - run the following smoke test to confirm operation
 
-    sudo hbase-0.94.11/bin/hbase shell -d <<EOF
+    sudo bin/hbase shell -d <<EOF
     create 't1','f1' 
     put 't1', 'row1', 'f1:a', 'val1'
     scan 't1'
