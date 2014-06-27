@@ -80,6 +80,8 @@ Create a mapred/system/ dir and set it's privileges.
     
     ntpd -qg
 
+4) Copy the plugin into the /lib directory of hadoop, by running the following command.  `wget http://rhbd.s3.amazonaws.com/maven/repositories/internal/org/apache/hadoop/fs/glusterfs/glusterfs-hadoop/2.3.5/glusterfs-hadoop-2.3.5.jar -O /usr/lib/hadoop/lib/glusterfs-hadoop-2.3.5.jar`
+
 ##Again, On Each Node
 
 1) Set Hadoop Environmental Variables
