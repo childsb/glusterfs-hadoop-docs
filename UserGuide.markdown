@@ -2,7 +2,7 @@
 
 Most components within a typical Hadoop Distribution work out of the box with GlusterFS. This page lists any components that require additional configuration. If the component is not listed here, you can simply follow the instructions for using the component that are provided by your Hadoop Distribution provider.
 
-### MapReduce Client tools: Pig,Flume,Sqoop,Hive ### 
+### MapReduce Client tools: Pig,Flume,Sqoop,Hive ###
 
 Easy install of Pig, Sqoop, Flume and Hive
 
@@ -21,9 +21,11 @@ To put these tools on your system so you can run pig/mahout/hive/sqoop jobs, you
     yum install hive
     yum install sqoop
 
-### Server based Ecosystem components : Oo### 
+### Server side Ecosystem components ###
 
-To install these tools, assuming you've added the CDH repos (you would have done so in the steps above), just run "yum install *".  For example...
+To install these tools, assuming you've added the CDH repos (you would have done so in the steps above), just run "yum install *".  
+
+Each installation below requires slightly more sophisticated setup, because these tools run their own services.  Thus, you will need to do a couple of steps to add the glusterfs-hadoop connector to the right place.  
 
 * [Oozie](https://forge.gluster.org/hadoop/pages/UsingOozie)
 * [HBase](https://forge.gluster.org/hadoop/pages/UsingHBase)
