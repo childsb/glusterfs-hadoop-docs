@@ -4,3 +4,5 @@ Most components within a typical Hadoop Distribution work out of the box with Gl
 
 * [Oozie](https://forge.gluster.org/hadoop/pages/UsingOozie)
 * [HBase](https://forge.gluster.org/hadoop/pages/UsingHBase)
+* [Solr](https://forge.gluster.org/hadoop/pages/UsingSolr)
+* [Impala](https://forge.gluster.org/hadoop/pages/UsingImpala)
