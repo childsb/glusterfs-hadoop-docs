@@ -1,4 +1,9 @@
-Note that currently, Impala doesn't yet support GlusterFS.  But you can set up the GlusterFileSystem to be the backing store for impala, and save a runtime error, the system will process impala requests.  Once we work to make Impala allow any HCFS implementation (Should be removing a few possibly unnecessary casting checks for HDFS), Impala should theoretically support any File system implementation as per the protocol below .
+Note that currently, Impala doesn't yet support GlusterFS.  But you can set up the GlusterFileSystem to be the backing store for impala, and if you recompile bits of impala, you can get it to work, in theory.  We have indeed managed to glue it in to CDH5, but unless a comprehensive set of changes is made to Impala (as of July 15, 2014), you cannot run it on non-HDFS file systems.
+
+
+For the brave, however, here are our notes on configuring Impala.  You can actually get Impala to start up and read from the gluster filesystem, and even use impyla to create an impala table, using approximately the directions below.
+
+Once we work to make Impala allow any HCFS implementation (Should be removing a few possibly unnecessary casting checks for HDFS), Impala should theoretically support any File system implementation as per the protocol below .
 
 glusterimpala.png
 
