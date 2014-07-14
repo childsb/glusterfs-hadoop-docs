@@ -36,7 +36,12 @@ exec ${EXEC_PATH} ${D2}
 
 files into the classpath on startup.  If the plugin is not there - then impala won't be able to see the gluster jars. 
 
-3) Now, start impala services:
+3) Now, make sure your HiveServer is stopped.  Update the hive-site.xml to contain the usual glusterfs parameters.  This is important because Impala will use HiveServer to do gluster based queries : If HiveServer doesn't know how to load the plugin, it wont work.  
+
+4) 
+
+
+5) Now, start impala services:
 
     sudo service impala-server restart ; 
     sudo service impala-state-store restart ; 
@@ -52,7 +57,7 @@ The imapad service running on port 21050 is the one we will connect to using the
 
  
 
-4) And install the impyla python client.  This client is more robust than the impala-shell app with respect
+6) And install the impyla python client.  This client is more robust than the impala-shell app with respect
 
 to platform specificities.  Lets put some data into the dfs first:
 
@@ -73,4 +78,3 @@ to platform specificities.  Lets put some data into the dfs first:
 Theoretically (pending allowance of any HCFS implementation) the above should work for Impala on glusterfs.   Currently, however, we're finding that this workflow results in a runtime exception while casting to HDFS.
 
 
-More details soon.
