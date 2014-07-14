@@ -5,9 +5,6 @@ For the brave, however, here are our notes on configuring Impala.  You can actua
 
 Once we work to make Impala allow any HCFS implementation (Should be removing a few possibly unnecessary casting checks for HDFS), Impala should theoretically support any File system implementation as per the protocol below .
 
-glusterimpala.png
-
-
 To set up impala , you first must set up hive in server mode.  That can be done following the directions in these two places:
 
 [Installing Hive](http://www.cloudera.com/content/cloudera-content/cloudera-docs/CDH5/latest/CDH5-Installation-Guide/cdh5ig_hive_install.html)
