@@ -13,7 +13,7 @@ See - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHado
 Common hadoop client applications (*Pig, Hive, Flume and Mahout*) all run as is, as hadoop clients, with no extra configuration required.  Meanwhile, the services which run on hadoop (i.e. *Oozie, HBase, Solr*  ) require more sohpisticated configuration steps, because you need to update certain files, and possibly add the glusterfs-hadoop plugin into directories other than the /usr/lib/hadoop/lib location.  Thus, 
 
 ## Hadoop Client apps on glusterfs ##
- 
+
 To test these components and to better understand how to write applications that leverage hadoop on glusterfs, you can see our smoke test repository : [Backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/).  This repository takes the basic [Apache BigTop] (http://bigtop.apache.org/) smoke tests and back ports them into a simple and easy to use shell script which directly uses the gluster fuse mount in certain parts.
 
 Some things to keep in mind:  
