@@ -16,7 +16,7 @@ Pig, Hive, Flume and Mahout all run as is, as hadoop clients, with no extra conf
 
 Some things to keep in mind:  
 
-- Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
+Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
 
 ## Hadoop Services ##
 
