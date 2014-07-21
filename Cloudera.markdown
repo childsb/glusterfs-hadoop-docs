@@ -16,11 +16,15 @@ So lets get started.
 
 ## Part 1: Hadoop Client apps on glusterfs ##
 
-To test these components and to better understand how to write applications that leverage hadoop on glusterfs, you can see our smoke test repository : [Backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/).  This repository takes the basic [Apache BigTop] (http://bigtop.apache.org/) smoke tests and back ports them into a simple and easy to use shell script which directly uses the gluster fuse mount in certain parts.
-
-Some things to keep in mind:  
-
 Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
+
+After you've yum installed the client apps (`yum install hive pig mahout flume-ng`) you can use [Our backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/) to test them quite easily.  You will have to export some variables first.
+
+```
+HIVE_CONF_DIR=/etc/hive/conf
+PIG_HOME=/usr/lib/pig/
+```
+And then you can run the test.sh file in the top directory.
 
 ## Part 2: Hadoop Service applications on glusterfs ##
 
