@@ -18,10 +18,9 @@ So lets get started.
 
 After you've yum installed the client apps (`yum install hive pig mahout flume-ng zookeeper sqoop`) you can use [Our backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/) to test them quite easily.  You will have to export some variables first.
 
-```
-HIVE_CONF_DIR=/etc/hive/conf
-PIG_HOME=/usr/lib/pig/
-```
+```HIVE_CONF_DIR=/etc/hive/conf
+PIG_HOME=/usr/lib/pig/```
+
 And then you can run the test.sh file in the top directory.
 
 ## Part 2: Hadoop Service applications on glusterfs ##
