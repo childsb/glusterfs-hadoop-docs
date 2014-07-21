@@ -16,8 +16,6 @@ So lets get started.
 
 ## Part 1: Hadoop Client apps on glusterfs ##
 
-Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
-
 After you've yum installed the client apps (`yum install hive pig mahout flume-ng zookeeper sqoop`) you can use [Our backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/) to test them quite easily.  You will have to export some variables first.
 
 ```
