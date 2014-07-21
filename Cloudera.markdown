@@ -10,7 +10,7 @@ See - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHado
 
 # Setting up the Hadoop Ecosystem on top of CDH5 #
 
-Common hadoop client applications (*Pig, Hive, Flume and Mahout*) all run as is, as hadoop clients, with no extra configuration required.  Meanwhile, the services which run on hadoop (i.e. *Oozie, HBase, Solr*  ) require more sohpisticated configuration steps, because you need to update certain files, and possibly add the glusterfs-hadoop plugin into directories other than the /usr/lib/hadoop/lib location.  Thus, 
+Common hadoop client applications (*Pig, Hive, Flume, Sqoop, Zookeeper, and Mahout*) all run as is, as hadoop clients, with no extra configuration required.  *Meanwhile*, the services which run on hadoop (i.e. *Oozie, HBase, Solr*  ) require more sohpisticated configuration steps, because you need to update certain files, and possibly add the glusterfs-hadoop plugin into directories other than the /usr/lib/hadoop/lib location.  
 
 So lets get started.  
 
@@ -18,7 +18,7 @@ So lets get started.
 
 Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
 
-After you've yum installed the client apps (`yum install hive pig mahout flume-ng`) you can use [Our backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/) to test them quite easily.  You will have to export some variables first.
+After you've yum installed the client apps (`yum install hive pig mahout flume-ng zookeeper sqoop`) you can use [Our backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/) to test them quite easily.  You will have to export some variables first.
 
 ```
 HIVE_CONF_DIR=/etc/hive/conf
