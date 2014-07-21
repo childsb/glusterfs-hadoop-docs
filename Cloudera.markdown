@@ -10,7 +10,7 @@ See - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHado
 
 # Setting up the Hadoop Ecosystem on top of CDH5 #
 
-## Hadoop Client apps on glusterfs ## 
+## Hadoop Client apps on glusterfs ##
 
 Pig, Hive, Flume and Mahout all run as is, as hadoop clients, with no extra configuration required.   To test these components and to better understand how to write applications that leverage hadoop on glusterfs, you can see our smoke test repository : [Backported BigTop Smoke Tests] (https://github.com/roofmonkey/simple-smokes/).  This repository takes the basic [Apache BigTop] (http://bigtop.apache.org/) smoke tests and back ports them into a simple and easy to use shell script which directly uses the gluster fuse mount in certain parts.
 
@@ -18,8 +18,8 @@ Some things to keep in mind:
 
 - Its best to always use the "glusterfs:///" qualifier when creating hive and pig scripts which reference the file system (i.e. `create extrenal table `
 
-## Hadoop Services ## 
- 
+## Hadoop Services ##
+
 Services which run on hadoop (such as HBase) require more sohpisticated configuration steps, because you need to update certain files, and possibly add the glusterfs-hadoop plugin into directories other than the /usr/lib/hadoop/lib location.  Thus, we have specific directions for installing and running CDH5 ecosystem service applications below.
 
 * [HBase] (https://forge.gluster.org/hadoop/pages/UsingHBase). This page also includes instructions how to test Hbase.
