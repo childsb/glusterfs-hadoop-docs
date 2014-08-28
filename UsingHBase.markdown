@@ -29,7 +29,7 @@ Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed,
 
 - untar hbase on each node 
 
-- wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://23.23.239.119/archiva/repository/snapshots/rhbd/glusterfs-hadoop/2.1.4/glusterfs-hadoop-2.1.4.jar 
+- wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://rhbd.s3.amazonaws.com/maven/repositories/internal/org/apache/hadoop/fs/glusterfs/glusterfs-hadoop/2.3.5/glusterfs-hadoop-2.3.5.jar
 
 - On each node, symlink to /mnt/glusterfs/lib from inside of hbase/conf/lib
 
