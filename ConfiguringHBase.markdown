@@ -29,11 +29,7 @@ Now: to set up, we assume that java , glusterfs, attr, and psmisc are installed,
 
 - untar hbase on each node 
 
-    wget  -O /mnt/glusterfs/lib/glusterfs-hadoop.jar http://23.23.239.119/archiva/repository/snapshots/rhbd/glusterfs-hadoop/2.1.4/glusterfs-hadoop-2.1.4.jar 
-
-- On each node, symlink to /mnt/glusterfs/lib from inside of hbase/conf/lib
-
-    ln -s  /mnt/glusterfs/lib/glusterfs-hadoop.jar /home/vagrant/hbase-0.94.11/lib/glusterfs-hadoop.jar
+-    wget  the glusterfs hadoop plugin from http://rhbd.s3.amazonaws.com/maven/indexV2.html, and put it in /usr/lib/hbase/lib/
 
 - on each node, update your hbase-env.sh script to point to your java installation:
 
