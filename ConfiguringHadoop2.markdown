@@ -185,7 +185,7 @@ SCP the $HADOOP_HOME directory to each server in the  the cluster, for example:
     scp -r $HADOOP_HOME/ root@svr3:/opt/
     scp -r $HADOOP_HOME/ root@svr4:/opt/
     etc...
-
+ 
 Then ssh to each node, and run the container-executor script.
 
 

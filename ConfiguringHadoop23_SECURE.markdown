@@ -4,11 +4,9 @@ First, Follow the [[General_Configuration_CDH5/]] setup.
 
 Then, Follow the "Setup Linux Container" Instructions on the Bottom of [[ConfiguringHadoop23_SIMPLE]]
 
-** setup kerberos **
+** setup kerberos ** 
 
-
-## STOP all hadoop services and remove hadoop users.
-
+# STOP all hadoop services and remove hadoop users. # 
 
 * Stop all hadoop services.  You can do this quickly with `killall -9 java` or you can find pids for the NodeManager and ResourceManager processes running  "jps" (do this as root, so you're gauranteed to see all of them), and kill them directly.
 
@@ -19,7 +17,7 @@ Then, Follow the "Setup Linux Container" Instructions on the Bottom of [[Configu
     yarn.nodemanager.linux-container-executor.group=
         hadoop
 
-## Set up IPA 
+# Set up IPA #
 
 - Now, the head node of your cluster, `yum install ipa-server.`
 
@@ -41,7 +39,7 @@ Since you need a resourcemanager and nodemanager principal your principals are "
 
 Note that: In this example, we reused keytab/service name for the first machine on all other nodes of cluster.  That is a bit of a comprimise in terms of security : it means that if someone intercepts the keytab, all machines are comprimised with respect to that particular service.
 
-## Follow Standard Kerberos Setup
+# Follow Standard Kerberos Setup #
 
 On your core-site.xml:
 
@@ -60,11 +58,11 @@ On your yarn-site.xml:
 * yarn.nodemanager.keytab=nm/YOUR_HEAD_NODE@YOUR_REALM
 * yarn.resourcemanager.keytab=rm/YOUR_HEAD_NODE@YOUR_REALM
 
-## Set user passwords for users
+# Set user passwords for users # 
 
 You can set sally password through the free ipa web ui : http://www.freeipa.org/page/Web_UI.  
 
-## Log in a user and run a job
+# Log in a user and run a job # 
 
 Now, you will want to run "kinit yarn", and restart all services.  
 

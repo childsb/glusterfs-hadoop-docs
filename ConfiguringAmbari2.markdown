@@ -1,6 +1,6 @@
 In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
 
-** Installing and Configuring Red Hat Storage (RHS) **
+#Installing and Configuring Red Hat Storage (RHS)#
 
 * Identify a set of servers on which you wish to create a Red Hat Storage volume. Note: Each server should comply with requirements for RHS outlined in the RHS Installation and Configuration guide and should have a RAID 6 volume available to be configured as a brick on the RHS server.
 
@@ -14,7 +14,7 @@ https://rhn.redhat.com/rhn/software/downloads/SupportedISOs.do?filter_string=red
 
 ------------------------------------------------
 
-** Creating and Configuring your Gluster Volume **
+##Creating and Configuring your Gluster Volume
 
 * Designate the server in your cluster that will become your Management Server and the server upon which you will install the HDP Ambari Management tool. This is the same server which will deploy your Hadoop stack to all the nodes in your cluster (which is the same thing as the RHS trusted storage pool for your volume).
 
@@ -36,7 +36,7 @@ for example
 
 * Once the installer has finished, verify the volume was created successfully by typing "mount" on each server and ensuring you see /mnt/glusterfs in the list of mounts. In addition, you can type "gluster volume info" to ensure the volume has started and that all the expected nodes in the cluster are present in the volume.
 
-** Installing the Red Hat Storage Hadoop FileSystem Plugin **
+##Installing the Red Hat Storage Hadoop FileSystem Plugin
 
 Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster. Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
 
@@ -47,7 +47,7 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 ------------------------------------------------
 
 
-** Installing and Configuring Apache Ambari **
+##Installing and Configuring Apache Ambari
 
 * On every server within the cluster, add the Ambari repo by running the following command:		
 `rpm -Uvh http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.1.4.4-1.x/repos/centos6/AMBARI.1.4.4-1.x-1.el6.noarch.rpm`
@@ -100,7 +100,7 @@ Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent:
 
 ------------------------------------------------
 
-** Deploying and Configuring the HDP Stack on Red Hat Storage **
+## Deploying and Configuring the HDP Stack on Red Hat Storage
 
 
 * Launch a browser and enter the following in the URL by replacing `<hostname>` with the hostname of your ambari server 
@@ -136,7 +136,7 @@ Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent:
 
 ----------------------------------------
 
-** Configuring the Linux Container Executor (LCE) **
+## Configuring the Linux Container Executor (LCE)
 
 -----------------------------------------
 
@@ -164,16 +164,69 @@ Note: Make sure there is no additional whitespace at the end of each line or at 
 
 * In the Ambari Dashboard, select the YARN service and then click the "Start-All" button. Note: Both stopping and starting the services can take some time.
 
-** Using Hadoop  **
+## Using Hadoop 
 
 * To test your cluster, open a terminal window and navigate to /usr/lib/hadoop. Then su to one of the configured allowed.system.users (such as tom) and submit a Hadoop Job:
 
 `bin/hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples-2.2.0.2.0.6.0-101.jar teragen 1000 in`
 
 
-** Common Errors  **
+##Common Errors
 
 * If you see an exception stating that "job.jar changed on src filesystem" it means that you need to synchronize the clocks across your cluster. You can do this by running the following command on each node:
 `ntpd -qg`
 
 ------------------
+
+#Multiple Users in Ambari#
+
+* Stop the hadoop services
+
+* Run this script on the node:
+
+`#!/bin/sh`
+
+`          gluster_mount=/mnt/glusterfs`
+`          process_user=yarn`
+`          process_group=hadoop`
+`          yarn_nodemanager_remote_app_log_dir="/tmp/logs"`
+`          mapreduce_jobhistory_intermediate_done_dir="/mr_history/tmp"`
+`          mapreduce_jobhistory_done_dir="/mr_history/done"`
+`          mapreduce_jobhistory_apps_logs="/app-logs"`
+`          yarn_staging_dir=/job-staging-yarn/`
+`          task_controler=/usr/lib/hadoop-yarn/bin/container-executor`
+`          task_cfg=/etc/hadoop/conf/container-executor.cfg`
+
+
+`          setPerms(){`
+`            Paths=("${!1}")`
+`            Perms=("${!2}")`
+`            Root_Path=$3`
+`            User=$4`
+`            Group=$5`
+
+`            for (( i=0 ; i<${#Paths[@]} ; i++ ))`
+`             do`
+`              mkdir -p ${Root_Path}/${Paths[$i]}`
+`              chown ${User}:${Group}  ${Root_Path}/${Paths[$i]}` 
+`              chmod ${Perms[$i]} ${Root_Path}/${Paths[$i]}` 
+`              echo ${Paths[$i]} ${Perms[$i]}`
+`             done` 
+`          }`
+
+`          echo "Setting permissions on Gluster Volume located at ${gluster_mount}"`
+
+`          paths=("/tmp" "/user" "/mr_history" "${yarn_nodemanager_remote_app_log_dir}"    "${mapreduce_jobhistory_intermediate_done_dir}" "${mapreduce_jobhistory_done_dir}" "/mapred" "${yarn_staging_dir}" "${mapreduce_jobhistory_apps_logs}");`
+`          perms=(1777 0775 0755 1777 1777 0750 0770 2770 1777);`
+`          setPerms paths[@] perms[@] ${gluster_mount} ${process_user} ${process_group}`
+
+`          echo "Setuid bit on task controller"`
+`          chown root:${process_group} ${task_controler} ; chmod 6050 ${task_controler}`
+`          chown root:${process_group} ${task_cfg}`
+
+* modify my /etc/hadoop/conf/container-executor to look like:
+
+`          yarn.nodemanager.linux-container-executor.group=hadoop `
+`          banned.users=yarn min.user.id=1000 `
+`          allowed.system.users=tom`
+

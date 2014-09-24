@@ -2,6 +2,7 @@
 
 All the apache components of CDH5, to our knowledge, are 100% HCFS compatible on glusterfs-hadoop from the basic testing that we've done.  Here is how to get started with a Cloudera's recent CDH5 release on hadoop.
 
+####################
 **For CDH5: Simple Security Mode ** 
 See - [CDH5 (simple) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SIMPLE) for GlusterFS
 
@@ -9,6 +10,7 @@ See - [CDH5 (simple) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop
 See - [CDH5 (kerberos) ] (https://forge.gluster.org/hadoop/pages/ConfiguringHadoop23_SECURE) for GlusterFS
 
 # Setting up the Hadoop Ecosystem on top of CDH5 #
+######################
 
 Common hadoop client applications (*Pig, Hive, Flume, Sqoop, Zookeeper, and Mahout*) all run as is, as hadoop clients, with no extra configuration required.  *Meanwhile*, the services which run on hadoop (i.e. *Oozie, HBase, Solr*  ) require more sohpisticated configuration steps, because you need to update certain files, and possibly add the glusterfs-hadoop plugin into directories other than the /usr/lib/hadoop/lib location.  
 
@@ -28,10 +30,12 @@ And then you can run the test.sh file in the top directory.
 
 We have specific directions for installing and running CDH5 ecosystem service applications below.
 
-* [HBase] (https://forge.gluster.org/hadoop/pages/UsingHBase). This page also includes instructions how to test Hbase.
+* [HBase](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+HBase). This page also includes instructions how to test Hbase.
 
-* [Oozie] (https://forge.gluster.org/hadoop/pages/UsingOozie).  For testing Oozie, you can use https://forge.gluster.org/hadoop/oozie-smoke-test.
+* [Oozie](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Oozie).  For testing Oozie, you can use https://forge.gluster.org/hadoop/oozie-smoke-test.
 
-* [Solr] (https://forge.gluster.org/hadoop/pages/UsingSolr).  This page has specific instructions on how to test Solr. 
+* [Solr](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Solr).  This page has specific instructions on how to test Solr. 
 
 If you have any issues, you can contact us directly or ping the gluster users mailing list.   
+
+
