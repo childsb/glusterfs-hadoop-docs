@@ -3,7 +3,7 @@
 These are future (v2.2) possible features for glusterfs-hadoop:
 
 **Support for distributed volumes**
-1. Support striped volumes (changed parsing of getfattr)
+1. Support striped volumes (change parsing of getfattr)
 
 **ACL**
 1. Iron out any descrepencies between HDFS ACL and Posix ACL
@@ -12,7 +12,7 @@ These are future (v2.2) possible features for glusterfs-hadoop:
 1. read/write, file sizes etc
 	
 **Quota**
-1. pre-checka and warn if low on space
+1. pre-check quota and warn if low on space
 2. misc bugs around quota-pre check
 
 **'rack' locality config support**
