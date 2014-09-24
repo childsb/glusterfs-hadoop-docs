@@ -1,4 +1,4 @@
-First, Follow the [[General_Configuration_CDH5/]] setup.  
+First, Follow the [[General_Configuration_CDH5]] setup.  
 
 ** setup linux container configuration ** 
 
