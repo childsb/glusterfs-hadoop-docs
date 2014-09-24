@@ -2,7 +2,7 @@
 ##(September 24, 2014)
 These are future (v2.2) possible features for glusterfs-hadoop:
 
-**Support for distributed volumes**
+**Support for striped volumes**
 1. Support striped volumes (requires changed parsing of getfattr)
 
 **ACL**
