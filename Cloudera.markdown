@@ -1,3 +1,4 @@
+-----------------------
 # Setting up CDH5 #
 
 All the apache components of CDH5, to our knowledge, are 100% HCFS compatible on glusterfs-hadoop from the basic testing that we've done.  Here is how to get started with a Cloudera's recent CDH5 release on hadoop.
