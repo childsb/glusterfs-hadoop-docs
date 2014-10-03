@@ -1,6 +1,6 @@
 #Using HBase#
 
-##Optional: Vagrant setup for 2 node test cluster
+**Optional: Vagrant setup for 2 node test cluster**
 
 If you are just testing the plugin and want to experiment with Hbase, we have a vagrant-gluster-hbase on fedora19 setup which can be run to automatically provision a 2 node gluster and hbase cluster with smoke tests: 
 
