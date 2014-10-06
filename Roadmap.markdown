@@ -8,6 +8,9 @@ These are future (v2.2) possible features for glusterfs-hadoop:
 **ACL**
 1. Iron out any descrepencies between Hadoop ACL and Posix ACL
 
+** Non-Hadoop Apps **
+1. Support for SPARK and Tachyon using the same Hadoop FileSystem plugin.
+
 **Enhancements to FS statistics tracking**
 1. Better tracking of read/write, file sizes etc
 	
