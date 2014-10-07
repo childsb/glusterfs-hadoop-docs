@@ -63,7 +63,7 @@ Then copy the Ambari-agent RPM to all the other nodes in your cluster.
 
 ##Pre-installation setup
 
-Once you have copied the rpms do the following on each node complete the following steps:
+Once you have copied the rpms perform the following steps on each node:
 
 0. Set permissions for the getfattr process
     vi /etc/sudoers.d/gluster
