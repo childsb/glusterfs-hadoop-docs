@@ -12,7 +12,7 @@ The Details
 
 It is easiest to grok the architecture by scanning the class hierarchy in eclipse or another IDE.  To start, you can look at any of the FileSystem or DelegateToFileSystem implementations and note that (most) functionality is passed to a single class: the GlusterVolume, which is wrapped in different ways to satisfy the requirements of different top level file systems.  Actually, the GlusterVolume class itself is also a file system: It implements the RawLocalFileSystem class.  The classes that get used by hadoop, however, need a little extra wrapping, and thus we provide the GlusterVolume as a utility FileSystem which can be wrapped by other FileSystem implementations with fine grained behaviour.  
 
-As an example, this can be seen by comparing the current GlusterFileSystem with the GlusterFileSystemCRC implementation: Both are quite similar, with exception of the fact the GlusterFileSystem extends a class which is "higher" in the FileSystem inheritance hierarchy. 
+As an example, this can be seen by comparing the current GlusterFileSystem with the GlusterFileSystemCRC implementation: Both are quite similar, with exception of the fact that the GlusterFileSystem extends a class which is "higher" in the FileSystem inheritance hierarchy. 
 
 The hadoop plugin provides FileSystem and AbstractFileSystem implementations for hadoop 1.0 and 2.0, respectively.  
 
