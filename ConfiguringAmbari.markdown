@@ -1,3 +1,4 @@
+
 #Installing and Configuring Red Hat Storage (RHS)#
 
 In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
