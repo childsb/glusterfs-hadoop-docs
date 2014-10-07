@@ -46,7 +46,7 @@ Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index
 
 # Configuring Ambari Hadoop 1.x #
 
-These instructions will provide you step-by-step instructions for using Ambari to configure your Hadoop 1.x Cluster on top of GlusterFS.
+These instructions will provide you step-by-step instructions for using Ambari to configure your Hadoop 1.x cluster on top of GlusterFS.
 
 **Note: These instructions will only work on RHEL. Apache Ambari does not yet work on Fedora **
 
