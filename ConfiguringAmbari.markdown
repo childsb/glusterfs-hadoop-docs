@@ -1,4 +1,3 @@
-
 #Installing and Configuring Red Hat Storage (RHS)#
 
 In order to configure Hortonworks Data Platform (HDP) 2 to run on Red Hat Storage, you will need to follow the instructions below:
@@ -37,7 +36,7 @@ for example
 
 ##Installing the Red Hat Storage Hadoop FileSystem Plugin
 
-Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster. Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location already, so this step will not be necessary.
+Download the latest plugin release from http://rhbd.s3.amazonaws.com/maven/index.html and copy it to /usr/lib/hadoop/lib on all the machines within the cluster. Note: When the Red Hat Storage 2.1.1 ISO with the plugin becomes available, the ISO will already have the plugin in this location, so this step will not be necessary.
 
 `mkdir -p /usr/lib/hadoop/lib`
 `cd /usr/lib/hadoop/lib`
