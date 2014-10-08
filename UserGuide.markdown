@@ -27,7 +27,7 @@ To install these tools, assuming you've added the CDH repos (you would have done
 
 Each installation below requires slightly more sophisticated setup, because these tools run their own services.  Thus, you will need to do a couple of steps to add the glusterfs-hadoop connector to the right place.  
 
-* [Oozie](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Oozie)
-* [HBase](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+HBase)
-* [Solr](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Solr)
-* [Impala](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Impala)
+* [Oozie](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+Oozie)
+* [HBase](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+HBase)
+* [Solr](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+Solr)
+* [Impala](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+Impala)
