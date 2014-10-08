@@ -18,6 +18,6 @@ Our [[Configuration]] page provides a guide on how to configure GlusterFS and va
 
 ## For Developers ##
 
-Our [[HowToContribute]] page contains information on how to participate in the development of the plugin.
+Our [HowToContribute](https://forge.gluster.org/hadoop/pages/HowToBuild#How+to+Contribute) page contains information on how to participate in the development of the plugin.
 
 Our [[HowToBuild]] page contains information on how to build the plugin if you would like to build your own plugin JARs.  Building the plugin is simple: only maven and java are required. 
