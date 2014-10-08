@@ -6,7 +6,7 @@ The plugin currently wraps RawLocalFileSystem implementations for hadoop 1.0 and
 
 ## Some simple (and complex) ways to contribute
 
-Wether you're a Linux guru, a DevOps smarty pants, a JVM ninja, a MapReduce hacker, or maybe just a wiki-formatting expert -- we'd love to get some help from you... And you will learn alot of cool stuff working on this project.  Here is a list of possible places to start: [[HackIdeas]].
+Wether you're a Linux guru, a DevOps smarty pants, a JVM ninja, a MapReduce hacker, or maybe just a wiki-formatting expert -- we'd love to get some help from you... And you will learn a lot of cool stuff working on this project. Check out the Hack Ideas below for some ideas.
 
 ## Development Process
 
