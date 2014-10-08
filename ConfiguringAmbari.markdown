@@ -132,13 +132,14 @@ Once the login screen loads use admin/admin for the credentials and press the Si
 # Configuring Ambari Hadoop 2.x #
 
 * On every server within the cluster, add the Ambari repo by running the following command:
-`rpm -Uvh http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.1.4.4-1.x/repos/centos6/AMBARI.1.4.4-1.x-1.el6.noarch.rpm`
+
+    `rpm -Uvh http://s3.amazonaws.com/dev.hortonworks.com/AMBARI.1.4.4-1.x/repos/centos6/AMBARI.1.4.4-1.x-1.el6.noarch.rpm`
 
 * Verify the Ambari Repo was successfully added, by running:
 
-`yum repolist` 
+    `yum repolist` 
 
-   You should see the Ambari packages in the list.
+    You should see the Ambari packages in the list.
 
 * Install the Ambari Server and Agent on the Management Server:
 
@@ -151,28 +152,28 @@ Navigate to the directory where you downloaded the RPMs and run:
 `yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
 * On the management server, activate the GlusterFS enabled HDP Stack in Ambari by editing the /var/lib/ambari-server/resources/stacks/HDP/2.0.6.GlusterFS/metainfo.xml and setting the active flag to true:
-`     <metainfo>`
-`        <versions>`
-`               <active>true</active>`
-`         </versions>`
-`     </metainfo>`
+        <metainfo>
+            <versions>
+                 <active>true</active>
+            </versions>
+        </metainfo>
 
 * On the **management server **, start the Ambari Server:
-`     ambari-server setup -s`
-`     ambari-server start`
+    `ambari-server setup -s`
+    `ambari-server start`
 
 *  Install  **only the Ambari Agent **  on  **all servers ** within your cluster:
-`     yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
+    `yum install ambari-agent-1.3.0-SNAPSHOT20140110162153.x86_64.rpm`
 
-* Configure the Agent with the Ambari Server Hostname: 
+* Configure the Agent with the Ambari Server Hostname:
 
-`     sed -i 's/'localhost'/<MgmtNode>/' /etc/ambari-agent/conf/ambari-agent.ini`
+    `sed -i 's/'localhost'/<MgmtNode>/' /etc/ambari-agent/conf/ambari-agent.ini`
 
 (where <MgmtNode> is your managment host name ie. hwx17.rhs)
 
 Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent: 
  
-`    ambari-agent start`
+    `ambari-agent start`
 
 
 
