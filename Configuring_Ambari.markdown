@@ -183,7 +183,7 @@ Now, On **EACH node which will serve as a hadoop slave** Start the Ambari Agent:
 
 * Launch a browser and enter the following in the URL by replacing `<hostname>` with the hostname of your ambari server 
 
-`http://<hostname>:8080`
+    `http://<hostname>:8080`
 
 * Enter "admin" and "admin" for the login and password.
 
@@ -317,6 +317,18 @@ Note: Make sure there is no additional whitespace at the end of each line or at 
 Navigate to [Hadoop Download Page](http://hadoop.apache.org/releases.html#Download) and download the hadoop-2.1.0-beta.tar.gz  tar-ball (the most recent 2.x release at the time this document was created) to the /opt directory on the Master server. Extract the tar ball in the /opt directory.
 
 For the sake of this document $HADOOP_HOME is the directory the tarball extracts to under /opt/
+
+**Ownership**
+
+Before continuing, make sure the ownership properties of `$HADOOP_HOME/etc` and `/mnt/glusterfs` are correct by running the following.
+
+    chown root:hadoop $HADOOP_HOME/etc
+    chown yarn:hadoop /mnt/glusterfs
+
+Check the ownership of the directories by running:
+
+    ls -l /opt/$HADOOP_HOME
+    ls -l /mnt/gluster
 
 **Configure the Plugin**
 
@@ -507,13 +519,18 @@ Then ssh to each node, and run the container-executor script.
 ##Starting Hadoop
 
 On the Master server, open a terminal window, navigate to $HADOOP_HOME and run the following commands:
-    sbin/yarn-daemon.sh start resourcemanager
-    sbin/yarn-daemon.sh start nodemanager
-    sbin/mr-jobhistory-daemon.sh start historyserver
+
+    `su yarn`
+    `sbin/yarn-daemon.sh start resourcemanager`
+    `sbin/yarn-daemon.sh start nodemanager`
+    
+    `sbin/mr-jobhistory-daemon.sh start historyserver`
+    `su mapred`
 
 On each Slave server, open a terminal window, navigate to $HADOOP_HOME and run the following commands:
 
-    sbin/yarn-daemon.sh start nodemanager
+    `su yarn`
+    `sbin/yarn-daemon.sh start nodemanager`
 
 ##Verifying Hadoop is running successfully on GlusterFS
 
