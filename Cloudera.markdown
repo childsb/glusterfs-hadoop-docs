@@ -1,6 +1,5 @@
 
 
-
 # Setting up CDH5 #
 
 All the apache components of CDH5, to our knowledge, are 100% HCFS compatible on glusterfs-hadoop from the basic testing that we've done.  Here is how to get started with a Cloudera's recent CDH5 release on hadoop.
@@ -32,11 +31,11 @@ And then you can run the test.sh file in the top directory.
 
 We have specific directions for installing and running CDH5 ecosystem service applications below.
 
-* [HBase](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+HBase). This page also includes instructions how to test Hbase.
+* [HBase](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+HBase). This page also includes instructions how to test Hbase.
 
-* [Oozie](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Oozie).  For testing Oozie, you can use https://forge.gluster.org/hadoop/oozie-smoke-test.
+* [Oozie](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+Oozie).  For testing Oozie, you can use https://forge.gluster.org/hadoop/oozie-smoke-test.
 
-* [Solr](https://forge.gluster.org/hadoop/pages/AdditionalComponents#Using+Solr).  This page has specific instructions on how to test Solr. 
+* [Solr](https://forge.gluster.org/hadoop/pages/Additional_Components#Using+Solr).  This page has specific instructions on how to test Solr. 
 
 If you have any issues, you can contact us directly or ping the gluster users mailing list. 
 
