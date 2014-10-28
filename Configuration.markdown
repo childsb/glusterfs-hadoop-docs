@@ -34,7 +34,7 @@ See - [Configuring Hadoop 2.0](https://forge.gluster.org/hadoop/pages/Configurin
 See - [Configuring CDH 5](https://forge.gluster.org/hadoop/pages/Cloudera) for GlusterFS
 
 **For SPARK 1.1.0:** 
-See - [Configuring SPARK](https://forge.gluster.org/hadoop/pages/SPARK-1.1.0) for GlusterFS
+See - [Configuring SPARK](https://forge.gluster.org/hadoop/pages/SPARK110) for GlusterFS
 
 **User Guide:** If you have questions about using specific components within the Hadoop Ecosystem, [please see the user guide](https://forge.gluster.org/hadoop/pages/UserGuide)
 
