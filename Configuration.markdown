@@ -36,6 +36,9 @@ See - [Configuring CDH 5](https://forge.gluster.org/hadoop/pages/Cloudera) for G
 **For SPARK 1.1.0:** 
 See - [Configuring SPARK](https://forge.gluster.org/hadoop/pages/SPARK) for GlusterFS
 
+**For Tachyon:** 
+See - [Configuring Tachyon](https://forge.gluster.org/hadoop/pages/Tachyon) for GlusterFS
+
 **User Guide:** If you have questions about using specific components within the Hadoop Ecosystem, [please see the user guide](https://forge.gluster.org/hadoop/pages/UserGuide)
 
 **Sync Clocks**
